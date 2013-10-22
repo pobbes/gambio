@@ -1,0 +1,30 @@
+{config_load file="$language/gm_lang_$language.conf" section="topmenu"}
+		<div id="topmenu_block">
+			<ul id="topmenu_left">
+				<li id="first_link">				
+				{if $GM_QUICK_SEARCH}
+					<form name="quick_find" action="{$SEARCH_FORM_ACTION_URL}" method="get">
+						<input type="hidden" name="XTCsid" value="{$XTCsid}" />
+						<input id="quick_find_input" class="gm_class_input" name="keywords" type="text" /> {$SEARCH_FORM_SUBMIT}
+					</form>
+                 {/if}
+				</li>
+				<li class="content_link"><a href="{$HOME_URL}">{#home#}</a></li>
+				{foreach name=aussen item=module_item from=$module_data}
+					{if $module_item.TARGET == ''}
+						<li class="content_link"><a href="{$module_item.URL}">{$module_item.TEXT}</a></li>
+					{else}
+						<li class="content_link"><a href="{$module_item.URL}" target="{$module_item.TARGET}">{$module_item.TEXT}</a></li>
+					{/if}
+				{/foreach}
+			</ul>
+		
+			<div id="topmenu_right">
+				{if $LOGIN_URL}<a href="{$LOGIN_URL}">{#login#}</a> |{/if}
+				{if $LOGOFF_URL}<a href="{$LOGOFF_URL}">{#logoff#}</a> |{/if}
+				{if $ACCOUNT_URL}<a href="{$ACCOUNT_URL}">{#account#}</a> |{/if}
+				{if $WISHLIST_URL}<a href="{$WISHLIST_URL}">{#wishlist#}</a> |{/if}
+				<a href="{$CART_URL}">{#cart#}</a> |
+				<a href="{$CHECKOUT_URL}">{#checkout#}</a>
+			</div>
+		</div>

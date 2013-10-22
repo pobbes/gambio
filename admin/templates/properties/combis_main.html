@@ -1,0 +1,861 @@
+
+<!-- combis_main.html BOF -->
+
+<div id="box_properties_combis" class="product_{$content_data.products_id}">
+
+	<div id="area_top">
+		<div class="box">
+                <span style="float: right; display: block; margin: 10px 0 0 60px; cursor: pointer; font-size: 12px; font-weight: normal;" id="switch_view">Zuweisung ändern</span>
+                <span style="float: right; display: block; margin: 10px 0 0 60px; cursor: pointer; font-size: 12px; font-weight: normal;" id="sort_combis">Kombinationen neu sortieren</span>
+                Eigenschaftenkombinationen<br />Artikel: <a href="{$content_data.products_path}">{$content_data.products_name}</a><br />
+                <div class="option long">
+                    <label id="properties_dropdown_mode_label">Dropdown-Modus:</label>
+                    <select id="properties_dropdown_mode_select" class="long">
+                            <option value="">Standard, alle Werte immer auswählbar</option>
+                            {if $content_data.properties_dropdown_mode == "dropdown_mode_1"}
+                                    <option value="dropdown_mode_1" selected="selected">Reihenfolge der Auswahl beliebig, nur mögliche Werte auswählbar</option>
+                            {else}
+                                    <option value="dropdown_mode_1">Reihenfolge der Auswahl beliebig, nur mögliche Werte auswählbar</option>
+                            {/if}
+                            {if $content_data.properties_dropdown_mode == "dropdown_mode_2"}
+                                    <option value="dropdown_mode_2" selected="selected">Reihenfolge der Auswahl vorgegeben, nur mögliche Werte auswählbar</option>
+                            {else}
+                                    <option value="dropdown_mode_2">Reihenfolge der Auswahl vorgegeben, nur mögliche Werte auswählbar</option>
+                            {/if}
+                    </select>
+                    <a style="float: left;" class="button button_propertie_dropdown_mode_save" href="#">Speichern</a>
+                    <span style="display: block; clear: both;"> <!-- --> </span>    
+                </div>
+                <div class="option">
+                    <label id="properties_price_show_label">Preisanzeige:</label>
+                    <select id="properties_price_show_select">
+                            <option value="false">deaktiviert</option>
+                            {if $content_data.properties_show_price == "true"}
+                                    <option value="true" selected="selected">aktiviert</option>
+                            {else}
+                                    <option value="true">aktiviert</option>
+                            {/if}
+                    </select>
+                    <a style="float: left;" class="button button_propertie_price_show_save" href="#">Speichern</a>
+                    <span style="display: block; clear: both;"> <!-- --> </span>
+                </div>
+                <div class="option">
+                    <label id="use_properties_combis_weight_label">Gewichtsanzeige:</label>
+                    <select id="use_properties_combis_weight_select">
+                            <option value="0">Gewichte addieren</option>
+                            {if $content_data.use_properties_combis_weight == "1"}
+                                    <option value="1" selected="selected">Artikelgewicht ersetzen</option>
+                            {else}
+                                    <option value="1">Artikelgewicht ersetzen</option>
+                            {/if}
+                    </select>
+                    <a style="float: left;" class="button button_use_properties_combis_weight_save" href="#">Speichern</a>
+                    <span style="display: block; clear: both;"> <!-- --> </span>
+                </div>
+                <div class="option">
+                    <label id="use_properties_combis_quantity_label">Bestandsprüfung:</label>
+                    <select id="use_properties_combis_quantity_select">
+                            <option value="0">Standard</option>
+                            {if $content_data.use_properties_combis_quantity == "1"}
+                                    <option value="1" selected="selected">Artikel - Bestand</option>
+                            {else}
+                                    <option value="1">Artikel - Bestand</option>
+                            {/if}
+                            {if $content_data.use_properties_combis_quantity == "2"}
+                                    <option value="2" selected="selected">Kombinations - Bestand</option>
+                            {else}
+                                    <option value="2">Kombinations - Bestand</option>
+                            {/if}
+                            {if $content_data.use_properties_combis_quantity == "3"}
+                                    <option value="3" selected="selected">Keine Prüfung</option>
+                            {else}
+                                    <option value="3">Keine Prüfung</option>
+                            {/if}
+                    </select>
+                    <a style="float: left;" class="button button_use_properties_combis_quantity_save" href="#">Speichern</a>
+                    <span style="display: block; clear: both;"> <!-- --> </span>
+                </div>
+                <div class="option">
+                    <label id="use_properties_combis_shipping_time_label">Lieferzeitanzeige:</label>
+                    <select id="use_properties_combis_shipping_time_select">
+                            <option value="0">Artikellieferzeit</option>
+                            {if $content_data.use_properties_combis_shipping_time == "1"}
+                                    <option value="1" selected="selected">Kombinations - Lieferzeit</option>
+                            {else}
+                                    <option value="1">Kombinations - Lieferzeit</option>
+                            {/if}
+                    </select>
+                    <a style="float: left;" class="button button_use_properties_combis_shipping_time_save" href="#">Speichern</a>
+                    <span style="display: block; clear: both;"> <!-- --> </span>
+                </div>
+		</div>
+		<div style="clear: both;"> <!-- --> </div>
+	</div>
+
+	<div id="area_content">
+		
+		<div class="properties_view1" style="display: none;">
+			<div class="properties_table_headline">Bitte w&auml;hlen Sie die für diesen Artikel verfügbaren Eigenschaften</div>
+			{foreach item=item_array from=$content_data.PROPERTIES_TABLES name=properties_tables}
+				<div class="properties_table_content{$item_array.class}">
+					<div class="properties_container_headline">
+						<a href="#" class="properties_button button_display_container"></a>
+						{foreach item=item from=$item_array.PROPERTIES_LANGUAGE_ARRAY name=properties_names}
+                                                    {if $item.properties_admin_name}
+							<div class="properties_container_headline_text lang_{$content_data.LANGUAGES[$smarty.foreach.properties_names.index].code}">{$item.properties_admin_name}</div>
+                                                    {else}
+							<div class="properties_container_headline_text lang_{$content_data.LANGUAGES[$smarty.foreach.properties_names.index].code}">{$item.properties_name}</div>
+                                                    {/if}
+						{/foreach}
+						<div class="properties_checkbox"><input type="checkbox" value="{$item_array.properties_id}" /></div>
+						<div style="clear: both;"> <!-- --> </div>
+					</div>
+					<div class="properties_container_content">
+						<p class="properties_container_content_headline">Werte:</p>
+						<select name="" size="5" multiple>
+							{foreach item=item_array from=$item_array.PROPERTIES_VALUES name=properties_values}
+								<option value="{$item_array.properties_values_id}">{$item_array.VALUES_DESCRIPTIONS[0].name}</option>
+							{/foreach}
+						</select>
+					</div>	
+				</div>
+			{/foreach}
+
+			<div class="properties_buttons"><a href="#" class="button manualConfiguration" style="float: left;">Kombinationen manuell erstellen</a><a href="#" class="button automaticConfiguration" style="float: right;">Kombinationen automatisch ermitteln</a><div style="clear: both;"> <!-- --> </div></div>
+		</div>
+		
+		
+		<div class="properties_view2" style="display: none;">
+			<table cellpadding="2" cellspacing="0">
+				<tr>
+					<th><span class="combination_mode"> <!-- --> </span><span style="float: left;"> Kombination</span></th>
+					<th class="properties_table_sortnr">Sortiernr.</th>
+					<th class="properties_table_artnr">Artikelnr.</th>
+					<th class="properties_table_quantity">Bestand</th>
+					<th class="properties_table_weight">Gewicht</th>
+					<th class="properties_table_price">Preis</th>
+					<th class="properties_table_vpe">VPE</th>
+					<th class="properties_table_shipping_time">Lieferzeit</th>
+					<th class="properties_table_image">Bild</th>
+					<th class="properties_table_button">&nbsp;</th>
+					<th class="properties_table_button">&nbsp;</th>
+					<th class="properties_table_button"><input type="checkbox" name="check_all" value="check_all" id="check_all" /></th>
+				</tr>
+				
+				{foreach item=item_array from=$content_data.PROPERTIES_COMBIS_TABLES}
+					{$item_array.table_html}
+				{/foreach}
+			</table>
+			
+			<div class="properties_buttons"><a href="#" class="button button_propertie_combi_add" style="float: left;">Kombination hinzuf&uuml;gen</a><a href="#" class="button delete_selected" style="float: right; display: none;">Markierte l&ouml;schen</a><div style="clear: both;"> <!-- --> </div></div>
+			
+		</div>
+	</div>
+
+	<div id="area_bottom">
+	</div>
+
+</div>
+
+{literal}
+<style>
+	#area_top div.box{
+		font-weight: bold;
+		font-size: 14px;
+                float: left;
+                margin: 0 0 20px 0;
+                display: block;
+                width: 100%;
+	}
+        
+        #area_top div.option.long{
+                width: 1030px;
+	}
+        
+        #area_top div.option{
+		float: left;
+                display: block;
+                width: 515px;
+	}
+	
+	#area_top label{
+		width: 120px;
+		margin: 10px 0 5px 0;
+		font-weight: normal;
+		font-size: 12px;
+		display: block;
+		float: left;
+		height: 18px;
+		line-height: 18px;
+	}
+	
+	#area_top select.long{
+		width: 770px;
+		margin: 10px 0 5px 0;
+		font-size: 12px;
+		float: left;
+	}
+	
+	#area_top select{
+		width: 255px;
+		margin: 10px 0 5px 0;
+		font-size: 12px;
+		float: left;
+	}
+	
+	#area_top .button{
+		font-size: 9px;
+		padding: 1px 2px;
+		margin: 10px 0 0 10px;
+		display: none;
+	}
+	
+	#box_properties_combis{
+		font-size: 13px;
+		font-family: Arial, sans-serif;
+		width: 1030px;
+	}
+	
+	#box_properties_combis a{
+		font-size: 13px;
+		font-family: Arial, sans-serif;
+	}
+	
+	#box_properties_combis .properties_table_headline{
+		border-bottom: 1px solid #000;
+		height: 30px;
+		line-height: 30px;
+		font-size: 12px;
+	}
+	
+	#box_properties_combis .properties_container_headline{
+		height: 35px;
+		line-height: 35px;
+	}
+	
+	#box_properties_combis .properties_container_headline .properties_container_headline_text,
+	#box_properties_combis .properties_container_headline .properties_checkbox,
+	#box_properties_combis .properties_container_headline .properties_button{
+		float: left;
+		height: 35px;
+		line-height: 35px;
+		display: block;
+		margin: 0 5px;
+	}
+	
+	#box_properties_combis .properties_container_headline .properties_container_headline_text{
+		font-size: 14px;
+	}
+	
+	#box_properties_combis .properties_container_headline .properties_checkbox input{
+		margin: 11px 0 0 0;
+	}
+	
+	#box_properties_combis .properties_table_content{
+		border-bottom: 1px solid #000;
+	}
+	
+	#box_properties_combis .properties_container_content{
+		display: none;
+		padding: 0 0 15px 20px;
+	}
+	
+	#box_properties_combis .properties_container_content .properties_container_content_headline{
+		font-weight: bold;
+	}
+	
+	#box_properties_combis .properties_container_content select{
+		width: 350px;
+		font-size: 12px;
+	}
+	
+	#box_properties_combis .properties_table_content.active {
+		background-color: #D6E6F3;
+	}
+	
+	#box_properties_combis .properties_table_content.active .properties_container_content{
+		display: block;
+	}
+	
+	#box_properties_combis .properties_table_content.active .properties_container_headline .button_display_container{
+		background: url('images/buttons/button_minus_gray.png') no-repeat center center;
+	}
+	
+	#box_properties_combis .properties_button{
+		display: block;
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+	}
+	
+	.button_display_container{
+		background: url('images/buttons/button_plus_gray.png') no-repeat center center;
+	}
+	
+	.properties_buttons{
+		margin: 15px 0 0 0;
+	}
+	
+	#box_properties_combis .properties_buttons .manualConfiguration,
+	#box_properties_combis .properties_buttons .automaticConfiguration{
+		width: 340px;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	#box_properties_combis .properties_view2 table{
+		width: 1030px;
+		padding: 0;
+		margin: 0;
+		font-family: Arial, sans-serif;
+		text-align: left;
+		font-size: 11px;
+	}
+	
+	#box_properties_combis .properties_view2 table th{
+		background: #585858;
+		color: #fff;
+		height: 25px;
+		line-height: 25px;
+		text-align: left;
+	}
+	
+	#box_properties_combis .properties_view2 table td{
+		border-bottom: 1px solid #000;
+		padding: 8px 0 6px 0;
+	}
+	
+	#box_properties_combis .properties_view2 table td.properties_table_image,
+	#box_properties_combis .properties_view2 table td.properties_table_button{
+		border-bottom: 1px solid #000;
+		padding: 4px 0 0 0;
+	}
+	
+	#box_properties_combis .properties_view2 table td.properties_table_button input{
+		margin: 2px 3px 0 4px;
+	}
+	
+	.button_cancel_red_cross{
+		background: url('images/buttons/button_cancel_red_cross.png') no-repeat center center;
+	}
+	
+	.button_edit_pencil{
+		background: url('images/buttons/button_edit_pencil.png') no-repeat center center;
+	}
+	
+	.combination_mode{
+		margin: 5px 0 0 0;
+		float: left;
+		width: 26px;
+		height: 16px;
+		display: block;
+		background: url('images/buttons/button_plus_gray.png') no-repeat center center;
+	}
+	
+	#box_properties_combis .properties_view2.active{
+		background: #fff;
+	}
+	
+	#box_properties_combis .properties_view2.active .combination_mode{
+		background: url('images/buttons/button_minus_gray.png') no-repeat center center;
+	}
+	
+	#box_properties_combis .properties_view2.active table td{
+		padding: 8px 0 6px 0;
+	}
+	
+	#box_properties_combis .properties_view2.active table td.properties_table_image,
+	#box_properties_combis .properties_view2.active table td.properties_table_button{
+		padding: 4px 0 0 0;
+	}
+	
+	.combi_name_container{
+		display: inline;
+	}
+	
+	.combi_name_text{
+		display: none;
+	}
+	
+	.combi_name_value{
+		float: left;
+	}
+	
+	.combi_name_placeholder{
+		float: left;
+		margin: 0 5px;
+	}
+	
+	#box_properties_combis .properties_view2.active .combi_name_container{
+		display: block;
+		clear: both;
+	}
+	
+	#box_properties_combis .properties_view2.active .combi_name_text{
+		float: left;
+		display: block;
+		margin: 0 5px 0 0;
+	}
+	
+	#box_properties_combis .properties_view2.active .combi_name_value{
+		float: left;
+	}
+	
+	#box_properties_combis .properties_view2.active .combi_name_placeholder{
+		display: none;
+	}
+	
+	.properties_table_sortnr{
+		width: 65px;
+	}
+	
+	.properties_table_artnr{
+		width: 120px;
+	}
+	
+	.properties_table_quantity{
+		width: 90px;
+	}
+	
+	.properties_table_weight{
+		width: 80px;
+	}
+	
+	.properties_table_price{
+		width: 80px;
+	}
+	
+	.properties_table_vpe{
+		width: 80px;
+	}
+	
+	.properties_table_shipping_time{
+		width: 100px;
+	}
+	
+	.properties_table_image{
+		width: 30px;
+		text-align: center;
+	}
+	
+	.properties_table_button{
+		width: 16px;
+	}
+	
+	#box_properties_combis .properties_buttons .delete_selected,
+	#box_properties_combis .properties_buttons .button_propertie_combi_add{
+		width: 250px;
+	}
+	
+	#box_properties_combis .properties_buttons a.button.active{
+		height: 13px;
+		background: #fff url("../images/loading.gif") no-repeat center center !important;
+	}
+	
+</style>
+
+<script type="text/javascript" src="gm/javascript/lightbox_plugin.js"></script>
+<script type="text/javascript">
+	var t_actual_dropdown_mode = $("#properties_dropdown_mode_select").val();
+	var t_actual_price_show = $("#properties_price_show_select").val();
+	var t_actual_use_properties_combis_weight = $("#use_properties_combis_weight_select").val();
+	var t_actual_use_properties_combis_quantity = $("#use_properties_combis_quantity_select").val();
+	var t_actual_use_properties_combis_shipping_time = $("#use_properties_combis_shipping_time_select").val();
+	
+	if({/literal}{$content_data.PROPERTIES_COMBIS_TABLES|@count}{literal} == 0){
+		$(".properties_view1").show();
+		$("#switch_view").hide();
+                $("#sort_combis").hide();
+	}else{
+		$(".properties_view2").show();
+	}
+	
+	$("#sort_combis").bind("click", function(){
+            var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+            $.ajax({
+                data: 		{"products_id": t_products_id},
+                url: 		"request_port.php?module=reset_combis_sort_order",
+                type: 		"GET",
+                error: 		function(){ if(fb)console.log('error'); },
+                success: 	function()
+                                { 
+                                    if(fb)console.log('success'); 
+                                    location.reload(true);
+                                }
+            });
+	});
+        
+        $("#switch_view").bind("click", function(){
+		if($(".properties_view1").css("display") == "block"){
+			$(".properties_view1").hide();
+			$(".properties_view2").show();
+			$("#switch_view").html("Zuweisung ändern");
+                        $("#sort_combis").css("visibility", "visible");
+		}else{
+			$(".properties_view1").show();
+			$(".properties_view2").hide();
+			$("#switch_view").html("Kombinationen anzeigen");
+                        $("#sort_combis").css("visibility", "hidden");
+		}
+		$(".check_propertie").removeAttr("checked");
+		if($(".box_properties_combis_row").length > 0){
+			$(".properties_checkbox input").attr("checked", "checked");
+			$("#check_all").removeAttr("checked");
+			$(".properties_table_content.disable").hide();
+			$(".properties_checkbox input").bind("click", function(){
+				$(this).attr("checked", "checked");
+			});
+			$(".properties_table_content.disable .properties_checkbox input").removeAttr("checked");
+			$(".delete_selected").hide();
+		}else{
+			$(".properties_checkbox input").removeAttr("checked");
+			$(".properties_table_content.disable").show();
+			$(".properties_checkbox input").unbind("click");
+			$("#switch_view").hide();
+		}
+	});
+	
+	$("#properties_dropdown_mode_select").live("change", function(){
+		var self = this;	
+		if(t_actual_dropdown_mode != $("#properties_dropdown_mode_select").val()){
+			$(".button_propertie_dropdown_mode_save").show();
+		}else{
+			$(".button_propertie_dropdown_mode_save").hide();
+		}
+		return false;
+	});
+	
+	$(".button_propertie_dropdown_mode_save").live("click", function(){
+		var self = this;
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_dropdown_mode_value = $("#properties_dropdown_mode_select").val();
+		$.ajax({
+			data: 		{"products_id": t_products_id, "dropdown_mode_value": t_dropdown_mode_value},
+			url: 		"request_port.php?module=properties_save_dropdown_mode",
+			type: 		"POST",
+			dataType:	"text",
+			error: 		function(){ if(fb)console.log('error'); },
+			success: 	function(response){ 
+							if(fb)console.log('success');
+							t_actual_dropdown_mode = response;
+							$(self).hide();
+						}
+		});
+		return false;
+	});
+	
+	$("#properties_price_show_select").live("change", function(){
+		var self = this;	
+		if(t_actual_price_show != $("#properties_price_show_select").val()){
+			$(".button_propertie_price_show_save").show();
+		}else{
+			$(".button_propertie_price_show_save").hide();
+		}
+		return false;
+	});
+	
+	$(".button_propertie_price_show_save").live("click", function(){
+		var self = this;
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_price_show_value = $("#properties_price_show_select").val();
+		$.ajax({
+			data: 		{"products_id": t_products_id, "price_show_value": t_price_show_value},
+			url: 		"request_port.php?module=properties_save_price_show",
+			type: 		"POST",
+			dataType:	"text",
+			error: 		function(){ if(fb)console.log('error'); },
+			success: 	function(response){ 
+							if(fb)console.log('success');
+							t_actual_price_show = response;
+							$(self).hide();
+						}
+		});
+		return false;
+	});
+        
+        $("#use_properties_combis_weight_select").live("change", function(){
+		var self = this;	
+		if(t_actual_use_properties_combis_weight != $("#use_properties_combis_weight_select").val()){
+			$(".button_use_properties_combis_weight_save").show();
+		}else{
+			$(".button_use_properties_combis_weight_save").hide();
+		}
+		return false;
+	});
+	
+	$(".button_use_properties_combis_weight_save").live("click", function(){
+		var self = this;
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_use_properties_combis_weight = $("#use_properties_combis_weight_select").val();
+		$.ajax({
+			data: 		{"products_id": t_products_id, "use_properties_combis_weight": t_use_properties_combis_weight},
+			url: 		"request_port.php?module=use_properties_combis_weight",
+			type: 		"POST",
+			dataType:	"text",
+			error: 		function(){ if(fb)console.log('error'); },
+			success: 	function(response){ 
+							if(fb)console.log('success');
+							t_actual_use_properties_combis_weight = response;
+							$(self).hide();
+						}
+		});
+		return false;
+	});
+        
+        $("#use_properties_combis_quantity_select").live("change", function(){
+		var self = this;	
+		if(t_actual_use_properties_combis_quantity != $("#use_properties_combis_quantity_select").val()){
+			$(".button_use_properties_combis_quantity_save").show();
+		}else{
+			$(".button_use_properties_combis_quantity_save").hide();
+		}
+		return false;
+	});
+	
+	$(".button_use_properties_combis_quantity_save").live("click", function(){
+		var self = this;
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_use_properties_combis_quantity = $("#use_properties_combis_quantity_select").val();
+		$.ajax({
+			data: 		{"products_id": t_products_id, "use_properties_combis_quantity": t_use_properties_combis_quantity},
+			url: 		"request_port.php?module=use_properties_combis_quantity",
+			type: 		"POST",
+			dataType:	"text",
+			error: 		function(){ if(fb)console.log('error'); },
+			success: 	function(response){ 
+							if(fb)console.log('success');
+							t_actual_use_properties_combis_quantity = response;
+							$(self).hide();
+						}
+		});
+		return false;
+	});
+        
+        $("#use_properties_combis_shipping_time_select").live("change", function(){
+		var self = this;	
+		if(t_actual_use_properties_combis_shipping_time != $("#use_properties_combis_shipping_time_select").val()){
+			$(".button_use_properties_combis_shipping_time_save").show();
+		}else{
+			$(".button_use_properties_combis_shipping_time_save").hide();
+		}
+		return false;
+	});
+	
+	$(".button_use_properties_combis_shipping_time_save").live("click", function(){
+		var self = this;
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_use_properties_combis_shipping_time = $("#use_properties_combis_shipping_time_select").val();
+		$.ajax({
+			data: 		{"products_id": t_products_id, "use_properties_combis_shipping_time": t_use_properties_combis_shipping_time},
+			url: 		"request_port.php?module=use_properties_combis_shipping_time",
+			type: 		"POST",
+			dataType:	"text",
+			error: 		function(){ if(fb)console.log('error'); },
+			success: 	function(response){ 
+							if(fb)console.log('success');
+							t_actual_use_properties_combis_shipping_time = response;
+							$(self).hide();
+						}
+		});
+		return false;
+	});
+	
+	$(".button_display_container").live("click", function(){
+		var self = this;	
+		if($(self).closest(".properties_table_content").hasClass("active")){
+			$(self).closest(".properties_table_content").removeClass("active");
+		}else{
+			$(".properties_table_content").removeClass("active");
+			$(self).closest(".properties_table_content").addClass("active");
+		}
+		return false;
+	});
+	
+	$(".manualConfiguration").live("click", function(){
+		if($(".properties_checkbox input:checked").length > 0){
+			var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+			var t_properties_value_ids_array = new Object();
+			$.each($(".properties_checkbox input:checked"), function(){
+				var checkbox = this;
+				var t_properties_id = $(checkbox).val();
+				var t_properties_values_id = new Array();
+				$.each($(checkbox).closest(".properties_table_content").find("option:selected"), function(){
+					t_properties_values_id.push($(this).val());
+				});
+				if(t_properties_values_id.length == 0){
+					$.each($(checkbox).closest(".properties_table_content").find("option"), function(){
+						t_properties_values_id.push($(this).val());
+					});
+				}
+				t_properties_value_ids_array[t_properties_id] = t_properties_values_id;
+			});
+			$(this).addClass("active").html();
+			$.ajax({
+				data: 		{"products_id": t_products_id, "properties_value_ids_array": t_properties_value_ids_array},
+				url: 		"request_port.php?module=properties_save_admin_select",
+				type: 		"POST",
+				dataType:	"text",
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function(){ 
+								if(fb)console.log('success');
+								$(".properties_view1").hide();
+								$(".properties_view2").show();
+								$("#switch_view").html("Zuweisung ändern");
+								$(".manualConfiguration").removeClass("active").html("Kombinationen manuell erstellen");
+							}
+			});
+		}
+		return false;
+	});
+	
+	$(".automaticConfiguration").live("click", function(){
+		if($(".properties_checkbox input:checked").length > 0){
+			var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+			var t_properties_value_ids_array = new Object();
+			$.each($(".properties_checkbox input:checked"), function(){
+				var checkbox = this;
+				var t_properties_id = $(checkbox).val();
+				var t_properties_values_id = new Array();
+				$.each($(checkbox).closest(".properties_table_content").find("option:selected"), function(){
+					t_properties_values_id.push($(this).val());
+				});
+				if(t_properties_values_id.length == 0){
+					$.each($(checkbox).closest(".properties_table_content").find("option"), function(){
+						t_properties_values_id.push($(this).val());
+					});
+				}
+				t_properties_value_ids_array[t_properties_id] = t_properties_values_id;
+			});
+			$(this).addClass("active").html();
+			$.ajax({
+				data: 		{"products_id": t_products_id, "properties_value_ids_array": t_properties_value_ids_array, "run_autobuild": 1, "run_get_html": 1},
+				url: 		"request_port.php?module=properties_save_admin_select",
+				type: 		"POST",
+				dataType:	"text",
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function(response)
+							{ 
+								if(fb)console.log('success'); 
+								location.reload(true);
+							}
+			});
+		}
+		return false;
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	$("#check_all").live("click", function(){
+		if($(this).is(":checked")){
+			$(".box_properties_combis_row input").attr("checked", "checked");
+			$(".delete_selected").show();
+		}else{
+			$(".box_properties_combis_row input").removeAttr("checked");
+			$(".delete_selected").hide();
+		}
+	});
+	
+	$(".check_propertie").live("click", function(){
+		if($(this).is(":checked")){
+			$(".delete_selected").show();
+			if($(".check_propertie:not(:checked)").length == 0){
+				$("#check_all").attr("checked", "checked");
+			}
+		}else{
+			$("#check_all").removeAttr("checked");
+			if($(".check_propertie:checked").length == 0){
+				$(".delete_selected").hide();
+			}
+		}
+	});	
+	
+	$(".combination_mode").live("click", function(){
+		var self = this;	
+		if($(".properties_view2").hasClass("active")){
+			$(".properties_view2").removeClass("active");
+		}else{
+			$(".properties_view2").addClass("active");
+		}
+		return false;
+	});
+	
+	$(".delete_selected").live("click", function(){
+		var inputs = new Array();
+		$.each($(".check_propertie:checked"), function(){
+			inputs.push(escape(this.value));
+		});
+		$(document).lightbox_plugin({	template: "PropertiesCombisDeleteSelected.html",  
+										url_param: {"properties_combis_id_array": inputs.join('&')},
+										lightbox_width: 600
+									});
+		return false;
+	});
+	
+	$(".button_propertie_combi_add").live("click", function(){
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+			
+		$(document).lightbox_plugin({	template: "PropertiesCombisEdit.html", 
+										className: "PropertiesCombis", 
+										url_param: {"products_id": t_products_id,
+													"properties_combis_id": ""},
+										lightbox_width: 600
+									});
+		return false;
+	});
+	
+	$(".button_propertie_combi_edit").live("click", function(){
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_properties_combis_id = parseInt($(this).parent().parent().attr("id").split("_")[4]);
+			
+		$(document).lightbox_plugin({	template: "PropertiesCombisEdit.html", 
+										className: "PropertiesCombis", 
+										url_param: {"products_id": t_products_id,
+													"properties_combis_id": t_properties_combis_id},
+										lightbox_width: 600
+									});
+		return false;
+	});
+	
+	$(".button_propertie_combi_delete").live("click", function(){
+		var t_products_id = parseInt($("#box_properties_combis").attr("class").split("_")[1]);
+		var t_properties_combis_id = parseInt($(this).parent().parent().attr("id").split("_")[4]);
+			
+		$(document).lightbox_plugin({	template: "PropertiesCombisDelete.html", 
+										className: "PropertiesCombis", 
+										url_param: {"products_id": t_products_id,
+													"properties_combis_id": t_properties_combis_id},
+										lightbox_width: 600
+									});
+		return false;
+	});
+	
+</script>
+{/literal}	
+
+ <!-- combis_main.html EOF -->
+ 

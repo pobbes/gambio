@@ -1,0 +1,279 @@
+{literal}
+<style>
+	
+	#box_properties{
+		font-size: 13px;
+		font-family: Arial, sans-serif;
+	}
+	
+	#box_properties a{
+		font-size: 13px;
+		font-family: Arial, sans-serif;
+	}
+	
+	#box_properties #properties_area_top .button_add_green_plus{
+		border: 1px solid #000;
+		height: 30px;
+		line-height: 30px;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 0 0 0 30px;
+		width: 120px;
+		text-decoration: none;
+		color: #000;
+		background-position: 8px center;
+	}
+	
+	#box_properties .properties_table_headline{
+		border-bottom: 1px solid #000;
+		font-weight: bold;
+		height: 30px;
+		line-height: 30px;
+		font-size: 15px;
+	}
+	
+	#box_properties .properties_container_headline{
+		height: 35px;
+		line-height: 35px;
+		border-bottom: 1px solid #000;
+	}
+	
+	#box_properties .properties_container_headline .properties_container_headline_placeholder,
+	#box_properties .properties_container_headline .properties_container_headline_text,
+	#box_properties .properties_container_headline .properties_button{
+		float: left;
+		height: 35px;
+		line-height: 35px;
+		display: block;
+		margin: 0 5px;
+	}
+	
+	#box_properties .properties_container_headline .properties_container_headline_text{
+		margin: 0;
+	}
+	
+	#box_properties .properties_container_headline .properties_container_headline_placeholder{
+		margin: 0 5px;
+	}
+	
+	#box_properties .properties_container_headline .button_edit_pencil,
+	#box_properties .properties_container_headline .button_cancel_red_cross{
+		display: none;
+	}
+	
+	#box_properties .properties_container_headline .button_add_green_plus{
+		padding: 0 0 0 20px;
+		background-position: center left;
+		margin-left: 5px;
+		width: 80px;
+		display: none;
+		text-decoration: none;
+		font-weight: bold;
+		color: #1d831d;
+	}
+	
+	#box_properties .properties_container_headline .properties_sort_order_text,
+	#box_properties .properties_container_headline .properties_sort_order_value{
+		height: 35px;
+		line-height: 35px;
+		float: right;
+	}
+	
+	#box_properties .properties_container_headline .properties_sort_order_value{
+		margin: 0 10px 0 0;
+	}
+	
+	#box_properties .properties_container_content{
+		display: none;
+	}
+	
+	#box_properties .properties_container_content table{
+		width: 1037px;
+		padding: 0;
+		margin: 0;
+		font-family: Arial, sans-serif;
+	}
+	
+	#box_properties .properties_container_content table tr{
+		border-bottom: 1px solid #000;
+		font-size: 12px;
+	}
+	
+	#box_properties .properties_container_content table tr th{
+		height: 25px;
+		line-height: 25px;
+		color: #fff;
+		background: #585858;
+		font-weight: bold;
+		text-align: left;
+		font-size: 12px;
+	}
+	
+	#box_properties .properties_container_content table tr td{
+		height: 25px;
+		line-height: 25px;
+		border-bottom: 1px solid #000;
+		font-size: 12px;
+	}
+	
+	#box_properties .properties_container_content .properties_table_sortnr,
+	#box_properties .properties_container_content .properties_table_artnr,
+	#box_properties .properties_container_content .properties_table_price{
+		width: 100px;
+	}
+	
+	#box_properties .properties_container_content .properties_table_type{
+		width: 50px;
+	}
+	
+	#box_properties .properties_container_content .properties_table_button{
+		width: 20px;
+	}
+	
+	#box_properties .properties_table_container.active {
+		background-color: #D6E6F3;
+	}
+	
+	#box_properties .properties_table_container.active .properties_container_content{
+		display: block;
+	}
+	
+	#box_properties .properties_table_container.active .properties_container_headline .button_display_container{
+		background: url('images/buttons/button_minus_gray.png') no-repeat center center;
+	}
+	
+	#box_properties .properties_table_container.active .properties_container_headline .properties_container_headline_text{
+		font-weight: bold;
+	}
+	
+	#box_properties .properties_table_container.active .properties_container_headline .button_edit_pencil,
+	#box_properties .properties_table_container.active .properties_container_headline .button_cancel_red_cross,
+	#box_properties .properties_table_container.active .properties_container_headline .button_add_green_plus{
+		display: block;
+	}
+	
+	#box_properties .properties_button{
+		display: block;
+		width: 16px;
+		height: 16px;
+		cursor: pointer;
+	}
+	
+	.button_display_container{
+		background: url('images/buttons/button_plus_gray.png') no-repeat center center;
+	}
+	
+	.button_add_green_plus{
+		background: url('images/buttons/button_add_green_plus.png') no-repeat center center;
+	}
+	
+	.button_cancel_red_cross{
+		background: url('images/buttons/button_cancel_red_cross.png') no-repeat center center;
+	}
+	
+	.button_edit_pencil{
+		background: url('images/buttons/button_edit_pencil.png') no-repeat center center;
+	}
+</style>
+<script type="text/javascript" src="gm/javascript/lightbox_plugin.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".button_display_container").live("click", function(){
+			var self = this;	
+			if($(self).closest(".properties_table_container").hasClass("active")){
+				$(self).closest(".properties_table_container").removeClass("active");
+			}else{
+				$(".properties_table_container").removeClass("active");
+				$(self).closest(".properties_table_container").addClass("active");
+			}
+			return false;
+		});
+		
+		$(".button_propertie_add").live("click", function(){
+			$(document).lightbox_plugin({	template: "PropertiesEdit.html", 
+											className: "Properties",
+											url_param: {"properties_id": ""},
+											lightbox_width: 600
+										});
+			return false;
+		});
+		
+		$(".button_propertie_edit").live("click", function(){
+			var t_properties_id = parseInt($(this).parent().parent().attr("id").split("_")[3]);
+			
+			$(document).lightbox_plugin({	template: "PropertiesEdit.html", 
+											className: "Properties", 
+											url_param: {"properties_id": t_properties_id},
+											lightbox_width: 600
+										});
+			return false;
+		});
+		
+		$(".button_propertie_delete").live("click", function(){
+			var t_properties_id = parseInt($(this).parent().parent().attr("id").split("_")[3]);
+			
+			$(document).lightbox_plugin({	template: "PropertiesDelete.html", 
+											className: "Properties", 
+											url_param: {"properties_id": t_properties_id},
+											lightbox_width: 600
+										});
+			return false;
+		});
+		
+		$(".button_propertie_value_add").live("click", function(){
+			var t_properties_id = parseInt($(".properties_table_container.active").attr("id").split("_")[3]);
+			
+			$(document).lightbox_plugin({	template: "PropertiesValuesEdit.html", 
+											className: "PropertiesValues", 
+											url_param: {"properties_id": t_properties_id,
+														"properties_values_id": ""},
+											lightbox_width: 600
+										});
+			return false;
+		});
+		
+		$(".button_propertie_value_edit").live("click", function(){
+			var t_properties_id = parseInt($(".properties_table_container.active").attr("id").split("_")[3]);
+			var t_properties_values_id = parseInt($(this).parent().parent().attr("class").split("_")[3]);
+			
+			$(document).lightbox_plugin({	template: "PropertiesValuesEdit.html", 
+											className: "PropertiesValues", 
+											url_param: {"properties_id": t_properties_id,
+														"properties_values_id": t_properties_values_id},
+											lightbox_width: 600
+										});
+			return false;
+		});
+		
+		$(".button_propertie_value_delete").live("click", function(){
+			var t_properties_id = parseInt($(".properties_table_container.active").attr("id").split("_")[3]);
+			var t_properties_values_id = parseInt($(this).parent().parent().attr("class").split("_")[3]);
+			
+			$(document).lightbox_plugin({	template: "PropertiesValuesDelete.html", 
+											className: "PropertiesValues", 
+											url_param: {"properties_id": t_properties_id,
+														"properties_values_id": t_properties_values_id},
+											lightbox_width: 600
+										});
+			return false;
+		});
+	});
+</script>
+{/literal}
+<div id="box_properties">
+	<div id="properties_area_top">
+		<p><a href="#" title="Eigenschaft hinzuf&uuml;gen" class="properties_button button_propertie_add button_add_green_plus">Eigenschaft</a></p>
+	</div>
+
+	<div id="properties_area_content" style="margin: 0 25px 0 0;">
+		<div class="properties_table_headline">Eigenschaften</div>
+		
+		{foreach item=item_array from=$content_data.PROPERTIES_TABLES}
+			<div id="properties_table_container_{$item_array.properties_id}" class="properties_table_container">
+				{$item_array.table_html}
+			</div>
+		{/foreach}
+	
+	</div>
+	<div id="properties_area_bottom"></div>
+</div>

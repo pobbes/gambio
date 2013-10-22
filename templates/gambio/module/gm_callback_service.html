@@ -1,0 +1,51 @@
+<div id="gm_callback_service_success">
+	<form id="gm_callback_service_form" action="">
+		{$CONTENT_TEXT}
+		<br />
+		<div id="gm_callback_service_error_message"></div>
+		
+		<div id="callback_necessary_info">{$NECESSARY_INFO}</div>
+		<div id="callback_form" class="form_style_guestbook">
+				
+			<div id="callback_input_desc">
+			
+				<div class="callback_input">{$NAME}:</div>
+				<div class="callback_input">{$EMAIL}:</div>
+				<div class="callback_input">{$TELEPHONE}:</div>
+				<div class="callback_input">{$TIME}:</div>
+				<div class="callback_input1">{$MESSAGE}:</div>
+				{if $VALIDATION_ACTIVE == 'true'}
+				<div class="callback_input2">{$VALIDATION}:</div>
+				{/if}
+			</div>
+			
+			<div id="callback_input">
+				<div class="callback_input"><input type="text" class="callback_service_fields" name="name" id="gm_callback_service_name" value="{$NAME_VALUE}" /> *</div>
+				<div class="callback_input"><input type="text" class="callback_service_fields" name="email" id="gm_callback_service_email" value="" /></div>
+				<div class="callback_input"><input type="text" class="callback_service_fields" name="telephone" id="gm_callback_service_telephone" value="" /> *</div>
+				<div class="callback_input"><input type="text" class="callback_service_fields" name="time" id="gm_callback_service_time" value="" /></div>
+				<div class="callback_input1"><textarea rows="" cols="" class="callback_service_fields" name="message" id="gm_callback_service_message"></textarea></div>
+				{if $VALIDATION_ACTIVE == 'true'}
+				<div class="callback_input2">
+					<div id="gm_callback_service_vvcode_image"><img src="gm_create_vvcodes.php?XTCsid={$SID}" alt="{$VALIDATION}" title="{$VALIDATION}" /></div>
+					<input type="text" class="callback_service_fields" name="vvcode" id="gm_callback_service_vvcode" maxlength="6" /> *
+				</div>
+				{/if}
+			</div>
+
+			{if $GM_PRIVACY_LINK != '0'}
+			<br />
+			<div id="gm_privacy">	
+				{$GM_PRIVACY_LINK}
+			</div>	
+			<br />		
+			{/if}
+
+			<div id="callback_send">
+				<img src="{$SEND}" id="gm_callback_service_send" alt="{$SEND}" title="{$SEND}" />
+			</div>
+			
+		</div>
+	</form>
+</div>
+<br />

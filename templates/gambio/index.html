@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+{php}
+if((substr_count($_SERVER["SCRIPT_NAME"], 'checkout_') > 0 || substr_count($_SERVER["SCRIPT_NAME"], 'paypal_checkout') > 0) && gm_get_conf('GM_LIGHTBOX_CART') == 'true' && gm_get_conf('GM_LIGHTBOX_CHECKOUT') == 'true') echo '<div id="pre_black_container"><div id="pre_black">&nbsp;</div></div>';
+
+if(gm_get_conf('GM_SHOP_OFFLINE') != 'checked' || $_SESSION['customers_status']['customers_status_id'] == 0) {
+	$show_page = true;
+} else {
+	$show_page = false;
+}
+
+if($show_page == false) {
+	echo '<br/><br/><br/>'. gm_get_conf('GM_SHOP_OFFLINE_MSG') .'<br/><br/><br/>';
+} else {
+	{/php}
+{*############### OFFLINE BOF ###############*}
+
+<div class="wrap_site" align="center">
+	<div class="wrap_shop">
+
+		{if $GM_CART_ON_TOP == 'true'}{$gm_box_cart}{/if}
+		
+		{if $gm_logo}
+			<div id="shop_logo">{$gm_logo}</div>			
+		{/if}
+		<div id="shop_top_banner">{$BANNER}</div>			
+		
+		{$gm_topmenu}
+		
+		<div id="column_left">
+			{gm_menuboxes first=1 last=100 html='<div id="gm_box_pos_[COUNTER]" class="gm_box_container">[CONTENT]</div>'}
+		</div>
+		<div id="column_right">
+			{gm_menuboxes first=101 last=200 html='<div id="gm_box_pos_[COUNTER]" class="gm_box_container">[CONTENT]</div>'}
+		</div>
+		
+		<div id="column_content">
+		  {if $gm_topmenu_mode eq 'mode2'}
+				<div id="mode2_pathrow">{$navtrail}</div>
+			{/if}
+			
+			<div id="main_content_container">
+				{$main_content}
+			</div>
+		</div>
+		
+	</div>
+	
+	
+</div>
+
+{*############### OFFLINE EOF ###############*}
+	{php} 
+}
+{/php}

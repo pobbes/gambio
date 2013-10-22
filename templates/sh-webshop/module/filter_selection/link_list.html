@@ -1,0 +1,9 @@
+{load_language_text section="box_filter"}
+
+<div class="filter_heading">
+	{$content_data.FEATURE_NAME}
+</div>
+{foreach name=features item=feature_value from=$content_data.FEATURE_VALUE_DATA}
+	<a class="filter_features_link" href="{page_url}&filter_fv_id[{$content_data.FEATURE_ID}][]={$feature_value.ID}">{$feature_value.NAME}</a><br />
+{/foreach}
+<input type="hidden" name="value_conjunction[{$content_data.FEATURE_ID}]" value="{$content_data.VALUE_CONJUNCTION}">

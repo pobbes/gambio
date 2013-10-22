@@ -1,0 +1,10 @@
+Dear {$NAME},
+
+The status of your order {$ORDER_NR} from {$ORDER_DATE} changed.
+
+{if $NOTIFY_COMMENTS}
+Comments: {$NOTIFY_COMMENTS}
+
+{/if}
+New status: {$ORDER_STATUS}
+For questions, feel free to anwser to this mail.

@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<div id="reviews">
+	
+	<h1>
+		{#heading_reviews_write#}
+	</h1>
+		{$FORM_ACTION}	
+		{if $error}
+			<span class="strong">{$error}</span>
+			{else}
+				{if $GM_ERROR}
+					<span class="strong">{$GM_ERROR}</span>
+				{/if}
+		<div class="cell_note">
+			{#text_must#}
+		</div>
+		<div>
+			<h2>
+				{#text_product#} {$PRODUCTS_NAME}
+			</h2>
+		</div>
+		<div class="box_content">
+			<div class="cell_left strong">{#text_author#}</div>
+			<div class="cell_right">{$AUTHOR}</div>
+
+			<div class="cell_left strong">{#text_input#}</div>
+			<div class="cell_right">{$INPUT_TEXT}</div>
+			
+			<div class="cell_left strong">&nbsp;</div>
+			<div class="cell_right">{#text_note#}</div>
+			
+			<div class="cell_left strong">{#text_rating#}</div>
+			<div class="cell_right">{#text_bad#}{$INPUT_RATING}{#text_good#}</div>
+
+			{if $GM_VALIDATION_ACTIVE == 'true'}
+				<div class="cell_left strong">{#text_sec_code#}</div>
+				<div class="cell_right"><img src="{$GM_CREATE_VVCODES}" alt="" /></div>
+				
+				<div class="cell_left strong">{#text_inp_code#}</div>
+				<div class="cell_right"><input type="text" name="vvcode" maxlength="6" /></div>
+			{/if}
+			{if $GM_PRIVACY_LINK != '0'}
+			<br />
+			<div id="gm_privacy">	
+				{$GM_PRIVACY_LINK}
+			</div>	
+			<br />		
+			{/if}
+			<br />
+			<div class="cell_left">{$BUTTON_BACK}</div>
+			<div class="cell_back_right">{$BUTTON_SUBMIT}</div>
+		</div>
+		{$FORM_END}
+	</div>
+{/if}

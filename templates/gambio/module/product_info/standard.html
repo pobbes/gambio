@@ -1,0 +1,206 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{config_load file="$language/gm_lang_$language.conf" section="product_info"}
+
+{if $PRODUCT_NAVIGATOR}
+	{$PRODUCT_NAVIGATOR}
+{/if}
+
+{$FORM_ACTION}
+
+<div id="product_info">
+
+	<div id="details_head">
+		<div id="products_name">
+			<h1>{$PRODUCTS_NAME}</h1>
+		</div>
+
+		<div id="products_price" class="products_price">
+			<span id="gm_attr_calc_price">{$PRODUCTS_PRICE}
+			{if $PRODUCTS_VPE}
+				<br /><span class="gm_products_vpe">{$PRODUCTS_VPE}</span><br />
+			</span>	
+			{else}
+			</span><br />		
+			{/if}					
+			{if $PRODUCTS_TAX_INFO neq '' || $PRODUCTS_SHIPPING_LINK neq ''}
+				({$PRODUCTS_TAX_INFO}{$PRODUCTS_SHIPPING_LINK})
+			{/if}				
+		</div>
+		
+		<div class="cleary">&nbsp;</div>
+		
+	</div>
+
+	<div id="details_body">
+		<div id="details_left_part">
+			
+			{if $PRODUCTS_QUANTITY > 0}
+			<div class="info_element">
+				<img src="{$tpl_path}icons/verfuegbar.gif" alt="{$store_name}" align="left" />
+				<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;">
+					{#stock#} {$PRODUCTS_QUANTITY}
+				</div>
+			</div>
+			{/if}
+			
+			{if $GM_PRICE_OFFER!=''}
+				<div class="info_element">
+					<img id="gm_price_offer_icon" src="{$tpl_path}icons/woandguenst.gif" alt="{$store_name}" align="left" />
+					<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;" id="gm_price_offer"><span class="product_info_link">{#gm_price_offer#}</span></div>
+				</div>
+			{/if}
+			
+			<div class="info_element">
+				<img id="print_icon" src="{$tpl_path}icons/drucken.gif" alt="{$store_name}" align="left" />
+				<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;" id="print"><span class="product_info_link">{#print#}</span></div>
+			</div>
+			
+			{if $PRODUCTS_MODEL!=''}
+				<div class="info_element">
+					<img src="{$tpl_path}icons/artikelnummer.gif" alt="{$store_name}" align="left" />
+					<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;">{#model#} {$PRODUCTS_MODEL}</div>
+				</div>
+			{/if}
+			
+			{if $PRODUCTS_VPE}
+			<!-- 
+				<div class="info_element">
+					<img src="{$tpl_path}icons/preispstck.gif" alt="{$store_name}" align="left" />
+					<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;">{$PRODUCTS_VPE}</div>
+				</div>
+			-->
+			{/if}
+			
+			{if $SHIPPING_NAME}
+				<div class="info_element">
+					<img src="{$tpl_path}icons/lieferzeit.gif" alt="{$store_name}" align="left" />
+					<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;">
+						{#text_shippingtime#} {if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if} {$SHIPPING_NAME}
+					</div>
+				</div>
+			{/if}
+			
+			{if $GM_TELL_A_FRIEND}
+				<div class="info_element">
+					<img src="{$tpl_path}icons/weiterempf.gif" alt="{$store_name}" align="left" id="gm_tell_a_friend_icon" />
+					<div class="info_element_box" style="width: {$MIN_INFO_BOX_WIDTH}px;" id="gm_tell_a_friend">
+						<span class="product_info_link">{#gm_tell_a_friend#}</span>
+					</div>
+				</div>
+			{/if}
+			
+			{foreach name=images item=images_data from=$images}
+				<div class="image_box" style="width: {$MIN_IMAGE_WIDTH}px;"><a href="#" onclick="gmProductImages.open_images({$PRODUCTS_ID}, {$images_data.IMAGE_NR}); return false;"><img src="{$images_data.IMAGE}" alt="{$images_data.IMAGE_ALT|default:$images_data.PRODUCTS_NAME}" title="{$images_data.IMAGE_ALT|default:$images_data.PRODUCTS_NAME}" /></a></div>
+			{/foreach}
+			
+			{if $PRODUCTS_IMAGE_LINK!=''}
+				<a href="{$PRODUCTS_IMAGE_LINK}" onclick="window.open(this.href); return false;">{$PRODUCTS_TEXT_ZOOM}</a><br />
+			{/if}
+	
+			{if $PRODUCTS_FSK18=='true'}
+				<div id="fsk18_image"><img src="{$tpl_path}img/fsk18.gif" alt="" /></div>
+			{/if}
+	
+			{if $MODULE_graduated_price !=''}
+				{$MODULE_graduated_price}<br />
+			{/if}
+		</div>
+		
+		{gm_gprint position=1 margin_left=$MARGIN_LEFT}
+				
+		{if $GM_GPRINT_SHOW_PRODUCTS_DESCRIPTION != '0'}
+		<div id="details_main_part" style="margin-left: {$MARGIN_LEFT}px;">
+	
+			<div id="products_description">
+			{if $PRODUCTS_DESCRIPTION !=''}
+				{$PRODUCTS_DESCRIPTION}
+			{/if}
+			</div>		
+			
+		</div>
+		{/if}
+				
+		{gm_gprint position=2 margin_left=$MARGIN_LEFT}
+		
+		{if $MODULE_product_options !=''}
+		<div id="details_attributes" style="margin-left: {$MARGIN_LEFT}px;">
+		
+			<div id="products_options">			
+				{$MODULE_product_options}			
+			</div>
+            {if $XTB_REDIRECT_USER_TO=='product'}<div style='padding:10px;color:white;background-color:green;'><strong>Sie haben die eBay Auktion gewonnen!</strong><br/>Bitte wählen Sie nun noch die gewünschten Produkteigenschaften und legen Sie den Artikel danach in den Warenkorb, um mit der Zahlung fortzufahren und das Produkt versandfertig zu machen!</div>{/if}
+			
+			<div id="gm_attribute_images"></div>
+		
+		</div>
+		{/if}
+		
+		{gm_gprint position=3 margin_left=$MARGIN_LEFT}
+
+		{if $ADD_CART_BUTTON}
+		<div id="details_cart_part" class="details_cart_part" style="margin-left: {$MARGIN_LEFT}px;{if $GM_GPRINT} display: none;{/if}">
+			<span class="details_qty">{$ADD_QTY}</span>
+			<span class="details_x">X</span>
+			<span class="details_cart_button">{$ADD_CART_BUTTON}</span>
+			
+			{if !$ADD_QTY && $GM_PID}{$GM_PID}{/if}
+			{if $GM_SHOW_WISHLIST}<span class="details_wishlist">{$ADD_WISHLIST_BUTTON}<input type="hidden" name="submit_target" value="cart" /></span>{/if}
+		</div>
+		{else}
+			{$GM_PID}
+		{/if}
+		
+		<div id="details_qty_advice" style="margin-left: {$MARGIN_LEFT}px;">
+			<div id="gm_checker_error_{$PRODUCTS_ID}">
+			{if $GM_MIN_ORDER}
+				{#gm_min_order#}<span class="details_qty_advice_bold">{$GM_MIN_ORDER}</span><br />
+			{/if}
+			{if $GM_GRADUATED_QTY}
+				{#gm_graduated_qty_1#}<span class="details_qty_advice_bold">{$GM_GRADUATED_QTY}</span>{#gm_graduated_qty_2#}
+			{/if}
+			</div>
+		</div>
+		
+		{if $SHOW_PRODUCTS_WEIGHT}
+			<div id="details_products_weight" style="margin-left: {$MARGIN_LEFT}px;">				
+				{#gm_weight#} <span id="gm_calc_weight">{$PRODUCTS_WEIGHT}</span> {#gm_weight_unit#}
+			</div>
+		{/if}
+		{if $PRODUCTS_ADDED != ''} 
+			<div id="products_added" style="margin-left: {$MARGIN_LEFT}px;">{$PRODUCTS_ADDED}</div>
+		{/if}
+	
+	</div>
+	
+</div>
+{$SHOPGATE_QR_BOX}
+
+{if $PRODUCTS_URL != ''} 
+	<div class="details_products_url">{$PRODUCTS_URL}</div>
+{/if}
+
+{if $PRODUCTS_DATE_AVIABLE != ''} 
+	<div class="details_products_date_avaiable">{$PRODUCTS_DATE_AVIABLE}</div>
+{/if} 
+
+{if $MODULE_products_media != ''}
+	{$MODULE_products_media}
+{/if} 
+
+{if $MODULE_products_reviews != ''}
+	{$MODULE_products_reviews}
+{/if}
+
+{if $MODULE_cross_selling != ''} 
+    {$MODULE_cross_selling}
+{/if} 
+	
+{if $MODULE_reverse_cross_selling != ''} 
+	{$MODULE_reverse_cross_selling}
+{/if}
+
+{if $MODULE_also_purchased != ''} 
+	{$MODULE_also_purchased}
+{/if}
+
+{$FORM_END}

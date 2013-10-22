@@ -1,0 +1,56 @@
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div id="gm_tell_a_friend_popup">
+	<img id="tell_a_friend_icon" src="{$IMG}" alt="{$TELL_A_FRIEND_TITLE}" title="{$TELL_A_FRIEND_TITLE}" />
+	<div id="tell_a_friend_heading">&quot;{$PRODUCTS_NAME}&quot; {$TELL_A_FRIEND_TITLE}</div>
+	
+	<div id="tell_a_friend_form">
+	
+		{if $MAIL_OUT}<strong>{$MAIL_OUT}</strong>{else}
+		{if $VVCODE_ERROR}<br /><strong>{$VVCODE_ERROR}</strong><br /><br />{/if}
+		{if $ERROR}<br /><strong>{$ERROR}</strong><br /><br />{/if}
+		<form id="tell_a_friend_form" action="">
+				
+			<div style="overflow:hidden">
+				<div id="left_name" class="cell_left">{$NAME}</div>
+				<div id="name" class="cell_right"><input type="text" class="inactive_input gm_mb_input tell_a_friend_fields" name="name" id="tell_a_friend_name" value="{$INPUT_NAME}" /></div>
+			</div>
+			
+			<div style="overflow:hidden">
+				<div id="left_email" class="cell_left">{$EMAIL}</div>
+				<div id="email" class="cell_right"><input type="text" class="inactive_input gm_mb_input tell_a_friend_fields" name="email" id="tell_a_friend_email" value="" /></div>
+			</div>
+			
+			<div style="overflow:hidden">
+				<div id="left_message" class="cell_left">{$MESSAGE}</div>
+				<div id="message" class="cell_right"><textarea class="inactive_input gm_tell_a_friend_message gm_mb_input tell_a_friend_fields" name="message" id="tell_a_friend_message">{$INPUT_MESSAGE}</textarea></div>
+			</div>
+				
+			{if $VALIDATION_ACTIVE == 'true'}
+			<div style="overflow:hidden">	
+				<div id="left_vvcode" class="cell_left">{$VALIDATION}</div>
+				<div id="vvcode" class="cell_right">
+					<div id="tell_a_friend_vvcode_image"><img src="{$CREATE_VVCODES}" alt="" /></div>
+					<input type="text" class="inactive_input gm_mb_input tell_a_friend_fields" name="vvcode" id="tell_a_friend_vvcode" maxlength="6" />
+				</div>
+			</div>	
+			{/if}
+			{if $GM_PRIVACY_LINK != '0'}
+			<br />
+			<div id="gm_privacy">	
+				{$GM_PRIVACY_LINK}
+			</div>	
+			<br />		
+			{/if}
+			<div id="tell_a_friend_send">
+				{$SEND}
+			</div>
+		
+		</form>
+		{/if}	
+	
+	</div>
+	
+	<div id="footer" class="icon_lightbox_close">{#gm_window_close#}</div>
+	
+</div>

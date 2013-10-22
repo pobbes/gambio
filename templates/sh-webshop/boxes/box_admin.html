@@ -1,0 +1,44 @@
+                       
+                        {load_language_text section="box_admin"}{load_language_text section="buttons" name="button"}
+                        <!-- start: box_admin -->                            
+                        <div class="module_heading"><span>{$txt.heading_admin}</span></div>
+                                
+                        <div id="menubox_admin_body" class="content-box-main clearfix">                                
+                            <div class="content-box-main-inner clearfix">
+                                        
+                                <div class="content-box-main-inner_link">
+                                    {$content_data.CONTENT}
+                                </div>                            
+                                
+                                <br />{if !$content_data.ADMIN_LINK_INFO}
+                                
+                                <a href="#" onclick="window.location='{$content_data.BUTTON_ADMIN_URL}'; return false;" class="button_red button_set">
+                                    <span class="button-outer">
+                                        <span class="button-inner">{$button.click_here}</span>
+                                    </span>
+                                </a>{else}   
+                                
+                                <a href="#" onclick="if(confirm('{$content_data.ADMIN_LINK_INFO}')){literal}{{/literal}window.location='{$content_data.BUTTON_ADMIN_URL}'; return false;{literal}}{/literal} return false;" class="button_red button_set">
+                                    <span class="button-outer">
+                                        <span class="button-inner">{$button.click_here}</span>
+                                    </span>
+                                </a>{/if}{if $content_data.BUTTON_EDIT_PRODUCT_URL}
+                                    
+                                <br />
+                                <br />{if !$content_data.ADMIN_LINK_INFO}
+                                
+                                <a href="#" onclick="window.open('{$content_data.BUTTON_EDIT_PRODUCT_URL}'); return false;" class="button_blue button_set" title="">
+                                    <span class="button-outer">
+                                        <span class="button-inner">{$button.edit_product}</span>
+                                    </span>
+                                </a>{else}
+                                
+                                <a href="#" onclick="if(confirm('{$content_data.ADMIN_LINK_INFO}')){literal}{{/literal}window.open('{$content_data.BUTTON_EDIT_PRODUCT_URL}'); return false;{literal}}{/literal} return false;" class="button_blue button_set" title="">
+                                    <span class="button-outer">
+                                        <span class="button-inner">{$button.edit_product}</span>
+                                    </span>
+                                </a>{/if}{/if}
+                                    
+                            </div>                                    
+                        </div>
+                        <!-- end: box_admin -->

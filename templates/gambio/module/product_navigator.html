@@ -1,0 +1,9 @@
+{config_load file="$language/lang_$language.conf" section="product_navigator"}
+
+<div id="product_navigation">
+	{if $FIRST!=''}<a href="{$FIRST}">{#first#}</a>{/if}
+	{if $PREVIOUS!=''}<a href="{$PREVIOUS}">{#back#}</a>{/if}
+	{if $NEXT!=''}<a href="{$NEXT}">{#next#}</a>{/if}
+	{if $LAST!=''}<a href="{$LAST}">{#last#}</a>{/if}
+	<span class="strong">{$PRODUCTS_COUNT}</span> {#total#}
+</div>

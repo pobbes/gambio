@@ -1,0 +1,25 @@
+{config_load file="$language/gm_lang_$language.conf" section="gm_account_delete"}
+<div id="account">
+	
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" />
+	</div>
+
+	<h1>
+		{#gm_heading_delete_account#}
+	</h1>
+
+	{$FORM_ACTION}
+	<div class="heading">
+		<h2>
+			{#gm_admin_message#}
+		</h2>
+	</div>
+	<div class="box_content">
+		<div class="cell_left">{#gm_text_comments#}</div>
+		<div class="cell_right">{$GM_COMMENTS}</div>
+		<div class="box_left">{$BUTTON_BACK}</div>
+		<div class="align_right">{$BUTTON_SUBMIT}</div>
+	</div>
+	</form>
+</div>

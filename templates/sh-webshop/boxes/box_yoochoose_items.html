@@ -1,0 +1,38 @@
+
+{load_language_text section="yoochoose_items"}
+<!-- start: box_yoochoose_items -->
+<div id="menubox_yoochoose_also_clicked" class="c_yoochoose_also_clicked content-box white clearfix">
+	<div id="menubox_yoochoose_also_clicked_head" class="c_boxhead content-box-header clearfix">
+		<div class="module_heading"><span>{$content_data.box_header}</span></div>
+    </div>
+    
+	<div id="menubox_yoochoose_also_clicked_body" class="content-box-main clearfix">
+    
+    {foreach item=yooitem from=$content_data.box_content}
+    
+		<div class="content-box-main-inner clearfix article-list offer">
+			<div class="article-list-item">
+				<div class="article-list-item-inside">
+					{if $yooitem.PRODUCTS_IMAGE}
+						<div class="article-list-item-image">
+							<a href="{$yooitem.PRODUCTS_LINK}"><img src="{$yooitem.PRODUCTS_IMAGE}" alt="{$yooitem.PRODUCTS_IMAGE_ALT|default:$yooitem.PRODUCTS_NAME}" title="{$yooitem.PRODUCTS_IMAGE_ALT|default:$yooitem.PRODUCTS_NAME}" /></a>
+						</div>
+					{/if}
+					<div class="article-list-item-text">
+						<br />
+						<span class="title"><a href="{$yooitem.PRODUCTS_LINK}"{if $yooitem.PRODUCTS_META_DESCRIPTION != ''} title="{$yooitem.PRODUCTS_META_DESCRIPTION|truncate:80:"..."|replace:'"':'&quot;'}"{/if}>{$yooitem.PRODUCTS_NAME}</a></span><br />
+						<br />
+						<span class="price"><a href="{$yooitem.PRODUCTS_LINK}">{$yooitem.PRODUCTS_PRICE}</a></span><br />
+						{if $yooitem.PRODUCTS_VPE}
+							<span class="title">{$yooitem.PRODUCTS_VPE}</span><br />
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+        
+    {/foreach}
+        
+	</div>
+</div>
+<!-- end: box_yoochoose_items -->

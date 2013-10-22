@@ -1,0 +1,25 @@
+{load_language_text section="buttons"}
+<p>M&ouml;chten Sie den Tab "<span class="ArticleTabsDeleteHeadline"></span>" wirklich l&ouml;schen?</p>
+
+<div class="google_category_save">
+    <a href="#" class="button cancel" style="float: left;">{$txt.canel}</a>
+    <a href="#" class="button delete" style="float: right;">{$txt.delete}</a>
+    <div style="clear: both;"> <!-- --> </div>
+</div>
+{literal}
+<script type="text/javascript">
+    $('.lightbox_package_header').html('Tabs');
+    $('.lightbox_package_content .ArticleTabsDeleteHeadline').text($(container).find('.product_tab_headline').html());
+    
+    $('.lightbox_package_content .cancel').bind('click', function(){
+        lightbox_close();
+        return false;
+    });
+    
+    $('.lightbox_package_content .delete').bind('click', function(){
+        $(container).remove();
+        lightbox_close();
+        return false;
+    });
+</script>
+{/literal}

@@ -1,0 +1,607 @@
+
+
+/* **** GENERAL ELEMENTS ****
+   ================================================== */
+
+body                                    { font: 0.9em Ubuntu, Tahoma, sans-serif;
+                                          line-height: 1.64em;
+                                          color: gray;
+                                          background: #fff url(../background_images/bg.jpg) center; }
+
+
+hr                                      { height: 2px;
+                                          border: none;
+                                          background: url(../images/hr.gif) repeat-x;
+                                          margin: 0 30px 30px; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6                                      { color: inherit;
+                                          font-family: ProximaNovaBold,Arial,sans-serif;
+                                          font-weight: bold;
+                                          margin: 0;
+                                          text-rendering: optimizelegibility; }
+
+h1 a                                    { color: #FFF}
+
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small                                { font-weight: normal }
+
+p                                       { font-family: ProximaNova,Arial,sans-serif;
+                                          font-size: 13px;
+                                          line-height: 20px;
+                                          margin: 0 0 9px; }
+
+p small                                 { font-size: 11px }
+
+a                                       { color: #29ABE2;
+                                          text-decoration: none }
+
+a:hover                                 { text-decoration: none }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner                 { border: 0 none;
+                                          padding: 0; }
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"]                    { cursor: pointer }
+
+input[type="search"]                    { -moz-box-sizing: content-box }
+
+.clearfix:after                         { visibility: hidden;
+                                          display: block;
+                                          font-size: 0;
+                                          content: " ";
+                                          clear: both;
+                                          height: 0 }
+
+.clearfix                               { display: inline-block; }
+
+/* start commented backslash hack \*/
+* html .clearfix                        { height: 1%; }
+.clearfix                               { display: block; }
+/* close commented backslash hack */
+
+html                                    { font-size: 100% }
+
+img                                     { border: 0 none;
+                                          height: auto;
+                                          vertical-align: middle; }
+
+.right                                  { float: right }
+
+.left                                   { float: left }
+
+.hide                                   { display: none }
+
+.show                                   { display: block }
+
+.show-mobile                            { display: none }
+
+.invisible                              { visibility: hidden }
+
+.hidden                                 { display:none}
+
+.transparent                            { opacity: 0 }
+
+.toggle-display                         { display: block !important }
+
+.shadow                                 { zoom: 1;
+                                          filter:
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=0, Strength=3)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=45, Strength=2)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=90, Strength=3)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=135, Strength=2)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=180, Strength=3)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=225, Strength=2)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=260, Strength=3)
+                                          progid:DXImageTransform.Microsoft.Shadow(color='#666', Direction=305, Strength=2);
+                                          -moz-box-shadow: 0 0 5px #666; /*Mozilla-basierte Browser (z.B. Firefox)*/
+                                          -webkit-box-shadow: 0 0 5px #666; /*WebKit-basierte Browser (z.B. Safari/Chrome)*/
+                                          box-shadow: 0 0 5px #666; /*CSS3 Standard*/}
+
+ul                                      { list-style-type:none;
+                                          padding:0;}
+
+/* **** HEADER STYLES ****
+   ================================================== */
+
+#header                                 { background: #2B2B2B;
+                                          color:#FFF;
+                                          height:40px;
+                                          padding: 20px 20px 5px; }
+
+
+/* **** CONTENT STYLES ****
+   ================================================== */
+
+.container                              { margin-left: auto;
+                                          margin-right: auto;
+                                          position:relative;
+                                          width: 780px }
+
+.container:before,
+.container:after                        { content: "";
+                                          display: table; }
+
+.container:after                        { clear: both }
+
+/* **** FOOTER STYLES ****
+   ================================================== */
+
+#footer                                 { background: url(../images/footer.jpg) bottom center no-repeat;
+                                          height: 82px;
+                                          width: 760px;
+                                          padding: 0 20px;
+                                          text-align: center; }
+
+footer                                  { margin-top: 40px }
+
+/* **** FORM STYLES ****
+   ================================================== */
+
+fieldset                                { margin: 0px auto 15px;
+                                          border: 1px solid #DCDCDC;
+                                          padding: 10px }
+
+legend                                  { font-size: 1.4em;
+                                          color: #444; }
+
+#login_form fieldset                    { width: 425px }
+
+#login_form input                       { width: 200px }
+
+#login_form input.button                { width: 120px }
+
+input.btn                               { border: 1px solid #E3E3E3 }
+
+textarea                                { font-family: Ubuntu }
+
+.form-horizontal button,
+.form-simplified button,
+.form-horizontal input,
+.form-simplified input,
+.form-horizontal select,
+.form-simplified select,
+.form-horizontal textarea,
+.form-simplified textarea .form-horizontal file,
+.form-simplified file                   { margin: 0;
+                                          vertical-align: middle; }
+
+.form-horizontal button,
+.form-simplified button,
+.form-horizontal input,
+.form-simplified input                  { line-height: normal }
+
+.form-horizontal textarea,
+.form-simplified textarea               { resize: none }
+
+.form-horizontal textarea,
+.form-simplified textarea               { overflow: auto;
+                                          vertical-align: top; }
+
+.form-horizontal input[type="text"],
+.form-horizontal input[type="password"],
+.form-horizontal textarea,
+.form-horizontal .uneditable-input,
+.form-simplified input[type="text"],
+.form-simplified input[type="password"],
+.form-simplified textarea,
+.form-simplified .uneditable-input      { -moz-box-sizing: border-box;
+                                          border: 1px solid #B3B3B3;
+                                          border-radius: 0 0 0 0;
+                                          color: black;
+                                          display: block;
+                                          font: 19px ProximaNova,Arial,sans-serif;
+                                          width: 100%; }
+
+.form-horizontal input[type="text"]:focus,
+.form-horizontal input[type="password"]:focus,
+.form-horizontal input[type="file"]:focus,
+.form-horizontal textarea:focus,
+.form-simplified input[type="text"]:focus,
+.form-simplified input[type="password"]:focus,
+.form-simplified input[type="file"]:focus,
+.form-simplified textarea:focus         { border: 2px solid #29ABE2;
+                                          outline: medium none; }
+
+:-moz-placeholder                       { color: #CCCCCC }
+
+.form-horizontal                        { margin: 0 0 18px;
+                                          width: 460px; }
+
+.form-horizontal.form-small             { width: 300px }
+
+.form-horizontal .control-group         { margin-bottom: 10px;
+                                          position: relative; }
+
+.form-horizontal .control-grouping.two-column .control-group
+                                        { display: inline;
+                                          float: left;
+                                          margin-left: 20px;
+                                          width: 220px; }
+
+.form-horizontal .control-grouping      { margin-left: -20px;
+                                          overflow: hidden; }
+
+.form-horizontal .control-grouping:before,
+.form-horizontal .control-grouping:after
+                                        { content: "";
+                                          display: table; }
+
+.form-horizontal .control-grouping:after
+                                        { clear: both }
+
+.form-horizontal .control-label         { color: #4D4D4D;
+                                          cursor: pointer;
+                                          font: 12px ProximaNova,Arial,sans-serif;
+                                          padding: 12px;
+                                          position: absolute;
+                                          text-transform: uppercase;
+                                          width: 73px;
+                                          z-index: 1; }
+
+.form-horizontal.dark .control-label    { color: #B3B3B3 }
+
+.form-horizontal .control-label.long-label
+                                        { padding: 5px 12px }
+
+.form-horizontal .controls input,
+.form-horizontal .controls textarea     { padding-left: 90px }
+
+.form-horizontal .controls input:focus,
+.form-horizontal .controls textarea:focus
+                                        { padding-left: 89px }
+
+.form-horizontal .controls input        { height: 40px }
+
+.form-horizontal.dark .controls input   { background: none repeat scroll 0 0 #4D4D4D;
+                                          color: #E6E6E6; }
+
+.form-horizontal .controls textarea     { padding-top: 5px }
+
+.form-horizontal .controls textarea:focus
+                                        { padding-top: 4px }
+
+.form-horizontal .select-wrap           { display: block;
+                                          width: auto; }
+
+.form-horizontal .active-option,
+.form-horizontal select                 { color: gray;
+                                          margin-left: 75px;
+                                          width: 385px; }
+
+.form-horizontal .active-option         { overflow: hidden;
+                                          padding: 10px 0;
+                                          text-overflow: ellipsis; }
+
+.form-horizontal .two-column select,
+.form-horizontal .two-column .active-option
+                                        { width: 145px }
+
+.form-horizontal .checkbox              { color: #4D4D4D;
+                                          cursor: pointer;
+                                          font: 12px ProximaNova,Arial,sans-serif;
+                                          text-transform: uppercase; }
+
+.form-horizontal .checkbox input        { margin-right: 10px }
+
+.form-horizontal .help                  { color: #DD5050;
+                                          display: none;
+                                          font-size: 14px;
+                                          margin-bottom: 0;
+                                          padding-top: 5px; }
+
+.form-horizontal .control-group.error input,
+.form-horizontal .control-group.error textarea,
+.form-horizontal .control-group.error .select-wrap
+                                        { border: 2px solid #DD5050 }
+
+.form-horizontal .control-group.error .help
+                                        { display: block }
+
+.form-horizontal.form-small .btn        { text-align: center;
+                                          width: 100%; }
+
+.form-simplified                        { margin: 0 0 18px;
+                                          width: 380px; }
+
+/* **** ERROR & ALERT STYLES  ****
+   ================================================== */
+
+.important                              { color:#D53F11;
+                                          font-weight:bold;}
+
+.error                                  { text-align: left;
+                                          background: #FEF1ED;
+                                          border: 1px solid #D53F11;
+                                          margin-top: 1px;
+                                          margin-bottom: 8px;
+                                          padding: 5px; }
+
+.error h2                               { border-bottom: 1px solid #EE582D;
+                                          padding-bottom: 3px; }
+
+.no_error                               { text-align: left;
+                                          background: #F8FEED;
+                                          border: 1px solid #8FD511;
+                                          margin-top: 1px;
+                                          margin-bottom: 8px;
+                                          padding: 5px; }
+
+.no_error h2                            { border-bottom: 1px solid #8FD511;
+                                          padding-bottom: 3px; }
+
+.alert                                  { background-color: #FCF8E3;
+                                          color: #C09853;
+                                          margin-bottom: 18px;
+                                          padding: 8px 35px 8px 14px; }
+
+.alert-heading                          { color: inherit;
+                                          font: 14px ProximaNova-Semibold,Arial,sans-serif;
+                                          padding-bottom: 6px; }
+
+.alert .close                           { line-height: 18px;
+                                          position: relative;
+                                          right: -21px;
+                                          top: -2px; }
+
+.alert-success                          { background-color: #DFF0D8;
+                                          color: #54C666; }
+
+.alert-danger,
+.alert-error                            { background-color: #F2DEDE;
+                                          color: #DD5050; }
+
+.alert-info                             { background-color: #D9EDF7;
+                                          color: #29ABE2; }
+
+.alert-disabled                         { background: none repeat scroll 0 0 #E5E5E5;
+                                          color: gray; }
+
+.alert-block                            { padding-bottom: 14px;
+                                          padding-top: 14px; }
+
+.alert-block > p,
+.alert-block > ul                       { margin-bottom: 0 }
+
+.alert-block p + p                      { margin-top: 5px }
+
+.page-heading                           { color: #29ABE2;
+                                          font: 30px/32px ProximaNova,Arial,sans-serif;
+                                          margin-bottom: 20px;
+                                          text-transform: uppercase; }
+
+.hide-text                              { overflow: hidden;
+                                          text-indent: 150%;
+                                          white-space: nowrap; }
+
+.input-block-level                      { -moz-box-sizing: border-box;
+                                          display: block;
+                                          min-height: 28px;
+                                          width: 100%; }
+
+#response                               { background-color: #99cc00;
+                                          width:760px;
+                                          padding:10px;
+                                          margin: 0 auto;
+                                          position:absolute;
+                                          z-index:10;
+                                          color: #FFF}
+                                                
+/* **** BUTTON STYLES ****                                              
+   ================================================== */
+                                                                                        
+#deactivate_image,                                                      
+#activate_image,                                                    
+#delete_image                           { background: none;
+                                          border: none;
+                                          margin:0 5px;}
+
+#deactivate_image:hover,                                                      
+#activate_image:hover,                                                    
+#delete_image:hover                     { color: #FFF}
+
+.btn                                    { -moz-box-sizing: border-box;
+                                          background-color: #DDDDDD;
+                                          cursor: pointer;
+                                          display: inline-block;                                          
+                                          text-align: center;
+                                          text-transform: uppercase;
+                                          vertical-align: middle; }
+
+.btn a                                  { color: #FFF}
+
+.normal                                 { padding: 9px 25px;
+                                          font: 19px ProximaNovaBold,Arial,sans-serif }
+
+.small                                  { padding: 6px 15px;
+                                          font: 12px ProximaNovaBold,Arial,sans-serif }
+
+.btn:hover                              { background-color: #E5E5E5 }
+
+a.btn:hover                             { text-decoration: none }
+
+.btn:focus                              { outline: thin dotted #333333;
+                                          outline-offset: -2px; }
+
+.btn.active, .btn:active                { background: none repeat scroll 0 0 #CCCCCC }
+
+.btn-blue,.btn-blue:hover,                        
+.btn-red,.btn-red:hover,                          
+.btn-green,.btn-green:hover             { color: #FFFFFF }
+                                            
+/**** BUTTON BLUE ****/                             
+                                            
+.btn-blue                               { background: none repeat scroll 0 0 #29ABE2;
+                                          letter-spacing: 0.05em; }
+
+.btn-blue:hover                         { background: none repeat scroll 0 0 #34BBEA }
+
+.btn-blue:active, .btn-blue.active      { background: none repeat scroll 0 0 #2497DD;
+                                          color: #FFFFFF }
+
+/**** BUTTON RED ****/
+
+.btn-red                                { background: none repeat scroll 0 0 #ff4444;
+                                          letter-spacing: 0.05em; }
+
+.btn-red:hover                          { background: none repeat scroll 0 0 #cc0000 }
+
+.btn-red:active, .btn-red.active        { background: none repeat scroll 0 0 #cc0000;
+                                          color: #FFFFFF }
+
+/**** BUTTON GREEN ****/
+
+.btn-green                              { background: none repeat scroll 0 0 #99cc00;
+                                          letter-spacing: 0.05em; }
+
+.btn-green:hover                        { background: none repeat scroll 0 0 #669900 }
+
+.btn-green:active, .btn-green.active    { background: none repeat scroll 0 0 #669900;
+                                          color: #FFFFFF }
+
+
+
+.btn-toggle b                           { float: right }
+
+.btn-toggle b:after                     { content: "+" }
+
+.btn-toggle.toggled b:after             { content: "-" }
+
+.no-scroll-x                            { overflow-x: hidden;
+                                          position: relative;
+                                          width: 100%; }
+
+.login-container                        { margin: 80px auto 0;
+                                          background-color: white;
+                                          width: 320px;
+                                          height:220px }
+
+
+
+#sign-in                                { padding:10px}
+
+.forgot-password                        { color: #B3B3B3;
+                                          font: 12px ProximaNova,Arial,sans-serif;
+                                          margin-top: 2px;
+                                          text-transform: uppercase; }
+
+.form-horizontal .btn-primary           { margin-top: 25px }
+
+.create-cta                             { color: #B3B3B3;
+                                          font: 14px ProximaNova-Semibold,Arial,sans-serif;
+                                          margin-top: 30px;
+                                          text-align: center;
+                                          text-transform: uppercase; }
+
+.header-subtext                         { font: 19px ProximaNova,Arial,sans-serif;
+                                          margin: -40px 0 30px; }
+                                                                    
+/* **** TOOLTIP STYLES ****                                                                 
+   ================================================== */
+                                                                        
+ .ui-tooltip, .arrow:after              { width:auto;
+                                          background: #000 }
+                                                        
+ .ui-tooltip                            { padding: 10px 20px;
+                                          position:absolute;
+                                          color: white;
+                                          width:auto;
+                                          font: bold 12px "Helvetica Neue", Sans-Serif;
+                                          text-transform: uppercase }
+                                                                    
+.arrow                                  { width: 70px;
+                                          height: 16px;
+                                          overflow: hidden;
+                                          position: absolute;
+                                          z-index:2;
+                                          left: 50%;
+                                          margin-left: -35px;
+                                          bottom: -16px }
+                                                                            
+.arrow.top                              { top: -16px;
+                                          bottom: auto }
+                                                                                                                               
+.arrow.left                             { left: 20% }
+                                                                
+.arrow:after                            { content: "";
+                                          position: absolute;
+                                          left: 20px;
+                                          top: -20px;
+                                          z-index:2;
+                                          width: 25px;
+                                          height: 25px;
+                                          -webkit-transform: rotate(45deg);
+                                          -moz-transform: rotate(45deg);
+                                          -ms-transform: rotate(45deg);
+                                          -o-transform: rotate(45deg);
+                                          tranform: rotate(45deg) }
+
+.arrow.top:after                        { bottom: -20px;
+                                          top: auto }
+                                                                
+/* **** ACCORDION STYLES ****                                               
+   ================================================== */
+
+#accordion                              { margin: 10px 0 }
+                                                 
+#accordion .ui-accordion-header         { background-color: #29ABE2;  
+                                          height:60px;
+                                          color:#FFF;
+                                          text-transform:uppercase;
+                                          font: bold 50px "Helvetica Neue", Sans-Serif;
+                                          text-align: center;
+                                          vertical-align:middle;
+                                          margin: 10px 0 0 0 }   
+
+#accordion .ui-accordion-content        { margin: 0;
+                                          border-right: 2px solid #29ABE2;
+                                          border-left: 2px solid #29ABE2;
+                                          border-bottom: 2px solid #29ABE2;
+                                          padding: 20px }  
+
+
+/* **** UPLOAD STYLES ****
+   ================================================== */
+
+.upload-container                       { margin: 0 auto 0;
+                                          padding:5px 10px 40px 10px;
+                                          background-color: white;
+                                          height:auto }
+
+.preview_list                           { padding:10px;
+                                          display:block }
+
+.preview_list:hover                     { background:#29ABE2;
+                                          color: white}
+
+.preview_image                          { padding:1px;
+                                          margin-left:5px;
+                                          border:1px solid #999 }
+
+.preview_title                          { padding:0 10px;
+                                          width:150px }
+
+.preview_position                       { padding:15px 10px 17px 10px;
+                                          color:#FFF;
+                                          background: none repeat scroll 0 0 #29ABE2;
+                                          font-weight:bold;
+                                          height:48px}
+
+.preview_form                           { padding-top:14px }
+
+.preview_input                          { width:50px }
+
+.lable                                  { width:50px;
+                                          display:inline-block;
+                                          margin-right:20px }

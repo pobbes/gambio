@@ -1,0 +1,50 @@
+
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<!-- start: box_trusted -->
+<div id="menubox_trusted" class="c_trusted content-box white clearfix">
+	<div id="menubox_trusted_head" class="c_boxhead content-box-header clearfix">
+		<div class="content-box-header-inner">
+			Trusted Shops
+		</div>
+	</div>
+	<div id="menubox_trusted_body" class="content-box-main clearfix">
+		<div class="content-box-main-inner clearfix">
+			{php}
+				if(gm_is_valid_trusted_shop_id(gm_get_conf('TRUSTED_SHOP_ID')) == false) {
+					echo 'Diese Box kann nur durch Eingabe einer g&uuml;ltigen Trusted Shops Shop-ID im Adminbereich freigeschaltet werden.';
+				} else {
+					if((int) $_SESSION['languages_id'] == 1) {
+			{/php}
+				<form name="formSiegel" action="https://www.trustedshops.com/shop/certificate.php" method="post" target="_blank">
+					<input name="shop_id" type="hidden" value="{php}echo gm_get_conf('TRUSTED_SHOP_ID') {/php}" />
+					<br />
+					<a href="http://www.trustedshops.com/" target="_blank" rel="nofollow">Safe web shopping</a><br />
+					<br />
+					<input type="image" src="images/trusted_siegel.gif" title="Trusted Shops G&uuml;tesiegel - Bitte hier G&uuml;ltigkeit pr&uuml;fen!" name="Seal" align="middle" /><br />
+					<br />
+					<a href="http://www.trustedshops.com/news/conditions-privacy/" target="_blank" rel="nofollow">
+						Certified online shop with buyer protection by Trusted Shops. Click to verify!
+					</a>
+				</form>
+			{php}
+				} else {
+			{/php}
+				<form name="formSiegel" action="https://www.trustedshops.com/shop/certificate.php" method="post" target="_blank">
+					<input name="shop_id" type="hidden" value="{php}echo gm_get_conf('TRUSTED_SHOP_ID') {/php}" />
+					<br />
+					<a href="http://www.trustedshops.de/" target="_blank" rel="nofollow">Sicher Einkaufen</a><br />
+					<br />
+					<input type="image" src="images/trusted_siegel.gif" title="Trusted Shops G&uuml;tesiegel - Bitte hier G&uuml;ltigkeit pr&uuml;fen!" name="Seal" align="middle" /><br />
+					<br />
+					<a href="http://www.trustedshops.de/info/garantiebedingungen/" target="_blank" rel="nofollow">
+						Gepr&uuml;fter Online-Shop mit K&auml;uferschutz von Trusted Shops. Klicken Sie auf das G&uuml;tesiegel, um die	G&uuml;ltigkeit zu pr&uuml;fen.
+					</a>
+				</form>
+			{php}
+				}
+			}
+			{/php}
+		</div>
+	</div>
+</div>
+<!-- end: box_trusted -->

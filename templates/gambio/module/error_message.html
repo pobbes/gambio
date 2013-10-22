@@ -1,0 +1,22 @@
+{config_load file="$language/lang_$language.conf" section="error_handler"}
+<div id="search_error_page">
+	{$FORM_ACTION}	
+	<div id="search_error_message">
+		{$ERROR}
+	</div>
+	<div id="search_again_text">
+		{#text_search_again#}
+	</div>
+	<div id="search_again_heading">
+		{#text_search_heading#}
+	</div>
+	<div id="search_again_form">
+		{#text_search#} {$INPUT_SEARCH} <span>{$BUTTON_SUBMIT}</span>
+
+		<div id="search_go_back">
+			{$BUTTON}
+		</div>
+	</div>
+
+	{$FORM_END}
+</div>

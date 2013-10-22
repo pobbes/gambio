@@ -1,0 +1,133 @@
+{load_language_text section="create_account"}
+<table border="0" width="100%">
+    <tbody>
+        <tr>
+            <td>
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tbody>
+                    <tr valign="top">
+                        <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{php}echo nl2br(STORE_NAME_ADDRESS){/php}</font>
+                        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{$address_label_customer}</font></p>
+                        <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{#text_tel#} {$PHONE}<br />
+                        {if $customer_vat}{#text_ustid#} {$customer_vat}{/if} <br />
+                        <br />
+                        {if $PAYMENT_METHOD} <strong>Zahlungsmethode: </strong>{$PAYMENT_METHOD}{/if}<br />
+                        <strong>Bestellung Nr:</strong> {$oID}<br />
+                        <strong>Bestelldatum:</strong> {$DATE}<br />
+                        {if $csID}<strong>Kundennummer:</strong> {$csID}{/if} </font></p>
+                        </td>
+                        {if $gm_logo_mail}
+                        <td>{$gm_logo_mail}</td>
+                        {/if}
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <table border="0" width="100%" style="border-top: 1px solid; border-bottom: 1px solid;">
+                <tbody>
+                    <tr bgcolor="#f1f1f1">
+                        <td width="50%">
+                        <p><font size="1"><strong><font face="Verdana, Arial, Helvetica, sans-serif">Lieferadresse <br />
+                        </font></strong></font></p>
+                        </td>
+                        <td>
+                        <p><font size="1"><strong><font face="Verdana, Arial, Helvetica, sans-serif">Rechnungsadresse <br />
+                        </font></strong></font></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{$address_label_shipping}</font></td>
+                        <td><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{$address_label_payment}</font></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Sehr geehrte(r) {$NAME},<br />
+            <br />
+            vielen Dank f&uuml;r Ihre Bestellung in unserem Online-Shop!</font> <font face="Verdana, Arial, Helvetica, sans-serif" size="1"><br />
+            <br />
+            {if $PAYMENT_MODUL=='moneyorder'}<br />
+            Unsere Bankverbindung: <br />
+            {php} echo nl2br(MODULE_PAYMENT_MONEYORDER_PAYTO); {/php}<br />
+            {else}<br />
+            </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1">{$PAYMENT_INFO_HTML}</font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><br />
+            {/if}</font><br />
+            {if $COMMENTS}<br />
+            <strong><font face="Verdana, Arial, Helvetica, sans-serif" size="1">Ihre Anmerkungen:</font></strong><br />
+            <font face="Verdana, Arial, Helvetica, sans-serif" size="1">{$COMMENTS}</font><br />
+            {/if} <br />
+            &nbsp;</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="border-bottom: 1px solid;">
+    <tbody>
+        <tr>
+            <td><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">Ihre bestellten Produkte nochmals zur Kontrolle: </font></strong></td>
+        </tr>
+        <tr>
+            <td>
+            <table cellspacing="0" cellpadding="3" border="0" bgcolor="#f1f1f1" width="100%">
+                <tbody>
+                    <tr>
+                        <td width="10%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="center"><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">Anzahl</font></strong></div>
+                        </td>
+                        <td width="50%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);"><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">Artikel</font></strong></td>
+                        <td width="15%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);"><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">Artikel-Nr. </font></strong></td>
+                        <td width="12%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="right"><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">Einzelpreis</font></strong></div>
+                        </td>
+                        <td width="13%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="right"><font face="Arial, Verdana, Helvetica, sans-serif" size="1"><strong>Gesamtpreis</strong> </font></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <font size="1">{foreach name=aussen item=order_values from=$order_data} </font>
+            <table cellspacing="0" cellpadding="3" border="0" bgcolor="#f1f1f1" width="100%">
+                <tbody>
+                    <tr>
+                        <td width="10%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="center"><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_values.PRODUCTS_QTY} {if $order_values.UNIT}{$order_values.UNIT}{else}x{/if}</font></div>
+                       </td>
+                        <td width="50%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);"><strong><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_values.PRODUCTS_NAME}</font></strong><em><br />
+                        <font face="Arial, Verdana, Helvetica, sans-serif" size="1">
+							{foreach item=prop_item_array from=$order_values.PRODUCTS_PROPERTIES}
+								{$prop_item_array.properties_name}: {$prop_item_array.values_name}<br/>
+							{/foreach}
+							{$order_values.PRODUCTS_ATTRIBUTES}
+						</font></em></td>
+                        <td width="15%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);"><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_values.PRODUCTS_MODEL}<br />
+                        <em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></font></td>
+                        <td width="12%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="right"><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_values.PRODUCTS_SINGLE_PRICE}</font></div>
+                        </td>
+                        <td width="13%" style="border-color: rgb(255, 255, 255); border-right: 2px solid rgb(255, 255, 255); border-bottom: 2px solid rgb(255, 255, 255);">
+                        <div align="right"><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_values.PRODUCTS_PRICE}</font></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <font face="Arial, Verdana, Helvetica, sans-serif" size="2">{/foreach} </font></td>
+        </tr>
+    </tbody>
+</table>
+<p><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{foreach name=aussen item=order_total_values from=$order_total} </font></p>
+<div align="right"><font face="Arial, Verdana, Helvetica, sans-serif" size="1">{$order_total_values.TITLE}{$order_total_values.TEXT}</font></div>
+<p><font size="1">{/foreach}</font></p>
+<br />
+<br />
+{$TS_RATING}
+<br />
+<br />
+{$JANOLAW_INFO_HTML}
+<br />
+<br />
+{$WITHDRAWAL_HTML}
+<br />
+<br />
+{$AGB_HTML}
+<br />
+<br />
+{$EMAIL_SIGNATURE_HTML}

@@ -1,0 +1,28 @@
+                    
+                    {load_language_text section="box_cart"}
+                    <!-- start: box_cart_head -->                        
+                    <div id="head_shopping_cart" class="right" title="{$txt.title_cart}">                            
+                        <div id="head_shopping_cart_inner">                                
+                            <table cellspacing="0" cellpadding="0" class="head_shopping_cart_table">                                    
+                                <tbody>                                        
+                                    <tr>                                            
+                                        <td><img src="{$tpl_path}images/icons/icon-grey-basket-big.png" width="30" height="24" style="border:none; margin-bottom:3px" alt="" /></td>
+                                        
+                                        <td>
+                                            <span class="shopping-cart-headline">{$txt.heading_cart}</span>
+                                            <br />
+                                            <span class="shopping-cart-product-count">
+                                            {if $products|@count eq 0}{$txt.text_no_product}{/if}
+                                            {if $products|@count eq 1}{$txt.text_one_product}{/if}
+                                            {if $products|@count gt 1}{$products|@count} {$txt.text_several_products}{/if}
+                                                
+                                            </span>                                                
+                                        </td> 
+                                        
+                                        <td><img src="{$tpl_path}images/icons/icon-grey-arrowdown.png" width="9" height="5" style="border:none; margin-bottom:3px" alt="" /></td>
+                                    </tr>                                        
+                                </tbody>                                    
+                            </table>                                
+                        </div>                            
+                    </div>
+                    <!-- end: box_cart_head -->

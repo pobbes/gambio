@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="cross_selling"}
+{config_load file="$language/gm_lang_$language.conf" section="cross_selling"}
+
+{if $module_content != ''}
+	<div class="product_info_add_ons">
+		{foreach name=aussen item=module_data from=$module_content}
+			<div class="product_info_add_ons_head">
+				{#heading_text#} {$module_data.GROUP}
+			</div>
+
+			{foreach item=products_data from=$module_data.PRODUCTS}
+				<div class="product_info_add_ons_product_box">
+					
+					<div class="product_info_add_ons_image_cell" style="width:{$GM_THUMBNAIL_WIDTH}px;">
+						{if $products_data.PRODUCTS_IMAGE!=''}<span id="xsell_{$products_data.PRODUCTS_ID}" class="flyover_item"><a href="{$products_data.PRODUCTS_LINK}"><img src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_IMAGE_ALT|default:$products_data.PRODUCTS_NAME}" title="{$products_data.PRODUCTS_IMAGE_ALT|default:$products_data.PRODUCTS_NAME}"/></a></span>{/if}
+						{if $products_data.PRODUCTS_FSK18=='true'}<img src="{$tpl_path}img/fsk18.gif" alt="fsk18.gif" title="fsk18.gif" />{/if}
+					</div>		
+					
+					<div class="product_info_add_ons_content_cell" style="margin-left:{$GM_THUMBNAIL_WIDTH}px;">
+
+					<div class="product_info_add_ons_header_cell">
+						<span class="product_info_add_ons_details_button">[ <a href="{$products_data.PRODUCTS_LINK}" class="product_link">{#details#}</a> ]</span>
+						<a href="{$products_data.PRODUCTS_LINK}" class="product_link">{$products_data.PRODUCTS_NAME}</a>			
+					</div>
+
+					<div class="product_info_add_ons_middle_cell">
+						{$products_data.PRODUCTS_SHORT_DESCRIPTION}
+					</div>			
+
+						
+					<div class="product_info_add_ons_bottom_cell">
+						<span class="gm_price">{$products_data.PRODUCTS_PRICE}</span><br />
+						{if $products_data.PRODUCTS_TAX_INFO neq '' || $products_data.PRODUCTS_SHIPPING_LINK neq ''}
+							({$products_data.PRODUCTS_TAX_INFO}{$products_data.PRODUCTS_SHIPPING_LINK})<br />
+						{/if}					
+						{if $products_data.PRODUCTS_VPE}
+							{$products_data.PRODUCTS_VPE}<br />
+						{/if}
+
+						{if $products_data.PRODUCTS_SHIPPING_NAME}
+							{#text_shippingtime#}
+							{if $products_data.PRODUCTS_SHIPPING_IMAGE}
+								<img src="{$products_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$products_data.PRODUCTS_SHIPPING_NAME}" />
+							{/if}
+							{$products_data.PRODUCTS_SHIPPING_NAME}
+						{/if}
+					
+						{$products_data.PRODUCTS_BUTTON_BUY_NOW|default:""}
+					</div>
+				</div>
+			</div>	
+		{/foreach}
+	{/foreach}		
+	</div>
+{/if}

@@ -1,0 +1,38 @@
+                        {config_load file="$language/lang_$language.conf" section="index"}
+
+                        {$MODULE_error}   
+
+                        <div class="first_page_content">
+                        {$title}
+                                                                                                                    
+                        {$text|replace:"text-decoration:underline;":""}
+                        </div>                        
+                        
+                        <!-- start: specials_main -->
+                        {$specials_main}
+                        <!-- end: specials_main -->
+                        
+                        <!-- start: products_new_main -->
+                        {$products_new_main}
+                        <!-- end: products_new_main -->
+
+                        <!-- start: MODULE_upcoming_products -->
+                        {$MODULE_upcoming_products}
+                        <!-- end: MODULE_upcoming_products -->
+                        
+                        <!-- start: MODULE_new_products -->
+                        {$MODULE_new_products}
+                        <!-- end: MODULE_new_products -->
+                        
+                        <!-- start: kp -->
+                        <div class="first_page_content">
+                        {$title_center}
+                        {$text_center|replace:"text-decoration:underline;":""}
+                        </div>
+                        <!-- end: kp -->
+                        
+                        <div class="first_page_content">
+                        {$title_bottom}
+                        
+                        {$text_bottom|replace:"text-decoration:underline;":""}
+                        </div>

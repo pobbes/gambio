@@ -1,0 +1,46 @@
+{load_language_text section="google_categories_administration"}
+<div class="template_properties_combis_delete_selected">
+	<p>M&ouml;chten Sie die ausgewählten Kombinationen wirklich l&ouml;schen?</p>
+	<div><a href="#" class="button cancel" style="float: left;">Abbrechen</a><a href="#" class="button delete" style="float: right;">L&ouml;schen</a><div style="clear: both;"> <!-- --> </div></div>
+</div>
+{literal}
+<style>
+	.template_properties_combis_delete_selected a.button.active{
+		height: 13px;
+		background: url("../images/loading.gif") no-repeat center center;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".lightbox_package_header").html("Kombinationen l&ouml;schen");
+		
+		$(".cancel").bind("click", function(){
+			lightbox_close();
+			return false;
+		});
+		
+		$(".delete").bind("click", function(){
+			var input_string = "${properties_combis_id_array}";
+			var inputs = input_string.split("&");
+			$(this).addClass("active").html("");
+			$.ajax({
+				data: 		{"properties_combis_id_array": inputs},
+				url: 		"request_port.php?module=properties_combis_admin&action=delete",
+				type: 		"POST",
+				async:		false,
+				timeout: 	2000,
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function(){ 
+								if(fb)console.log('success');
+								$.each(inputs, function(input_key, input_value){
+									$('#box_properties_combis_row_'+input_value).remove();
+								});
+							}
+			});
+			$("#check_all").removeAttr("checked");
+			lightbox_close();
+			return false;
+		});
+	});
+</script>
+{/literal}

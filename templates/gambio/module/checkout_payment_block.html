@@ -1,0 +1,35 @@
+{foreach name=aussen item=module_data from=$module_content} 
+
+	<div class="module_name">{$module_data.module}</div>
+
+	{if $module_data.error} 
+		<div class="error">{$module_data.error}</div>
+	{else} 
+	
+		{php} $rand = rand(); $i = 0; {/php}
+		<div id="{php} echo $rand; {/php}" class="module_option_overflow module_option{if $method_data.checked == 1}_checked{/if}">
+			<table class="module_table" cellspacing="0">
+				{if $module_data.description || $module_data.fields == ''}
+				<tr>
+					<td colspan="3" class="module_option_description">{$module_data.description|default:"&nbsp;"}{if $module_data.module_cost} ({$module_data.module_cost}){/if}</td>
+					<td align="right" valign="top" id="{php} echo $rand; {/php}_radio" class="module_option_radio">{$module_data.selection}</td>
+				</tr>
+				{/if}
+				{foreach name=aussen item=method_data from=$module_data.fields} 
+				<tr>
+					<td valign="top" class="module_data_left">{$method_data.title}</td>
+					{if $module_data.module_cost}
+					<td valign="top">{$method_data.field}</td>
+					<td valign="top" id="{php} echo $rand; {/php}_price" class="module_option_price{if $method_data.checked == 1}_bold{/if}">{$module_data.module_cost}</td>
+					{else}
+					<td valign="top" colspan="2">{$method_data.field}</td>
+					{/if}					
+					<td valign="top" id="{php} echo $rand; {/php}_radio" class="module_option_radio">{php} if($i == 0){ {/php}{if !$module_data.description}{$module_data.selection}{/if}{php} } $i++; {/php}</td>
+				</tr>
+				{/foreach}
+			</table>
+		</div>
+			
+	{/if}
+
+{/foreach}

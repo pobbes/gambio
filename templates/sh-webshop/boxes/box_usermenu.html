@@ -1,0 +1,15 @@
+{load_language_text section="top_navigation"}{load_language_text section="infobox" name="infobox"}
+                <!-- start: user_menu -->
+                <div id="usermenu_container">
+
+                    <span id="wishlist" class="left">{if $content_data.WISHLIST_URL} 
+                        <a href="{$content_data.WISHLIST_URL}" title="{$txt.title_wish_list}" class="usermenu-wishlist">{$txt.button_wish_list}</a>{/if}  
+                    </span>
+                        
+                    <span id="login_register" class="right">{if !$content_data.ACCOUNT_URL}
+                            
+                        <a title="{$txt.title_login}" href="{page_url}#" class="pulldown_link usermenu-login" id="customer_login_link" rel="#customer_login">{$txt.button_login}</a>{else}
+                            
+                        <a title="{$txt.title_logoff}" href="{$content_data.LOGOFF_URL}" class="usermenu-login usermenu-active">{$txt.button_logoff}</a>{/if}
+                            
+                    </span>

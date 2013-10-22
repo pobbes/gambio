@@ -1,0 +1,10 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+{if $module_content}
+	<span id="live_search_head">{#gm_live_search_head#}:</span>
+	<ul>
+	{foreach name=aussen item=module_data from=$module_content}		
+		<li><span id="livesearch_{$module_data.PRODUCTS_ID}" class="flyover_item"><a href="{$module_data.PRODUCTS_URL}">{$module_data.PRODUCTS_NAME}</a></span></li>
+	{/foreach}
+	</ul>
+{/if}	

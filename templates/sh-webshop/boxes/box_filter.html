@@ -1,0 +1,53 @@
+{load_language_text section="box_filter"}
+
+<!-- start: box_filter -->
+
+<!-- FILTER -->
+
+<div id="menubox_filter" class="c_filter content-box white clearfix">
+	<div id="menubox_filter_head" class="c_boxhead content-box-header clearfix">
+		<div class="content-box-header-inner clearfix">
+			{$txt.heading_filter}
+		</div>
+	</div>
+	<div id="menubox_filter_body" class="content-box-main clearfix">
+		<div class="content-box-main-inner clearfix">
+			<form name="search_filter" method="get" action="{$content_data.FORM_ACTION_URL}">
+
+				{foreach name=feature_html item=feature_code from=$content_data.FEATURE_DATA}
+					<div class="input select separator-bottom">
+					{$feature_code}
+					</div>
+				{/foreach}
+
+				{if $content_data.PRICE_FILTER_FROM_ACTIVE eq 'true' || $content_data.PRICE_FILTER_TO_ACTIVE eq 'true'}
+				<div class="input text">
+					<label for="FilterManufacturer"><strong>{$txt.text_price}</strong></label><br/>
+					{if $content_data.PRICE_FILTER_FROM_ACTIVE eq 'true'}
+						<input type="text" name="filter_price_min" value="{$content_data.DEFAULT_PRICE_START}" class="input-text filter_price_input" />
+					{/if}
+					{if $content_data.PRICE_FILTER_TO_ACTIVE eq 'true'}
+						&nbsp;{$txt.text_between}&nbsp;
+						<input type="text" name="filter_price_max" value="{$content_data.DEFAULT_PRICE_END}" class="input-text filter_price_input" />
+					{/if}
+					&nbsp;{$content_data.CURRENCY}
+				</div>
+				{/if}
+
+				<div class="input submit">
+					<a href="{page_url}#" class="button_blue button_set button_reset_form"><span class="button-outer"><span class="button-inner">{$txt.button_reset_filter}</span></span></a>
+					<a href="{page_url}#" class="button_blue button_set action_submit"><span class="button-outer"><span class="button-inner">{$txt.button_go}</span></span></a>
+				</div>
+
+
+				{load_env_array source='get' name='ENV_GET_DATA' exclude='filter_fv_id,value_conjunction,filter_price_min,filter_price_max'}
+
+				{foreach name=hidden_params key=param_key item=param_value from=$ENV_GET_DATA}
+					<input type="hidden" name="{$param_key}" value="{$param_value}" />
+				{/foreach}
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- end: box_filter -->

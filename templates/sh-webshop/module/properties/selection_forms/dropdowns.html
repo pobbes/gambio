@@ -1,0 +1,37 @@
+{load_language_text section="properties_dropdown"}
+{if $content_data.PROPERTIES_DATA}
+<div class="details_attributes_dropdown {$content_data.properties_dropdown_mode}" style="text-align:left">
+	<script type="text/javascript">
+		var properties_combis_json = {$content_data.PROPERTIES_COMBIS_JSON};
+		var properties_stock_check = {$content_data.ATTRIBUTE_STOCK_CHECK};
+                var use_properties_combis_weight = {$content_data.use_properties_combis_weight};
+                var use_properties_combis_quantity = {$content_data.use_properties_combis_quantity};
+                var use_properties_combis_shipping_time = {$content_data.use_properties_combis_shipping_time};
+	</script>
+	<div class="attributes clearfix">
+		<dl>
+			<div class="select_fake">
+				<span class="select_fake"> <!-- --> </span>
+			</div>
+			{foreach item=prop_item_array from=$content_data.PROPERTIES_DATA}
+				<dt>{$prop_item_array.properties_name}:</dt>
+				<dd>
+					<select name="properties_values_ids[]" class="properties_values_select_field gm_attr_calc_input input-select">
+						<option value="0">
+							{$txt.PLEASE_SELECT}
+						</option>
+						{foreach item=values_item_array from=$prop_item_array.values_array}
+							<option value="{$values_item_array.properties_values_id}">
+								{$values_item_array.values_name} {if $content_data.properties_price_show == "true"}(+ {$values_item_array.values_price} {$content_data.properties_currency}){/if}
+							</option>
+						{/foreach}
+					</select>
+				</dd>
+			{/foreach}
+		</dl>
+	</div>
+	<p id="properties_not_available_error">{$txt.COMBI_NOT_AVAILABLE}</p>
+    <p id="properties_not_exist_error">{$txt.COMBI_NOT_EXIST}</p>
+	<input type="hidden" id="properties_products_id" name="properties_products_id" value="{$content_data.products_id}" />
+</div>
+{/if}

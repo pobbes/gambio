@@ -1,0 +1,63 @@
+{load_language_text section="contact_us"}
+{load_language_text section="buttons" name="button"}
+
+<div id="contact_us" class="contact_us">
+
+	<h1>{$CONTACT_HEADING}</h1>
+
+	{if $error_message!=''}
+	<div class="class_error">
+		{$error_message}
+	</div>
+	<br />
+	{/if}
+
+	{if $CONTACT_CONTENT}
+		<div class="content_contact">{$CONTACT_CONTENT}</div>
+		<br />
+	{/if}
+
+	{if $success != '1'}
+
+		<div class="required_info">
+			{$txt.text_required}
+		</div>
+
+		<form id="{$FORM_ID}" action="{$FORM_ACTION_URL}" method="{$FORM_METHOD}">
+			<fieldset class="blocklabels_150">
+				<div class="input">
+					<label>{$txt.text_name}</label>
+					<input type="text" name="{$INPUT_NAME_NAME}" value="{$INPUT_NAME_VALUE}" class="input-text" /> {$txt.text_required_sign}
+				</div>
+				<div class="input">
+					<label>{$txt.text_email}</label>
+					<input type="text" name="{$INPUT_EMAIL_NAME}" value="{$INPUT_EMAIL_VALUE}" class="input-text" /> {$txt.text_required_sign}
+				</div>
+				<div class="input">
+					<label>{$txt.text_message}</label>
+					<textarea name="{$INPUT_TEXT_NAME}" class="input-textarea">{$INPUT_TEXT_VALUE}</textarea>
+				</div>
+				{if $GM_CONTACT_VVCODE == 'true'}
+				<div class="input vvcode">
+					<label>{$txt.text_captcha}</label>
+					<img src="{$CAPTCHA_URL}" alt="" title="" width="240" height="50" /><br />
+					<input type="text" name="{$INPUT_CAPTCHA_NAME}" class="input-text" /> {$txt.text_required_sign}
+				</div>
+				{/if}
+			</fieldset>
+
+			{if $GM_PRIVACY_LINK != '0'}
+			<div id="gm_privacy">
+				{$GM_PRIVACY_LINK}
+				<br />
+				<br />
+			</div>
+			{/if}
+
+			<div class="send_button"><a href="{page_url}#" class="button_blue_big button_set_big action_submit"><span class="button-outer"><span class="button-inner">{$button.send}</span></span></a></div>
+
+		</form>
+	{else}
+		{$txt.text_success}
+	{/if}
+</div>

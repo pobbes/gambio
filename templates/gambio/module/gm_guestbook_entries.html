@@ -1,0 +1,47 @@
+<div class="guestbook_navigation">
+	{$ENTRIES}{$FIRST}{$TO}{$LAST}{$OF}{$ALL}
+	<br />
+	{if ($BACK == '0' || $BACK > 0) || $NEXT}
+	{if $BACK == '0' || $BACK > 0}<span id="back" onclick="gm_guestbook_get_entries('{$BACK}')">&laquo;</span> {/if}
+	{foreach name=navi item=navigation_data from=$navigation}
+		{if $FIRST - $navigation_data.LIMIT == 1}<span class="guestbook_page_number_bold" onclick="gm_guestbook_get_entries('{$navigation_data.LIMIT}')">{$navigation_data.PAGE}</span> 
+		{else}<span class="guestbook_page_number" onclick="gm_guestbook_get_entries('{$navigation_data.LIMIT}')">{$navigation_data.PAGE}</span> {/if}
+	{/foreach}
+	{if $NEXT > 0} <span id="next" onclick="gm_guestbook_get_entries('{$NEXT}')">&raquo;</span> {/if}
+	<br />
+	{/if}
+</div>
+
+{foreach name=guestbook_entries item=entries_data from=$entries}
+	
+	<div class="guestbook_entries_head">
+		{$entries_data.NAME}
+		&nbsp;
+		{if $entries_data.EMAIL != ''}
+			&nbsp;<a href="mailto:{$entries_data.EMAIL}" rel="nofollow"><img src="images/gm/guestbook/mail.png" alt="{$IMG_EMAIL}" title="{$IMG_EMAIL}" /></a>
+		{/if}
+		{if $entries_data.HOMEPAGE != ''}
+			&nbsp;<a href="{$entries_data.HOMEPAGE}" target="_blank" rel="nofollow"><img src="images/gm/guestbook/homepage.png" alt="{$IMG_HOMEPAGE}" title="{$IMG_HOMEPAGE}" /></a>
+		{/if}
+		
+		{if $ADMIN}
+			&nbsp;<img class="guestbook_icon" src="images/gm/guestbook/delete.png" alt="{$IMG_DELETE}" title="{$IMG_DELETE}" onclick="gm_delete_entry('{$entries_data.ID}')" />				
+			{if $entries_data.ACTIVATED != '1'}
+				&nbsp;<img class="guestbook_icon" src="images/gm/guestbook/activate.png" alt="{$IMG_ACTIVATE}" title="{$IMG_ACTIVATE}" onclick="gm_activate_entry('{$entries_data.ID}')" />
+			{else}	
+				&nbsp;<img class="guestbook_icon" src="images/gm/guestbook/deactivate.png" alt="{$IMG_DEACTIVATE}" title="{$IMG_DEACTIVATE}" onclick="gm_deactivate_entry('{$entries_data.ID}')" />
+			{/if}		
+			&nbsp;&nbsp;
+			IP: {$entries_data.IP}
+			&nbsp;&nbsp;
+			{if $entries_data.ACTIVATED == '0'}DEAKTIVIERT&nbsp;{/if}
+		{/if}
+		&nbsp;
+		{$entries_data.DATE}
+	</div>
+	
+	<div class="guestbook_entries_content">
+		{$entries_data.MESSAGE}
+	</div>
+	
+{/foreach}

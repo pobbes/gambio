@@ -1,0 +1,14 @@
+{load_language_text section="box_search"}{load_language_text section="buttons" name="button"}
+                            <!-- start: box_top_search -->
+                            <div>
+                                <form action="{$content_data.FORM_ACTION_URL}" method="{$content_data.FORM_METHOD}">
+                                    <div class="control-group">                                    
+                                        <div class="controls">
+                                            <input type="text" name="{$content_data.INPUT_NAME}" value="{$txt.text_default_value}" class="input-text box-input-field default_value left" id="search_field" autocomplete="off" />                                                    
+                                            <a href="{page_url}#" class="action_submit top_search_btn left" title="{$txt.title_search}"></a>                                                
+                                            <input type="hidden" name="XTCsid" value="{$session_id_placeholder}" />     
+                                        </div>                                    
+                                    </div>                              
+                                </form>     
+                            </div>
+                            <!-- end: box_top_search -->

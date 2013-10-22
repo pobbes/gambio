@@ -1,0 +1,52 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+<div id="shopping_cart"{if $LIGHTBOX == 'true'} class="lightbox_block"{/if}>
+
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/warenkorb.gif" alt="{#heading_cart#}" title="{#heading_cart#}" />
+	</div>
+
+	<div id="iconized_page_head">
+		{#heading_cart#}
+	</div>
+
+	<div id="gift_cart_part">
+		<div align="center">
+			{$MODULE_gift_cart}
+		</div>
+	</div>
+
+	{if $info_message!=''}
+		<div class="align_center">
+			{$info_message}
+		</div>
+	{/if}
+
+	{if $cart_empty==true}
+		<div class="gift_cart_empty">
+			{$BUTTON_BACK}&nbsp;&nbsp;&nbsp;{#text_empty#} {$BUTTON_CONTINUE}
+		</div>
+
+	{else}
+
+		{$FORM_ACTION}
+		{$HIDDEN_OPTIONS}
+
+			{$MODULE_order_details}
+
+			{if $info_message_1!=''}
+				{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
+			{/if}
+
+			<div class="gift_cart_left">{$BUTTON_BACK}</div>
+			<div class="align_right">{$BUTTON_RELOAD} {$BUTTON_CHECKOUT} {if $BUTTON_PAYPAL}<br />{#text_or#}&nbsp;&nbsp;&nbsp;<br />{$BUTTON_PAYPAL}{/if}</div>
+		{$FORM_END}
+
+	{/if}
+
+	<div id="footer" onclick="document.location.href = '{$LINK_CLOSE}'">{#gm_window_close#}</div>
+
+</div>
+</div>

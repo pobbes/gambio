@@ -1,0 +1,143 @@
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+<div id="gm_checkout_payment" class="checkout{if $LIGHTBOX == 'true'} lightbox_block{/if}">
+	
+	<div class="head_height">
+		<div id="iconizing_icon">
+			<img src="{$tpl_path}icons/zahlungsoption.gif" />
+		</div>
+		
+		<div id="iconized_page_head">
+			{#heading_payment#}
+		</div>
+	</div>
+	
+	{$FORM_ACTION}
+	
+	{if $error!=''}<div class="error">{$error}</div>{/if}
+	
+	<div class="heading">
+		<img src="{$tpl_path}icons/versadresse.gif"  alt="{#title_address#}" title="{#title_address#}" />
+		<h2>
+			{#title_address#}
+		</h2>
+		<div class="subtitle">{#text_address#}</div>
+	</div>
+	
+	<div class="shipping_address_block">
+		<div class="text_block_heading">{#title_address#}:</div>
+		<div class="text_block">{$ADDRESS_LABEL}</div>
+		<div class="text_block_button">{$BUTTON_ADDRESS}</div>
+	</div>
+	
+	
+	<div class="heading">
+		<img src="{$tpl_path}icons/zahlungsweise.gif"  alt="{#title_payment#}" title="{#title_payment#}" />
+		<h2>
+			{#title_payment#}
+		</h2>
+		<div class="subtitle">{#text_payment#}</div>
+	</div>
+	
+	{if $STYLE_EDIT == '1'} 
+		<div class="module_name">Test inaktiv</div>
+		<div class="bottom_dotted">
+			<div class="module_option_overflow module_option">
+				<div class="module_option_title">Test</div>
+			</div>	
+		</div>
+	
+		<div class="module_name">Test aktiv</div>
+		<div class="bottom_dotted">
+			<div class="module_option_overflow module_option_checked">
+				<div class="module_option_title">Test</div>
+			</div>	
+		</div>
+	{/if}
+	
+	{if $GV_COVER!='true'}
+		{$PAYMENT_BLOCK}{$module_gift}
+	{else} 
+		{#text_gccover#}
+		<input type="hidden" name="cot_gv" value="on" />
+	{/if}
+	
+	<div class="heading">
+		<img src="{$tpl_path}icons/anmerkungen.gif"  alt="{#title_comments#}" title="{#title_comments#}" />
+		<h2>
+			{#title_comments#}
+		</h2>
+		<div class="subtitle">{#text_comments#}</div>
+	</div>
+	
+	<div class="textbox">{$COMMENTS}</div>
+	
+	{if $WITHDRAWAL}
+	<div class="heading">
+		<img src="{$tpl_path}icons/agb.gif"  alt="{#title_withdrawal#}" title="{#title_withdrawal#}" />
+		{if $CHECKBOX_WITHDRAWAL}
+		<h2>
+			{#title_withdrawal#}
+		</h2>
+		<div class="subtitle">{#text_withdrawal#}</div>
+		{else}
+		<h2 class="checkout_single_heading">
+			{#title_withdrawal#}
+		</h2>
+		{/if}
+	</div>
+	
+	<div class="textbox">{$WITHDRAWAL}</div>
+	{/if}
+	
+	{if $CHECKBOX_WITHDRAWAL}
+		<div class="accept_box"><div class="accept_box_checkbox">{$CHECKBOX_WITHDRAWAL}</div><div class="accept_box_text">{#text_accept_withdrawal#}</div></div>
+	{/if}
+	
+	{if $AGB}
+	<div class="heading">
+		<img src="{$tpl_path}icons/agb.gif"  alt="{#title_agb#}" title="{#title_agb#}" />
+		{if $CHECKBOX_AGB}
+		<h2>
+			{#title_agb#}
+		</h2>
+		<div class="subtitle">{#text_agb#}</div>
+		{else}
+		<h2 class="checkout_single_heading">
+			{#title_agb#}
+		</h2>
+		{/if}
+	</div>
+	
+	<div class="textbox">{$AGB}</div>
+	{/if}
+	
+	{if $CHECKBOX_AGB}
+		<div class="accept_box"><div class="accept_box_checkbox">{$CHECKBOX_AGB}</div><div class="accept_box_text">{#text_accept_agb#}</div></div>
+	{/if}
+	
+	<div class="continue">
+		<div class="button_back">{$BUTTON_BACK}</a></div>
+		<div class="button_continue">{$BUTTON_CONTINUE}</div>
+	</div>	
+	
+	{$FORM_END}
+
+	<div class="history_navbar">
+	
+		<div class="navbar_line"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></div>
+		<div class="navabar">
+			<div class="navabar_text">{#text_shipping_info#}</div>
+			<div class="navabar_text_current">{#text_payment_info#}</div>
+			<div class="navabar_text">{#text_confirm#}</div>
+			<div class="navabar_text">{#text_finished#}</div>
+		</div>
+	
+	</div>
+	
+	<div id="footer">{#gm_window_close#}</div>
+
+</div>
+</div>

@@ -1,0 +1,96 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/gm_lang_$language.conf" section="product_listing"}
+{load_language_text section="product_info" name="info"}
+
+<div id="product_listing">
+
+	<div class="categories_name">
+		<h1>{$CATEGORIES_HEADING_TITLE|default:$CATEGORIES_NAME}</h1>
+	</div>
+
+	<div class="categories_description">
+		{if $CATEGORIES_DESCRIPTION}
+			{$CATEGORIES_DESCRIPTION}
+		{/if}
+		
+		<div class="align_right">
+			{if $CATEGORIES_IMAGE}
+				<img src="{$CATEGORIES_IMAGE}" alt="{$CATEGORIES_GM_ALT_TEXT|default:$CATEGORIES_NAME}" title="{$CATEGORIES_GM_ALT_TEXT|default:$CATEGORIES_NAME}" />
+			{/if}
+			{if $MANUFACTURER_DROPDOWN}
+				<br />
+				<div class="gm_manufacturers">
+					{$MANUFACTURER_DROPDOWN} <span>{if $gm_manufacturers_id}{#gm_text_show#}{else}{#text_show#}{/if}&nbsp;</span>
+				</div>
+			{/if}
+		</div>
+	</div>
+
+	{foreach name=aussen item=module_data from=$module_content}
+	<div class="product_box">
+		
+		<div class="image_cell" style="width:{$GM_THUMBNAIL_WIDTH}px;">
+			{if $module_data.PRODUCTS_IMAGE!=''}<span id="prodlist_{$module_data.PRODUCTS_ID}" class="flyover_item"><a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME}"/></a></span>{/if}
+			{if $module_data.PRODUCTS_FSK18=='true'}<img src="{$tpl_path}img/fsk18.gif" alt="fsk18.gif" title="fsk18.gif" />{/if}
+		</div>
+		
+		
+		<div class="content_cell" style="margin-left:{$GM_THUMBNAIL_WIDTH}px;">
+			<div class="header_cell">
+				<span class="details_button">[ <a href="{$module_data.PRODUCTS_LINK}" class="product_link">{#details#}</a> ]</span>
+				<a href="{$module_data.PRODUCTS_LINK}" class="product_link">{$module_data.PRODUCTS_NAME}</a>			
+			</div>{$module_data.GM_FORM_ACTION}
+			<div class="middle_cell">
+				
+				{$module_data.PRODUCTS_SHORT_DESCRIPTION}<br />
+				{if $module_data.GM_ATTRIBUTES}
+					{$module_data.GM_ATTRIBUTES}
+				{/if}
+				{if $module_data.GM_GRADUATED_PRICES}
+					{$module_data.GM_GRADUATED_PRICES}
+				{/if}
+			</div>			
+			<div class="bottom_cell">
+				<span class="gm_price" id="gm_attr_calc_price_{$module_data.PRODUCTS_ID}">{$module_data.PRODUCTS_PRICE}{if $module_data.PRODUCTS_VPE}<br /><span class="gm_products_vpe">{$module_data.PRODUCTS_VPE}</span><br /></span>{else}</span><br />{/if}
+				{if $module_data.PRODUCTS_TAX_INFO neq '' || $module_data.PRODUCTS_SHIPPING_LINK neq ''}
+					({$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK})<br />
+				{/if}				
+				
+				{if $module_data.SHOW_PRODUCTS_WEIGHT && $module_data.PRODUCTS_WEIGHT}
+					<div style="clear: both;">
+						<span>{$info.text_weight}</span> <span id="gm_calc_weight_{$module_data.PRODUCTS_ID}">{$module_data.PRODUCTS_WEIGHT}</span> {$info.text_weight_unit}
+					</div>
+				{/if}
+				<div class="qty_cart">
+					{if ($GM_SHOW_QTY == '1' && $module_data.GM_ATTRIBUTES) || ($GM_SHOW_QTY == '1' && $module_data.GM_HAS_ATTRIBUTES == '0')}<span>{$module_data.GM_PRODUCTS_QTY}</span>{else}{$GM_HIDDEN_QTY}{/if}<span>{$module_data.GM_PRODUCTS_BUTTON_BUY_NOW}</span>
+					
+				</div>	
+				<div class="stock_shipping_info">
+					{if $GM_SHOW_QTY_INFO == '1'}
+						<span class="products_stock">{#gm_products_stock#}{$module_data.GM_PRODUCTS_STOCK}{if $module_data.PRODUCTS_SHIPPING_NAME},{/if}</span>
+					{/if}
+					
+					{if $module_data.PRODUCTS_SHIPPING_NAME}
+						<span class="text_shippingtime">{#text_shippingtime#}</span>
+						{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+							<span class="image_shippingtime"><img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" /></span>
+						{/if}
+						<span class="name_shippingtime">{$module_data.PRODUCTS_SHIPPING_NAME}</span>
+					{/if}
+					
+					{if $GM_SHOW_QTY_INFO == '1' && $module_data.PRODUCTS_SHIPPING_NAME == false}&nbsp;{/if}
+					
+				</div>			
+				
+				<div class="gm_checker_error" id="gm_checker_error_{$module_data.PRODUCTS_ID}"></div>
+			
+			</div>
+				{$module_data.GM_FORM_END} 
+			</div>
+		
+	</div>	
+	{/foreach}
+
+</div>
+
+{$NAVIGATION}

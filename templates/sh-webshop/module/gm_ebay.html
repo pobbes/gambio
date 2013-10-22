@@ -1,0 +1,49 @@
+{load_language_text section="gm_ebay"}
+{load_language_text section="buttons" name="button"}
+
+<div class="ebay_products">
+
+{if $GM_EBAY_AUCTIONS}
+
+	<div class="article-list cols clearfix">
+
+		{foreach name=outer item=auctions from=$GM_EBAY_AUCTIONS}
+
+			<div class="article-list-item">
+				<div class="article-list-item-inside">
+					<div class="article-list-item-image">
+					{if $auctions.image}
+						{$auctions.image}
+					{/if}
+					</div>
+					<div class="article-list-item-text">
+						<p class="title" style="min-height:60px"><a href="{$auctions.link}">{$auctions.title}</a></p>
+						{$txt.text_ebay_auction_end}<br />{$auctions.end_time}<br />
+						{if $auctions.bids}
+							{$auctions.bids}
+							{if $auctions.bids == 1}
+								{$txt.text_ebay_bid}
+							{else}
+								{$txt.text_ebay_bids}
+							{/if}
+							<br />
+						{/if}
+						{if $auctions.bids}{$txt.text_ebay_from} {else}{/if}
+						<br />
+						<span class="price"><a href="{page_url}#">{$auctions.price}</a></span>
+						<br />
+						<br />
+						<a href="{$auctions.link}" class="button_blue button_set"><span class="button-outer"><span class="button-inner">{$button.show}</span></span></a>
+					</div>
+				</div>
+			</div>
+
+		{/foreach}
+
+		
+	</div>
+{$GM_EBAY_NAVIGATION}
+{else}
+	{#gm_ebay_empty#}
+{/if}
+</div>

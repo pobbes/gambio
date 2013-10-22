@@ -1,0 +1,102 @@
+{config_load file="$language/lang_$language.conf" section="account_history_info"}
+{config_load file="$language/lang_$language.conf" section="print_order"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+<div id="account">
+
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{#heading_history_info#}" title="{#heading_history_info#}" />
+	</div>
+	
+	<h1>
+		{#heading_history_info#}
+	</h1>
+	
+		<div class="heading_form">
+			<h2>
+				<div style="float:left">{#text_oid#}{$ORDER_NUMBER} ({$ORDER_STATUS})</div><div class="smallHeading">{#text_date#} {$ORDER_DATE}</div>
+			</h2>
+		</div>
+		<div class="box_content">
+			<div class="box_left">
+				<span class="strong">{#text_shipping_address#}</span>
+				<br />
+				{$DELIVERY_LABEL}
+			</div>
+			<div class="align_right">
+				{if $BILLING_LABEL}
+					<span class="strong">{#text_payment_address#}</span>
+					<br />
+					{$BILLING_LABEL}
+				{/if}
+			</div>
+		</div>
+		
+		<div class="heading_form">
+			<h2>
+				{#heading_history_info#}
+			</h2>
+		</div>
+		<div class="box_content">
+			{if $SHIPPING_METHOD}
+				<div class="box_left">
+					<span class="strong">{#text_shipping_method#}</span> {$SHIPPING_METHOD}
+				</div>
+			{/if}	 
+			{if $PAYMENT_METHOD}
+				<div class="align_right">
+					<span class="strong">{#text_payment_method#}</span> {$PAYMENT_METHOD}
+				</div>
+			{/if}	 
+		</div>
+
+		<div class="heading_form">
+			<h2>
+				{#title_history#}
+			</h2>
+		</div>
+		<div class="box_content">
+			{$HISTORY_BLOCK}
+		</div>
+
+		<div class="heading_form">
+			<h2>
+				{#heading_products#}
+			</h2>
+		</div>
+		<div class="box_content">
+			<table width="100%" border="0" cellpadding="3" cellspacing="0" class="order_table">
+				<tr class="order_head"> 
+					<td colspan="2" align="left" valign="top">{#head_units#}</td>
+					<td align="left" valign="top">{#head_products#}</td>
+					<td align="left" valign="top">{#head_artnr#}</td>
+					<td align="right" valign="top">{#head_single_price#}</td>
+					<td align="right" valign="top">{#head_price#}</td>
+				</tr>
+				{foreach name=aussen item=order_values from=$order_data} 
+				<tr class="order_body"> 
+				<td align="left" valign="top">{$order_values.PRODUCTS_QTY}</td>
+				<td align="left" valign="top">x</td>
+				<td align="left" valign="top">{$order_values.PRODUCTS_NAME}<em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
+				{#text_shippingtime#} {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
+				<td align="left" valign="top">{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
+				<td align="right" valign="top">{$order_values.PRODUCTS_SINGLE_PRICE}</td>
+				<td align="right" valign="top">{$order_values.PRODUCTS_PRICE}</td>
+				</tr>
+				{/foreach} 
+			</table><br />
+			<table width="100%" border="0" cellpadding="3" cellspacing="0" class="order_total">
+				{foreach name=aussen item=order_total_values from=$order_total}
+					<tr> 
+						<td>{$order_total_values.TITLE} {$order_total_values.TEXT}</td>
+					</tr>
+				{/foreach} 
+			</table>
+			<br />
+		<div class="box_left">{$BUTTON_PRINT}</div>
+		<div class="align_right">{$BUTTON_BACK}</div>
+
+		{if $downloads_content neq ''}
+		  {$downloads_content}
+		{/if}		
+		</div></div>
+

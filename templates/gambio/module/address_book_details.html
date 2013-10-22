@@ -1,0 +1,100 @@
+{config_load file="$language/lang_$language.conf" section="address_book_process"}		
+	<div class="heading_form">
+		<h2>
+			{#title_address#}
+		</h2>
+	</div>
+	<div class="box_form">
+		<div class="cell_left {if $error_gender} class_error{/if}">{#text_gender#}</div>
+		<div class="cell_right{if $error_gender} class_error{/if}">{$INPUT_MALE}{$INPUT_FEMALE}
+		{if $error_gender}
+			<span class="class_error_message">{$error_gender}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_first_name} class_error{/if}">{#text_firstname#}</div>
+		<div class="cell_right{if $error_first_name} class_error{/if}{if $error_first_name} class_error{/if}">{$INPUT_FIRSTNAME}
+		{if $error_first_name}
+			<span class="class_error_message">{$error_first_name}</span>
+		{/if}
+		</div>
+		
+		<div class="cell_left {if $error_last_name} class_error{/if}">{#text_lastname#}</div>
+		<div class="cell_right{if $error_last_name} class_error{/if}">{$INPUT_LASTNAME}
+		{if $error_last_name}
+			<span class="class_error_message">{$error_last_name}</span>
+		{/if}
+		</div>
+
+		{if $company=='1'}
+			<div class="cell_left">{#text_company#}</div>
+			<div class="cell_right">{$INPUT_COMPANY}</div>
+		{/if}
+		
+		<div class="cell_left {if $error_street} class_error{/if}">{#text_street#}</div>
+		<div class="cell_right{if $error_street} class_error{/if}">{$INPUT_STREET}
+		{if $error_street}
+			<span class="class_error_message">{$error_street}</span>
+		{/if}
+		</div>
+		
+		{if $suburb=='1'}
+		<div class="cell_left">{#text_suburb#}</div>
+		<div class="cell_right">{$INPUT_SUBURB}</div>
+		{/if}
+
+		<div class="cell_left {if $error_post_code} class_error{/if}">{#text_code#}</div>
+		<div class="cell_right{if $error_post_code} class_error{/if}">{$INPUT_CODE}
+		{if $error_post_code}
+			<span class="class_error_message">{$error_post_code}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_city} class_error{/if}">{#text_city#}</div>
+		<div class="cell_right{if $error_city} class_error{/if}">{$INPUT_CITY}
+		{if $error_city}
+			<span class="class_error_message">{$error_city}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_state} class_error{/if}">{#text_state#}</div>
+		<div class="cell_right{if $error_state} class_error{/if}">{$INPUT_STATE}
+		{if $error_state}
+			<span class="class_error_message">{$error_state}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_country} class_error{/if}">{#text_country#}</div>
+		<div class="cell_right{if $error_country} class_error{/if}">{$SELECT_COUNTRY}
+		{if $error_country}
+			<span class="class_error_message">{$error_country}</span>
+		{/if}
+		</div>
+		{if $new=='1'}
+			<div class="cell_left"></div>
+			<div class="cell_right">{$CHECKBOX_PRIMARY} {#text_standard#}</div>		
+		{/if}
+
+		{if $check_privacy || $show_privacy}
+			<br />
+			<div class="cell_right{if $error_vat} class_error{/if}">
+			{$INPUT_PRIVACY}
+			{$PRIVACY_LINK}	
+			
+			{if $error_privacy}
+				<span class="class_error_message">{$error_privacy}</span>
+			{/if}
+			</div>
+		{/if}	
+
+		{if $GM_PRIVACY_LINK != '0'}
+		<br />
+		<div id="gm_privacy">	
+			{$GM_PRIVACY_LINK}
+		</div>	
+		<br />		
+		{/if}
+
+		<div class="box_left">{$BUTTON_BACK}</div>
+		<div class="box_right">{$BUTTON_UPDATE}</div>
+	</div>

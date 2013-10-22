@@ -1,0 +1,187 @@
+{load_language_text section="checkout_paypal"}
+{load_language_text section="buttons" name="button"}
+{load_language_text section="checkout_payment" name="payment"}
+{load_language_text section="checkout_confirmation" name="info"}
+
+{if $LIGHTBOX == 'true'}<div id="lightbox_content" style="display:none">{/if}
+	<div class="checkout_paypal{if $LIGHTBOX == 'true'} lightbox_block{/if}">
+		<div class="process_bar">
+			<ul>
+				<li><label><span>{$txt.text_shoppingcart}</span></label></li>
+				<li class="active"><label><span>{$txt.text_orderconfirm}</span></label></li>
+			</ul>
+		</div>
+		<h1>{$txt.heading_checkout}</h1>
+
+		{if $error!=''}
+			<div class="text_information errorText">
+				{$error}
+			</div>
+		{/if}
+		
+		<br />
+		<ul class="arrows">
+			{if $PRIVACY_CONFIRMATION}<li><a href="{$PRIVACY_CONFIRMATION_URL}" target="_blank" class="conditions_info_link lightbox_iframe">{$PRIVACY_CONFIRMATION_TEXT}</a></li>{/if}
+			{if $CONDITIONS_CONFIRMATION}<li><a href="{$CONDITIONS_CONFIRMATION_URL}" target="_blank" class="conditions_info_link lightbox_iframe">{$CONDITIONS_CONFIRMATION_TEXT}</a></li>{/if}
+			{if $WITHDRAWAL_CONFIRMATION}<li><a href="{$WITHDRAWAL_CONFIRMATION_URL}" target="_blank" class="conditions_info_link lightbox_iframe">{$WITHDRAWAL_CONFIRMATION_TEXT}</a></li>{/if}
+		</ul>
+		<br />
+
+		<form id="{$checkout_form_data.ID}" action="{$checkout_form_data.ACTION}" method="{$checkout_form_data.METHOD}">
+
+			{if $WITHDRAWAL}
+			<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/secrecy.png" alt="" /> {$payment.title_withdrawal}</h2>
+			<div class="remarks">
+				{if $CHECKBOX_WITHDRAWAL}
+					<p>{$payment.text_withdrawal}</p>
+				{/if}
+				{if $WITHDRAWAL_IFRAME == 1}
+					<iframe src="{$WITHDRAWAL_IFRAME_URL}"></iframe>
+				{else}
+					<textarea name="{$withdrawal_data.NAME}" class="input-textarea {$withdrawal_data.CLASS}" readonly="readonly">{$withdrawal_data.TEXT}</textarea>
+				{/if}
+
+				{if $withdrawal_checkbox_data}
+					<div class="accept_box"><div class="accept_box_checkbox"><input class="accept_box_checkbox" type="checkbox" name="{$withdrawal_checkbox_data.NAME}" value="{$withdrawal_checkbox_data.VALUE}" {if $withdrawal_checkbox_data.CHECKED == 1}checked="checked" {/if} /></div><div class="accept_box_text">{$payment.text_accept_withdrawal}</div></div>
+				{/if}
+			</div>
+			{/if}
+
+			{if $AGB}
+			<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/secrecy.png" alt="" /> {$payment.title_agb}</h2>
+			<div class="remarks">
+				{if $CHECKBOX_AGB}
+					<p>{$payment.text_agb}</p>
+				{/if}
+				{if $AGB_IFRAME == 1}
+					<iframe src="{$AGB_IFRAME_URL}"></iframe>
+				{else}
+					<textarea name="{$conditions_data.NAME}" class="input-textarea {$conditions_data.CLASS}" readonly="readonly">{$conditions_data.TEXT}</textarea>
+				{/if}
+
+				{if $conditions_checkbox_data}
+					<div class="accept_box"><div class="accept_box_checkbox"><input class="accept_box_checkbox" type="checkbox" name="{$conditions_checkbox_data.NAME}" value="{$conditions_checkbox_data.VALUE}" {if $conditions_checkbox_data.CHECKED == 1}checked="checked" {/if} /></div><div class="accept_box_text">{$payment.text_accept_agb}</div></div>
+				{/if}
+			</div>
+			{/if}
+			
+			<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/comments.png" alt="" />{$payment.title_comments}</h2>
+			<div class="remarks">
+				<p>{$payment.text_comments}</p>
+
+				<textarea id="comments_textarea" name="{$COMMENTS_NAME}" wrap="{$COMMENTS_WRAP}" class="input-textarea">{$COMMENTS_VALUE}</textarea>
+				<input type="hidden" name="{$COMMENTS_HIDDEN_NAME}" value="{$COMMENTS_HIDDEN_VALUE}" />
+			</div>	
+			<br /><br />
+
+		</form>
+		
+		<div class="cols2">
+			{if $ADDRESS_SHIPPING_LABEL}
+				<div class="col">
+					<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/address.png" alt="" /> {$txt.title_shipping_address}</h2>
+					<p>{$ADDRESS_SHIPPING_LABEL}</p>
+					{if $SHIPPING_ADDRESS_EDIT}<p><a class="button_blue button_set" href="{$SHIPPING_ADDRESS_EDIT}"><span class="button-outer"><span class="button-inner">{$button.address_change}</span></span></a></p>{/if}
+				</div>
+			{/if}
+			<div class="col last">
+				<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/address.png" alt="" /> {$txt.title_payment_address}</h2>
+				<p>{$ADDRESS_PAYMENT_LABEL}</p>
+				{if $BILLING_ADDRESS_EDIT}<p><a class="button_blue button_set" href="{$BILLING_ADDRESS_EDIT}"><span class="button-outer"><span class="button-inner">{$button.address_change}</span></span></a></p>{/if}
+			</div>
+			
+		</div>
+
+		{if $ADDRESS_SHIPPING_LABEL}
+			<h2 class="underline overline"><img class="png-fix" src="{$tpl_path}img/icons/shipping.png" alt="" />{$txt.title_shipping}</h2>
+			<div class="order_shipping">
+				<form id="{$shipping_form_data.ID}" action="{$shipping_form_data.ACTION}" method="{$shipping_form_data.METHOD}">
+					<input type="hidden" name="{$shipping_hidden_data.NAME}" value="{$shipping_hidden_data.VALUE}" />
+					{$SHIPPING_BLOCK}
+					{foreach name=payment_hidden item=hidden_field from=$payment_hidden_fields_data}
+					<input type="hidden" name="{$hidden_field.NAME}" value="{$hidden_field.VALUE}" />
+					{/foreach}
+				</form>
+			</div>
+		{/if}
+
+		<h2 class="underline overline">
+			<img class="png-fix" src="{$tpl_path}img/icons/products.png" alt="" />
+			{$txt.text_products}
+		</h2>
+		
+		<div id="products_overview">
+			<table cellspacing="0">
+				<tr>
+					<th>&nbsp;</th>
+					<th>{$txt.head_products}</th>
+					<th>{$txt.head_single_price}</th>
+					<th>{$txt.head_units}</th>
+					<th class="product_total_price">{$txt.head_price}</th>
+				</tr>
+
+			{foreach name=products_data item=products_item_array from=$products_data}
+				<tr class="{if $smarty.foreach.products_data.last}last{/if}">
+					<td class="product_image">{if $products_item_array.products_image}<img src="{$products_item_array.products_image}" alt="{$products_item_array.products_alt}" title="{$products_item_array.products_alt}" />{/if}<br /></td>
+					<td class="product_info">
+						<span class="product_name">{$products_item_array.products_name}</span>
+							{if $products_item_array.products_model}
+								<br />{$info.text_model}: {$products_item_array.products_model}
+							{/if}
+							{if $products_item_array.shipping_time}
+								<br />{$info.text_shipping_time}: {$products_item_array.shipping_time}
+							{/if}
+							{if $products_item_array.products_weight}
+								<br />{$info.text_weight}: {$products_item_array.products_weight} {$info.text_weight_unit}
+							{/if}
+
+							{foreach item=attributes_item_array from=$products_item_array.attributes}
+								{if $attributes_item_array.option != ''}
+									<br />
+									{$attributes_item_array.option}: {$attributes_item_array.value}
+								{/if}
+							{/foreach}
+							{foreach item=property from=$products_item_array.properties_array}
+								<br />
+								{$property.properties_name}: {$property.values_name}
+							{/foreach}
+							{if $products_item_array.checkout_information}
+								<br />
+								{$products_item_array.checkout_information}
+							{/if}
+							<br />
+							<a href="{$products_item_array.products_url}" class="lightbox_iframe" target="_blank">{$info.text_detail_information}</a>
+					</td>
+					<td class="product_price">
+						<span class="product_single_price">{$products_item_array.price_formated}</span>
+						{if $products_item_array.products_vpe_array.vpe_text}
+							<br />
+							{$products_item_array.products_vpe_array.vpe_text}
+						{/if}
+					</td>
+					<td class="product_quantity">{$products_item_array.quantity}{if $products_item_array.unit} {$products_item_array.unit}{/if}</td>
+					<td class="product_total_price">{$products_item_array.final_price}</td>
+				</tr>
+			{/foreach}
+
+			{foreach name=total_block item=total_item_array from=$total_block}
+				<tr class="{if $smarty.foreach.total_block.last}total{/if}">
+					<td colspan="2">&nbsp;</td>
+					<td class="order_total_name" colspan="2">{$total_item_array.title}</td>
+					<td class="order_total_price">{$total_item_array.text}</td>
+				</tr>
+			{/foreach}
+			</table>
+			
+			{if $CONFIRMATION_INFO|strip_tags:true|trim}
+				<div id="confirmation_info">{$CONFIRMATION_INFO}</div>
+			{/if}
+		</div>		
+		
+		{if !$error}<div class="checkout_button"><a href="{page_url}#" class="button_green_big button_set_big paypal_action_submit"><span class="button-outer"><span class="button-inner">{$button.send_order}</span></span></a></div>{/if}
+		
+	</div>
+{if $LIGHTBOX == 'true'}
+	<a href="{$LIGHTBOX_CLOSE}" class="icon_lightbox_close_checkout button_close_lightbox" title="{$button.close}">{$button.close}</a>
+</div>
+{/if}

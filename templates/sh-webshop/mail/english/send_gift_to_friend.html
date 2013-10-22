@@ -1,0 +1,30 @@
+<table cellspacing="0" cellpadding="4" border="0" align="center" width="100%">
+    <tbody>
+        {if $gm_logo_mail}
+        <tr>
+            <td style="border-color: rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
+            <div align="right">{$gm_logo_mail}</div>
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <td>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">----------------------------------------------------------------------------------------          <br />
+            Gratulation, you received a gift voucher over: <b>{$AMMOUNT}</b><br />
+            ----------------------------------------------------------------------------------------<br />
+            <br />
+            This gift voucher is from: {$FROM_NAME}.</font></p>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><br />
+            Message: <br />
+            <br />
+            {$MESSAGE}<br />
+            <br />
+            Your personal gift voucher code is: <strong>{$GIFT_CODE}</strong>. You          can redeem this gift voucher during your order in our store,</font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">or with a click on the following link <a href="{$GIFT_LINK}">{$GIFT_LINK}</a>.          <br />
+            </font></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+{$EMAIL_SIGNATURE_HTML}

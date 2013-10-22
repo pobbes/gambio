@@ -1,0 +1,19 @@
+{config_load file="$language/lang_$language.conf" section="graduated_price"} 
+
+<div id="graduated_prices_detail" style="width: {$GRADUATED_BOX_WIDTH}px">
+
+	<div id="graduated_prices_detail_head">
+		{#heading_text#}
+	</div>
+	
+	<div id="graduated_prices_detail_body">
+		{foreach name=aussen item=module_data from=$module_content}
+		<div class="graduated_prices_detail_row">
+			<div class="graduated_prices_detail_left">{$module_data.QUANTITY} {if $module_data.UNIT != ''}{$module_data.UNIT}{else}{#unit#}{/if}</div>
+			<div class="graduated_prices_detail_right">{#pieces#} {$module_data.PRICE}{if $module_data.VPE}<br />{$module_data.VPE}{/if}</div>
+		</div>		
+		{/foreach}
+	</div>
+
+</div>
+

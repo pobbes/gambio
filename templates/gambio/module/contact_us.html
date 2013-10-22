@@ -1,0 +1,160 @@
+{config_load file="$language/lang_$language.conf" section="contact_us"}
+
+
+
+
+
+<div id="contact_us">
+
+
+
+	<h1>
+
+		{$CONTACT_HEADING}
+
+	</h1>
+
+	
+
+	{if $error_message!=''}
+
+	<div class="class_error">
+
+		{$error_message}
+
+	</div>
+
+	<br />
+
+	{/if}
+
+	
+
+	{if $CONTACT_CONTENT}
+
+		<div class="content_contact">{$CONTACT_CONTENT}</div>
+
+		<br />
+
+	{/if}
+
+
+
+	{if $success!='1'}
+
+	{$FORM_ACTION}
+
+	<div id="callback_necessary_info">{#text_required#}</div>
+
+	<h2>
+
+		{$CONTACT_HEADING}
+
+	</h2>
+
+	<div class="box_content">
+
+		<div class="cell_left">
+
+			{#text_name#}
+
+		</div>
+
+		<div class="cell_right">
+
+			{$INPUT_NAME}{#text_required_sign#}
+
+		</div>
+
+		<div class="cell_left">
+
+			{#text_email#}
+
+		</div>
+
+		<div class="cell_right">
+
+			{$INPUT_EMAIL}{#text_required_sign#}
+
+		</div>
+
+		<div class="cell_left">
+
+			{#text_message#}
+
+		</div>
+
+		<div class="cell_right">
+
+			{$INPUT_TEXT}
+
+		</div>
+
+		{if $GM_CONTACT_VVCODE == 'true'}
+
+		<div class="cell_left">
+
+			{#text_captcha#}
+
+		</div>
+
+		<div class="cell_right">
+
+			{$CAPTCHA}
+
+		</div>
+
+		<div class="cell_left">
+
+			{#text_input_captcha#}
+
+		</div>
+
+		<div class="cell_right">
+
+			{$INPUT_CAPTCHA}{#text_required_sign#}
+
+		</div>
+
+
+		{/if}
+
+		{if $GM_PRIVACY_LINK != '0'}
+		<br />
+		<div id="gm_privacy">	
+			{$GM_PRIVACY_LINK}
+		</div>	
+		<br />		
+		{/if}
+
+		<div class="cell_right align_right">
+
+			{$BUTTON_SUBMIT}
+
+		</div>
+
+	</div>
+
+	{$FORM_END}
+
+	{else}
+
+	<h2>
+
+		{$CONTACT_HEADING}
+
+	</h2>
+
+	<div class="box_content">
+
+		<div>
+
+			{#text_success#}
+
+		</div>
+
+	</div>
+
+	{/if}
+
+</div>

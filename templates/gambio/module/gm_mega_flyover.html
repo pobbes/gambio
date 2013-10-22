@@ -1,0 +1,26 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+<div id="flyover_box">
+	<div id="flyover_title">
+		{$PRODUCTS_NAME|truncate:$GM_TRUNCATE:"...":true}
+	</div>		
+	
+	<div id="flyover_image">{if $PRODUCTS_IMAGE!=''}<img src="{$PRODUCTS_IMAGE}" border="0">{/if}</div>
+	
+	<div id="flyover_body" style="padding-left:{$gm_image_width}px">
+		{$PRODUCTS_SHORT_DESCRIPTION|strip_tags:true|truncate:$GM_TRUNCATE_TEXT:"...":false}		
+		<br />
+		<br />
+		<span class="strong">
+			{$PRODUCTS_PRICE}
+			{if $PRODUCTS_VPE}
+				<br /><span class="gm_products_vpe">{$PRODUCTS_VPE}</span><br />
+				</span>
+			{else}
+				</span><br/>
+			{/if}
+		{if $PRODUCTS_TAX_INFO neq '' || $PRODUCTS_SHIPPING_LINK neq ''}
+			<span class="small">({$PRODUCTS_TAX_INFO}{$PRODUCTS_SHIPPING_LINK})</span>
+		{/if}
+	</div>	
+</div>

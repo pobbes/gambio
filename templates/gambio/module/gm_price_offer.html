@@ -1,0 +1,84 @@
+<div id="gm_price_offer">
+	
+	<h1>&quot;{$PRODUCT_NAME}&quot;{$PRICE_OFFER_TITLE}</h1>
+	
+	{if $VVCODE_ERROR}<div class="price_offer_error">{$VVCODE_ERROR}<br /><br /></div>{/if}
+	{if $ERROR}<div class="price_offer_error">{$ERROR}<br /><br /></div>{/if}
+	{if $MAIL_OUT}<div class="price_offer_success">{$MAIL_OUT}<br /><br /></div>{/if}
+	
+	<div class="price_offer_text">{$TEXT}<br /><br /></div>
+
+	<div style="overflow:hidden">
+	
+		{if $PRODUCT_IMAGE!=''}
+		<div id="price_offer_image">
+			<img src="{$PRODUCT_IMAGE}" alt="{$PRODUCT_NAME}" title="{$PRODUCT_NAME}" class="price_offer_image" />
+		</div>
+		{/if}
+		
+		<div id="price_offer_product_data">
+			<div class="price_offer_text_heading">{$PRODUCT_NAME}</div>
+			<div class="price_offer_text">{$PRODUCT_SHORT_DESCRIPTION}</div>
+			<div class="price_offer_text">{$ATTRIBUTES}</div>
+			<br />
+			<div class="price_offer_text_heading">{$OUR_PRICE}</div>
+			<div class="price_offer_text">{$PRODUCT_PRICE}</div>
+			<div class="price_offer_text">{$PRODUCTS_TAX_INFO}{if $PRODUCTS_SHIPPING_LINK}{$PRODUCTS_SHIPPING_LINK}{/if}</div>
+		</div>
+		
+		<div id="price_offer_necessary_info">{$NECESSARY_INFO}</div>
+		{$FORM_ACTION}
+		
+			<div id="price_offer_form" class="form_style_price_offer">
+					
+				<div id="price_offer_input_desc">
+				
+					<div class="price_offer_input">{$NAME}</div>
+					<div class="price_offer_input">{$EMAIL}</div>
+					<div class="price_offer_input">{$TELEPHONE}</div>
+					<div class="price_offer_input">{$PRICE}</div>
+					<div class="price_offer_input">{$OFFERER}</div>
+					<div class="price_offer_input">{$LINK}</div>
+					<div class="price_offer_input1">{$MESSAGE}</div>
+					{if $VALIDATION_ACTIVE == 'true'}
+					<div class="price_offer_input2">{$VALIDATION}</div>
+					{/if}
+				</div>
+				
+				<div id="price_offer_input">
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_name" name="name" value="{$INPUT_NAME}" /> *</div>
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_email" name="email" value="{$INPUT_EMAIL}" /> *</div>
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_telephone" name="telephone" value="{$INPUT_TELEPHONE}" /></div>
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_price" name="price" value="{$INPUT_PRICE}" /></div>
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_offerer" name="offerer" value="{$INPUT_OFFERER}" /></div>
+					<div class="price_offer_input"><input type="text" id="gm_price_offer_link" name="link" value="{$INPUT_LINK}" /> *</div>
+					<div class="price_offer_input1"><textarea  id="gm_price_offer_message" name="message">{$INPUT_MESSAGE}</textarea></div>
+					{if $VALIDATION_ACTIVE == 'true'}
+					<div class="price_offer_input2">
+						<div id="gm_price_offer_vvcode_image"><img src="gm_create_vvcodes.php?XTCsid={$SID}" alt="" /></div>
+						<input type="text" class="price_offer_fields" name="vvcode" id="gm_price_offer_vvcode" maxlength="6" /> *
+					</div>
+					{/if}
+				</div>
+
+				{if $GM_PRIVACY_LINK != '0'}
+				<br />
+				<div id="gm_privacy">	
+					{$GM_PRIVACY_LINK}
+				</div>	
+				<br />		
+				{/if}
+
+				<div id="price_offer_back">
+					{$BUTTON_BACK}
+				</div>
+				<div id="price_offer_send">
+					{$BUTTON_SUBMIT}
+				</div>
+				
+			</div>
+		{$FORM_END}
+	
+	</div>
+	
+</div>

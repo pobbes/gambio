@@ -1,0 +1,46 @@
+{if $options!=''}
+
+	<table class="details_attributes_selection" cellspacing="0">
+	
+	{php}$i=0;{/php}
+	
+	{foreach name=outer item=options_data from=$options} 
+		
+		{if $options_data.DATA || $GM_HIDE_OUT_OF_STOCK == 'false'}
+			<tr>
+				<td class="details_table_options_name" colspan="4">
+					{$options_data.NAME}:
+				</td>
+			</tr>
+			
+			{foreach key=key_data item=item_data from=$options_data.DATA}
+			<tr{cycle values=" class=\"details_table_light\", class=\"details_table_dark\""}>
+				<td class="details_table_options_radio">
+					<input type="radio" class="gm_attr_calc_input" name="id[{$options_data.ID}]" value="{$item_data.ID}"{php}if(!isset($chk)) echo ' checked="checked"'; $chk=true; {/php} />
+				</td>
+				<td>
+					<div class="details_table_options_text">{$item_data.TEXT}</div>
+					<div class="details_table_options_model">{if $item_data.MODEL}Art.Nr.: {$item_data.MODEL}{/if}</div>
+				</td>
+				<td>&nbsp;</td>
+				<td>
+					<div class="details_table_options_price">
+						{if $item_data.PRICE!=''}{$item_data.PREFIX}{$item_data.PRICE}{/if}{if $GM_SHOW_STOCK == 'true' && $options_data.NAME != 'downloads'} {$GM_STOCK_TEXT_BEFORE}{$item_data.GM_STOCK}{$GM_STOCK_TEXT_AFTER}{/if}
+					</div>
+				</td>
+			</tr>
+			{/foreach}
+			
+			<tr>
+				<td class="details_table_options_space"></td>
+			</tr>
+			
+			{php}unset($chk); $i++;{/php}
+			
+		{/if}	
+		
+	{/foreach} 
+	
+	</table>
+
+{/if}

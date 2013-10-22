@@ -1,0 +1,24 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+
+<div id="menubox_specials" class="c_specials">
+	<div id="menubox_specials_head" class="c_boxhead">
+		<a href="{$SPECIALS_LINK}"><img src="{$tpl_path}img/icon_more.gif" alt="{#heading_specials#}"  title="{#heading_specials#}" /></a>
+		{#heading_specials#}
+	</div>
+
+	<div id="menubox_specials_body">
+		{if $box_content.PRODUCTS_IMAGE}
+			<a href="{$box_content.PRODUCTS_LINK}"><img class="image_frame" src="{$box_content.PRODUCTS_IMAGE}" alt="{$box_content.PRODUCTS_IMAGE_ALT|default:$box_content.PRODUCTS_NAME}" title="{$box_content.PRODUCTS_IMAGE_ALT|default:$box_content.PRODUCTS_NAME}" /></a>
+		{/if}
+		<br />
+		<a href="{$box_content.PRODUCTS_LINK}">{$box_content.PRODUCTS_NAME}</a><br />
+		<strong>{$box_content.PRODUCTS_PRICE}</strong><br />
+		{if $box_content.PRODUCTS_VPE}{$box_content.PRODUCTS_VPE}<br />{/if}
+		
+		{if $box_content.PRODUCTS_TAX_INFO neq '' || $box_content.PRODUCTS_SHIPPING_LINK neq ''}
+			({$box_content.PRODUCTS_TAX_INFO}{$box_content.PRODUCTS_SHIPPING_LINK})
+		{/if}
+					
+	</div>
+</div>

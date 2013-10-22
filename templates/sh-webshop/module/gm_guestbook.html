@@ -1,0 +1,45 @@
+{$CONTENT_TEXT}
+<div id="gm_guestbook_success_message"></div>
+<div id="gm_guestbook_entries"></div>
+{if $GUESTBOOK_FORM == '1'}
+<form action="">
+<div id="gm_guestbook_error_message"></div>
+<div id="guestbook_new_entry" class="guestbook_head">{$NEW_ENTRY}</div>
+<div id="guestbook_necessary_info">{$NECESSARY_INFO}</div>
+	<div id="guestbook_form" class="form_style_guestbook">
+		
+		<div id="guestbook_input_desc">
+		
+			<div class="guestbook_input">{$NAME}:</div>
+			<div class="guestbook_input">{$EMAIL}:</div>
+			<div class="guestbook_input">{$HOMEPAGE}:</div>
+			<div class="guestbook_input1">{$MESSAGE}:</div>
+			{if $VALIDATION_ACTIVE == 'true'}
+			<div class="guestbook_input2">{$VALIDATION}:</div>
+			{/if}
+		</div>
+		
+		<div id="guestbook_input">
+			<div class="guestbook_input"><input type="text" id="gm_guestbook_name" value="{$NAME_VALUE}" /> *</div>
+			<div class="guestbook_input"><input type="text" id="gm_guestbook_email" value="" /></div>
+			<div class="guestbook_input"><input type="text" id="gm_guestbook_homepage" value="" /></div>
+			<div class="guestbook_input1"><textarea id="gm_guestbook_message" cols="" rows=""></textarea> *</div>
+			{if $VALIDATION_ACTIVE == 'true'}
+			<div class="guestbook_input2">
+				<div id="gm_guestbook_vvcode_image"><img src="{'gm_create_vvcodes.php'|xtc_href_link}" alt="" /></div>
+				<input type="text" id="gm_guestbook_vvcode" maxlength="6" /> *
+			</div>
+			{/if}
+		</div>
+		{if $GM_PRIVACY_LINK != '0'}
+		<br />
+		<div id="gm_privacy">	
+			{$GM_PRIVACY_LINK}
+		</div>	
+		<br />		
+		{/if}
+		<div id="guestbook_send"><img src="{$SEND}" id="guestbook_send_entry" alt="{$SEND}" title="{$SEND}" /></div>
+	</div>
+</form>
+{/if}
+<br />

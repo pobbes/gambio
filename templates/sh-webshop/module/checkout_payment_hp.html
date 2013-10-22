@@ -1,0 +1,42 @@
+{load_language_text section="checkout_payment"}
+{load_language_text section="buttons" name="button"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<!--
+   Released under the GNU General Public License (Version 2)
+   [http://www.gnu.org/licenses/gpl-2.0.html]
+-->
+
+<!-- PAYMENT -->
+{if $LIGHTBOX == 'true'}<div id="lightbox_content" style="display:none">{/if}
+- 		<div style="background-color: #FFFFFF;" class="{if $LIGHTBOX == 'true'}lightbox_block{/if}">
+
+		{$FORM_ACTION}
+
+		<div class="process_bar">
+			<ul>
+				<li><label><span>{$txt.text_shoppingcart}</span></label></li>
+				<li><label><span>{$txt.text_yourdata}</span></label></li>
+				<li class="active"><label><span>{$txt.text_shipandpay}</span></label></li>
+				<li><label><span>{$txt.text_confirm}</span></label></li>
+			</ul>
+		</div>
+		<h1></h1>
+
+		{if $error!=''}<div class="error">{$error}</div>{/if}
+
+		<h2 class="underline overline"></h2>
+		<div style="text-align: center ; border: 0px solid #000; width: 100%;" >
+
+			{$content}
+		</div>
+
+
+		<br/><br/>
+
+		{$FORM_END}
+	</div>
+{if $LIGHTBOX == 'true'}
+	<a href="{$LIGHTBOX_CLOSE}" class="icon_lightbox_close_checkout button_close_lightbox" title="{$button.close}">{$button.close}</a>
+</div>
+{/if}

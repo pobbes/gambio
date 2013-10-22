@@ -1,0 +1,13 @@
+{foreach item=group from=$content_data.DATA}
+  <div class="leftmenu_head" style="background-image:url(images/gm_icons/{$group.background})">{$group.title}</div>
+  <div class="leftmenu_collapse leftmenu_collapse_opened"> </div>
+  <ul class="leftmenu_box" id="{$group.id}">
+  {foreach item=item from=$group.menuitems}
+    {if $group.title == "FAVS"}
+      <li class="leftmenu_body_item"><a class="fav_content_item" id="{$item.id}" href="{$item.link}">{$item.title}</a></li>
+    {else}
+      <li class="leftmenu_body_item"><a class="fav_drag_item" id="{$item.id}" href="{$item.link}">{$item.title}</a></li>
+    {/if}
+  {/foreach}
+  </ul>
+{/foreach}

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!-- {load_language_text section="admin_menu"} -->
+<admin_menu>
+	<menugroup id="BOX_HEADING_MODULES">
+		<menuitem sort="54" link="mediafinanz.php" link_param="action=config" title="mediafinanz Konfiguration" />
+		<menuitem sort="55" link="mediafinanz.php" link_param="action=errors" title="mediafinanz Fehler" />
+		<menuitem sort="56" link="mediafinanz.php" link_param="action=claims" title="mediafinanz Forderungen" />
+	</menugroup>
+</admin_menu>

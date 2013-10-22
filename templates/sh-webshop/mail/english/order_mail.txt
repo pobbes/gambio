@@ -1,0 +1,55 @@
+{$address_label_customer}
+
+{if $PAYMENT_METHOD}Payment method: {$PAYMENT_METHOD}{/if}
+Order No.: {$oID}
+Date: {$DATE}
+{if $csID}Customer ID :{$csID}{/if}
+----------------------------------------------------------------------
+
+
+Dear {$NAME},
+
+thank you for your order in our onlineshop.
+
+{if $PAYMENT_MODUL=='moneyorder'}
+Our bank details:
+{php} echo MODULE_PAYMENT_MONEYORDER_PAYTO; {/php}
+{else}
+{$PAYMENT_INFO_TXT}
+{/if}
+
+{if $COMMENTS}
+Your Comments:
+{$COMMENTS}
+{/if}
+
+You ordered the following products:
+----------------------------------------------------------------------
+{foreach name=aussen item=order_values from=$order_data} 
+{$order_values.PRODUCTS_QTY} {if $order_values.UNIT}{$order_values.UNIT}{else}x{/if} {$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_PRICE}
+{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}Shipping time: {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}
+{if $order_values.PRODUCTS_ATTRIBUTES !=''}{$order_values.PRODUCTS_ATTRIBUTES}{/if}
+
+{/foreach}
+
+{foreach name=aussen item=order_total_values from=$order_total}
+{$order_total_values.TITLE}{$order_total_values.TEXT}
+{/foreach}
+
+
+{if $address_label_payment}
+Payment address
+----------------------------------------------------------------------
+{$address_label_payment}
+{/if}
+Shipping address 
+----------------------------------------------------------------------
+{$address_label_shipping}
+
+
+
+{$WITHDRAWAL_TEXT}
+
+{$AGB_TEXT}
+
+{$EMAIL_SIGNATURE_TEXT}

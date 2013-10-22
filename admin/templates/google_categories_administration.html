@@ -1,0 +1,31 @@
+{load_language_text section="google_categories_administration"}
+
+<table width="100%" border="0" bgcolor="#f3f3f3" style="border: 1px solid rgb(204, 204, 204); margin-top: 10px;">
+  <tbody><tr>
+	<td>
+	  <table width="100%" border="0" class="main">
+		<tbody><tr>
+		  <td style="font-size: 14px; font-weight: bold;">{$txt.category_headline}<br /><br /></td>
+		</tr>
+		<tr>
+		  <td>
+			<input type="text" class="text button_edit" value="{$txt.button_edit}" />
+			<input type="text" class="text select" value="{$txt.select_categorie}" />
+			<div class="google_category_list">
+				<div>{$txt.button_delete}</div>
+			</div>
+			<div class="google_category_list_add_button">
+				<a href="#" class="button">{$txt.button_category_add}</a>
+			</div>
+			<div class="google_category_list_add_box">
+				<hr />
+				<p class="add">{$txt.button_category_add}</p>
+				<p class="edit">{$txt.category_edit_headline}</p>
+				<input type="text" name="category_string" class="category_string" readonly="readonly" /><a href="#" class="button add">{$txt.button_add}</a><a href="#" class="button cancle">{$txt.button_cancel}</a>
+			</div>
+		  </td>
+		</tr>
+	  </tbody></table>
+	</td>
+  </tr>
+</tbody></table>

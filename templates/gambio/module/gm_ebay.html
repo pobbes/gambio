@@ -1,0 +1,44 @@
+{config_load file="$language/gm_lang_$language.conf" section="gm_ebay"}
+
+{if $GM_EBAY_AUCTIONS}
+
+	<ul id="content_box_ebay_body">
+	{foreach name=outer item=auctions from=$GM_EBAY_AUCTIONS}		
+		<li class="box_list">
+			<ul class="product_box">
+				<li class="product_box_top">
+					<a href="{$auctions.link}">{$auctions.title}</a>
+				</li>
+				<li class="product_box_image">
+					{if $auctions.image}
+						{$auctions.image}
+					{/if}
+				</li>
+				<li class="product_box_content">
+					{#gm_ebay_auction_end#} {$auctions.end_time}<br />
+					{if $auctions.bids}
+						{$auctions.bids}
+						{if $auctions.bids == 1}
+							{#gm_ebay_bid#}
+						{else}
+							{#gm_ebay_bids#}
+						{/if}
+						<br />
+					{/if}
+					{if $auctions.bids}{#gm_ebay_from#} {else}{/if}
+					{$auctions.price}<br />
+					
+				</li>
+				<li class="product_box_bottom">
+					<a href="{$auctions.link}">{$BUTTON_BUY_NOW}</a>
+				</li>
+			</ul>
+		</li>
+	{/foreach}
+</ul>
+{$GM_EBAY_NAVIGATION}
+
+{else}
+	{#gm_ebay_empty#}
+{/if}
+<br /><br />

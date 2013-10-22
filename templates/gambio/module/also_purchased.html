@@ -1,0 +1,52 @@
+{config_load file="$language/lang_$language.conf" section="also_purchased"}
+{config_load file="$language/gm_lang_$language.conf" section="also_purchased"}
+
+<div class="product_info_add_ons">
+		<div class="product_info_add_ons_head">
+			{#heading_text#}
+		</div>
+
+		 {foreach name=aussen item=module_data from=$module_content}
+			<div class="product_info_add_ons_product_box">
+				
+				<div class="product_info_add_ons_image_cell" style="width:{$GM_THUMBNAIL_WIDTH}px;">
+					{if $module_data.PRODUCTS_IMAGE}
+						<span id="alsopurchased_{$module_data.PRODUCTS_ID}" class="flyover_item"><a href="{$module_data.PRODUCTS_LINK}"><img class="image_frame" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME}" /></a></span>
+					{/if}
+					{if $module_data.PRODUCTS_FSK18=='true'}<img src="{$tpl_path}img/fsk18.gif" alt="fsk18.gif" title="fsk18.gif" />{/if}
+				</div>		
+				
+				<div class="product_info_add_ons_content_cell" style="margin-left:{$GM_THUMBNAIL_WIDTH}px;">
+
+				<div class="product_info_add_ons_header_cell">
+					<span class="product_info_add_ons_details_button">[ <a href="{$module_data.PRODUCTS_LINK}" class="product_link">{#details#}</a> ]</span>
+					<a href="{$module_data.PRODUCTS_LINK}" class="product_link">{$module_data.PRODUCTS_NAME}</a>			
+				</div>
+
+				<div class="product_info_add_ons_middle_cell">
+					{$module_data.PRODUCTS_SHORT_DESCRIPTION}
+				</div>
+					
+				<div class="product_info_add_ons_bottom_cell">
+					<span class="gm_price">{$module_data.PRODUCTS_PRICE}</span><br />
+					{if $module_data.PRODUCTS_TAX_INFO neq '' || $module_data.PRODUCTS_SHIPPING_LINK neq ''}
+						({$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK})<br />
+					{/if}					
+					{if $module_data.PRODUCTS_VPE}
+						{$module_data.PRODUCTS_VPE}<br />
+					{/if}
+
+					{if $module_data.PRODUCTS_SHIPPING_NAME}
+						{#text_shippingtime#}
+						{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+							<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+						{/if}
+						{$module_data.PRODUCTS_SHIPPING_NAME}
+					{/if}
+				
+					{$module_data.PRODUCTS_BUTTON_BUY_NOW|default:""}
+				</div>
+			</div>
+		</div>	
+	{/foreach}
+</div>

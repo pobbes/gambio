@@ -1,0 +1,91 @@
+{config_load file="$language/lang_$language.conf" section="checkout_success"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+<div id="checkout_success" class="checkout{if $LIGHTBOX == 'true'} lightbox_block{/if}">
+
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/danke.gif" />
+	</div>
+	
+	<div id="iconized_page_head">
+		{#title_success#}
+	</div>
+
+	{$FORM_ACTION}
+	
+	<div id="content_success">
+{*zmb clickandbuy*}
+{if $cbsc_status}
+  {if $cbsc_status == 'success' && $cbsc_result.isCommitted == 1}
+		<div class="heading_success">
+			{#heading_success#}
+		</div>
+		<div class="content">
+			{#text_success#}		
+		</div>
+{else}
+  <div class="contentsTopics" valign="top">
+  {#heading_cnb_error#}
+  </div>
+  <div class="main" valign="top">{#text_cnb_error#}</div>
+  {/if}
+{/if}	
+{*zmb clickandbuy end*}	
+		<div class="heading_success">
+			{#title_printorder#}
+		</div>
+		<div class="content">
+			{#text_printorder#}
+		{$BUTTON_PRINT}
+		</div>
+		
+		<div class="heading_success" id="thanks">
+			{#text_thankyou#}
+		</div>		<br />
+		{$TS_RATING}
+
+		<div class="content">
+			{if $GV_SEND_LINK}
+			<!--GV Code Start-->
+				{#gv_has_vouchera#}{$GV_SEND_LINK}{#gv_has_voucherb#}
+			<!--GV Code End-->
+		{/if}
+		</div>		
+		
+		<!-- Google Conversion-tracking start !-->
+		{if $google_tracking eq 'true'}
+			{$tracking_code}
+		{/if}
+		<!-- Google Conversion-tracking end !-->
+		
+		{if $downloads_content neq ''}
+			<br />{$downloads_content}
+		{/if}
+	</div>
+	
+	<div class="continue">
+		<div class="button_back"></div>
+		{if !$NC_SUCCESS_INFO}<div class="button_continue">{$BUTTON_CONTINUE}</div>{/if}
+	</div>	
+	
+	{$FORM_END}
+	
+	{$NC_SUCCESS_INFO}
+
+		{if $TRUSTED_BLOCK}
+			{$TRUSTED_BLOCK}
+		{/if}
+	
+	<div class="navbar_line"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></div>
+	<div class="navabar">
+		<div class="navabar_text">{#text_shipping_info#}</div>
+		<div class="navabar_text">{#text_payment_info#}</div>
+		<div class="navabar_text">{#text_confirm#}</div>
+		<div class="navabar_text_current">{#text_finished#}</div>
+	</div>
+	
+	<div id="footer">{#gm_window_close#}</div>
+
+</div>
+</div>

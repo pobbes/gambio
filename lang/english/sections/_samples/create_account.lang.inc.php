@@ -1,0 +1,40 @@
+<?php
+
+$t_language_text_section_content_array = array
+(
+  'heading_create_account' => 'Information on your customer account',
+  'heading_create_guest_account' => 'Your guest account',
+  'title_personal' => 'Your personal details',
+  'text_gender' => 'Gender',
+  'text_male' => 'Mr',
+  'text_female' => 'Miss/Ms/Mrs',
+  'text_firstname' => 'Firstname',
+  'text_lastname' => 'Lastname',
+  'text_birthdate' => 'Date of birth',
+  'text_email' => 'Email address',
+  'text_email_confirm' => 'Enter email again',
+  'title_company' => 'Company dates',
+  'text_company' => 'Company name',
+  'text_ustid' => 'vat No.',
+  'title_address' => 'your postal address',
+  'text_street' => 'No./Street',
+  'text_suburb' => 'House/Flat/etc.',
+  'text_code' => 'Postcode/ZIP',
+  'text_city' => 'Town',
+  'text_state' => 'County',
+  'text_country' => 'Country',
+  'title_contact' => 'Your contact informationen',
+  'text_tel' => 'Telefone nummer',
+  'text_fax' => 'Fax nummer',
+  'title_options' => 'Options',
+  'text_newsletter' => 'Newsletter',
+  'title_password' => 'Use a password to secure your information.',
+  'text_intro_password' => '',
+  'text_password' => 'Enter a password',
+  'text_confirmation' => 'Enter password again',
+  'text_must' => '* necessary information',
+  'title_privacy' => 'Privacy',
+  'title_customer_upload' => 'File-Upload',
+);
+
+?>

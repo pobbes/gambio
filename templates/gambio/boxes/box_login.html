@@ -1,0 +1,55 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+
+<div id="menubox_login" class="c_login">
+	<div id="menubox_login_head" class="c_boxhead">
+		{#heading_login#}
+	</div>
+	<div id="menubox_login_body">
+		{$FORM_ACTION}
+		<div class="left">
+			{#text_email#}
+		</div>
+		<div class="right">
+			{$FIELD_EMAIL}
+		</div>
+
+		<div class="left">
+			{#text_pwd#}
+		</div>
+
+		<div class="right">
+			{$FIELD_PWD}
+		</div>
+
+		<div class="left">
+			&nbsp;
+		</div>
+
+		<div class="right">
+			{$BUTTON}
+		</div>
+		
+		<div class="left">
+			&nbsp;
+		</div>
+
+		<div class="right">
+			<a href="{$LINK_CREATE_ACCOUNT}">
+				{#text_create_account#}
+			</a>
+		</div>
+		
+		<div class="left">
+			&nbsp;
+		</div>
+
+		<div class="right">
+			<a href="{$LINK_LOST_PASSWORD}">
+				{#text_password_forgotten#}
+			</a>
+		</div>		
+
+		{$FORM_END}
+	</div>
+</div>

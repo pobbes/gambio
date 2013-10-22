@@ -1,0 +1,61 @@
+body #gm_gprint_tabs {
+	padding: 0px;
+	overflow: hidden;
+	display: none;
+	height: 100%;
+}
+
+body #gm_gprint_tabs .gm_gprint_tab_active {
+	margin: 0px;
+	float: left;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	cursor: default;
+}
+
+body #gm_gprint_tabs .gm_gprint_tab {
+	margin: 0px;
+	float: left;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+body #gm_gprint_tabs span {
+	float: left;
+	white-space: nowrap;	
+}
+
+body #gm_gprint_content {
+	display: none;
+}
+
+#toolbar {
+	clear: both;
+}
+
+.input_number {
+	width: 40px;
+}
+
+.surfaces_groups, .delete_surfaces_groups {
+	cursor: pointer;	
+}
+
+.gm_gprint_flyover {
+	position: absolute;
+	display: none;
+	background-color: #d6e6f3;
+	border-style: dotted;
+	border-width: 1px;
+	margin: 2px;
+	padding: 5px;
+	z-index: 999;
+	cursor: move;
+}
+
+#gm_gprint_content input[type="file"] {
+	font-size: 12px;
+}

@@ -1,0 +1,27 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<div id="reviews">
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/kukoinfo.gif" alt="{#heading_reviews#}" title="{#heading_reviews#}" />
+	</div>
+	
+	<h1>
+		{#heading_reviews#} <a href="{$PRODUCTS_LINK}">{$PRODUCTS_NAME}</a>
+	</h1>
+	<br />
+	<table width="100%" border="0" cellspacing="0" cellpadding="3">
+		<tr> 
+			<td class="border_bottom">{#title_nr#}</td>
+			<td class="border_bottom">{#title_author#}</td>
+			<td class="border_bottom">{#title_rating#}</td>
+			<td class="border_bottom">{#title_date#}</td>
+		</tr>
+		{foreach name=aussen item=module_data from=$module_content} 
+		<tr> 
+			<td>{$module_data.ID}</td>
+			<td>{$module_data.AUTHOR}</td>
+			<td>{$module_data.RATING}</td>
+			<td>{$module_data.DATE}</td>
+		</tr>
+		{/foreach} 
+	</table>
+</div>

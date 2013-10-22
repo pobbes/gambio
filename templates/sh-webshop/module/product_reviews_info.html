@@ -1,0 +1,32 @@
+{load_language_text section="reviews"}
+{load_language_text section="buttons" name="button"}
+
+<div id="reviews-info">
+	<h1>{$txt.heading_product_reviews} <a href="{$PRODUCTS_LINK}">{$PRODUCTS_NAME}</a></h1>
+	<div class="rating-item clearfix">
+		<div class="rating-stars">
+			{$RATING}
+		</div>
+		<div class="rating-caption">
+			{$txt.label_author}<br />
+			{$txt.label_date}
+		</div>
+		<div class="rating-meta">
+			{$AUTHOR}<br />
+			{$DATE}
+		</div>
+		<div class="rating-comment">
+			{$REVIEWS_TEXT|default:'&nbsp;'}
+		</div>
+		<div class="rating-image">
+			<img src="{$IMAGE_URL}" border="0" />
+		</div>
+	</div>
+	<br />
+	<br />
+
+	<a href="{$BUTTON_BACK_LINK}" class="button_grey button_set"><span class="button-outer"><span class="button-inner">{$button.back}</span></span></a>
+
+	<a href="{$PRODUCTS_LINK}" class="button_blue button_set"><span class="button-outer"><span class="button-inner">{$button.to_the_product}</span></span></a>
+
+</div>

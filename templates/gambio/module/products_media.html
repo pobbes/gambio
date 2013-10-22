@@ -1,0 +1,21 @@
+{config_load file="$language/lang_$language.conf" section="products_media"} 
+
+<div id="products_media_head">
+	<div id="products_media_head_file">{#file#}</div>
+	<div id="products_media_head_size">{#size#}</div>
+</div>
+
+{foreach name=aussen item=module_data from=$module_content}
+	<div id="products_media_body">
+		<div class="products_media_icon">{$module_data.ICON}</div>
+		<div class="products_media_info">
+			<span class="filename">{$module_data.FILENAME}</span><br />			 
+			{$module_data.DESCRIPTION}
+		</div>
+		<div class="products_media_download">
+			
+			<div class="products_media_button">{$module_data.BUTTON}</div>
+			<div class="products_media_filesize">{$module_data.FILESIZE}</div>
+		</div>
+	</div>
+{/foreach}

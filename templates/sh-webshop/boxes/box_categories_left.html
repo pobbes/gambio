@@ -1,0 +1,26 @@
+                        
+                        {load_language_text section="box_categories"}        
+                        <!-- start: box_categories_left -->                
+                        <div class="c_categories categories submenu">
+                            
+                            <div class="module_heading"><span>{$txt.heading_categories}</span></div>
+                            
+                            <ul id="accordion" class="sidebar_box_links">{foreach name=cat_data item=categories_item from=$content_data.CATEGORIES_DATA}                        
+                                <li id="menu_cat_id_{$categories_item.data.id}" class="{if $smarty.foreach.cat_data.first}first{elseif $smarty.foreach.cat_data.last}last{/if}" >
+                                    <a href="{$categories_item.data.url}" rel="{$categories_item.data.id}" 
+                                        {if $categories_item.data.meta_description != ''} title="{$categories_item.data.meta_description|truncate:80:"..."|replace:'"':'&quot;'}"{/if}
+                                        
+                                        {if $categories_item.children|@count > 0} class="parent"{/if}>
+                                        
+                                        {$categories_item.data.name|replace:"&amp;":"&"|replace:"&":"&amp;"}
+                                        
+                                        {if $categories_item.data.products_count} ({$categories_item.data.products_count}){/if}
+        
+                                    </a>
+                                </li>{/foreach}
+                            </ul>
+        
+                        </div>
+                        <!-- end: box_categories_left -->
+
+

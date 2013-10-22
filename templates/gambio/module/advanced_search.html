@@ -1,0 +1,80 @@
+{config_load file="$language/lang_$language.conf" section="advanced_search"}
+
+<div id="advanced_search">
+	
+	<h1>
+		{#heading_search#}
+	</h1>
+	
+	{if $error}
+	<div class="class_error">
+		{$error}
+	</div>
+	{/if}
+	<br />
+	{$FORM_ACTION}
+	<div id="heading_box">
+		<div class="heading">
+			{#heading_search#}
+		</div>
+		<div class="heading_note">
+			<a href="{$HELP_LINK}">{#text_help#}</a>
+		</div>
+	</div>
+	<div class="box_content">
+		<div class="cell_left">
+			{#title_keywords#}
+		</div>
+		<div class="cell_right">
+			{$INPUT_KEYWORDS}
+		</div>
+		
+		<div class="cell_left">
+			{#text_categories#}
+		</div>
+		<div class="cell_right">
+			{$SELECT_CATEGORIES}
+		</div>
+		
+		<div class="cell_left">
+			{#text_manufacturer#}
+		</div>
+		<div class="cell_right">
+			{$SELECT_MANUFACTURERS}
+		</div>
+		<div class="cell_left">
+			{#text_min#}
+		</div>
+		<div class="cell_right">
+			{$SELECT_PFROM}
+		</div>
+		<div class="cell_left">
+			{#text_max#}
+		</div>
+		<div class="cell_right">
+			{$SELECT_PTO}
+		</div>
+		<div class="cell_left">
+			&nbsp;
+		</div>
+		<div class="cell_right">
+			{$ENTRY_SUBCAT}{#text_subkategories#}
+		</div>
+		{if $gm_opensearch_link}
+		<div class="cell_left">
+			&nbsp;
+		</div>
+		<div class="cell_right">
+			<span class="gm_opensearch" onclick="add_opensearch('{$gm_opensearch_link}', '{#text_opensearch#}');">{$gm_opensearch_link_text}</span>  [<span class="gm_opensearch_info">info</span>]
+		</div>
+		{/if}
+
+		<div class="cell_left">
+			&nbsp;
+		</div>		
+		<div class="cell_right">
+			{$BUTTON_SUBMIT}
+		</div>
+	</div>
+	{$FORM_END}
+</div>

@@ -1,0 +1,24 @@
+<table cellspacing="0" cellpadding="4" border="0" align="center" width="100%">
+    <tbody>
+        {if $gm_logo_mail}
+        <tr>
+            <td style="border-color: rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
+            <div align="right">{$gm_logo_mail}</div>
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <td><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong>Dear customer, </strong></font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><br />
+            <font size="2"><br />
+            We created an account for you. <br />
+            <br />
+            </font><font face="Verdana, Arial, Helvetica, sans-serif" size="1"><font size="2">         {if $COMMENTS}Comments: {$COMMENTS} <br />
+            {/if}         </font></font><font size="2"><br />
+            <br />
+            Login with following account/password:<br />
+            <br />
+            mail:  {$EMAIL} <br />
+            password:  {$PASSWORD}          </font></font></td>
+        </tr>
+    </tbody>
+</table>

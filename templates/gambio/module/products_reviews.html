@@ -1,0 +1,20 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+
+	<div id="products_reviews_head">
+		{#heading_reviews#}
+	</div>
+	{foreach name=aussen item=module_data from=$module_content} 
+		<div id="products_reviews_body">
+			<div class="box_left">
+				<span class="strong">{#text_author#}</span> {$module_data.AUTHOR} <br />
+				<span class="strong">{#text_date#}</span> {$module_data.DATE}	
+			</div>
+			<div class="box_right">
+				<span class="strong">{#text_rating#}</span> {$module_data.RATING}
+			</div>
+			<div class="box_text">
+				{$module_data.TEXT|truncate:150:" ..."} <a href="{$module_data.LINK}">{#text_reviews_link#}</a>
+			</div>
+		</div>
+	{/foreach}
+	{$BUTTON_WRITE}

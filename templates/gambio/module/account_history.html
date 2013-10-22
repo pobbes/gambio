@@ -1,0 +1,36 @@
+{config_load file="$language/lang_$language.conf" section="account_history"} 
+	
+<div id="account">
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{#heading_history#}" title="{#heading_history#}" />
+	</div>
+
+	<h1>
+		{#heading_history#}
+	</h1>
+	{foreach name=aussen item=order_data from=$order_content}				
+	<div class="heading_form">
+		<h2>
+			{#text_oid#}{$order_data.ORDER_ID}
+		</h2>
+	</div>
+	<div class="box_content">
+		<div class="cell_left strong">{#text_date#}</div>
+		<div class="cell_right">{$order_data.ORDER_DATE}</div>
+		<div class="cell_left strong">{#text_articles#}</div>
+		<div class="cell_right">{$order_data.ORDER_PRODUCTS}</div>
+		<div class="cell_left strong">{#text_total#}</div>
+		<div class="cell_right">{$order_data.ORDER_TOTAL}</div>
+		<div class="cell_left strong">{#text_status#}</div>
+		<div class="cell_right">{$order_data.ORDER_STATUS}</div>
+		<div class="cell_left strong">&nbsp;</div>
+		<div class="align_right">{$order_data.ORDER_BUTTON}</div>
+	</div>
+	{/foreach}
+	<div class="box_bottom">
+		{$SPLIT_BAR}
+	</div>
+	<div class="align_right">
+		{$BUTTON_BACK}
+	</div>
+</div>

@@ -1,0 +1,520 @@
+================================================================================
+2013-05-3 16-34-51 (127.0.0.1)
+WARNING(2): Illegal string offset 'products_name'
+  in C:\xampp\htdocs\gambio\templates\EyeCandy\source\classes\WhatsNewContentView.inc.php:141
+Backtrace: 
+#0  (#WhatsNewContentView) get_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes\whats_new.php:32]
+#1  include called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes.php:57]
+#2  require called at [C:\xampp\htdocs\gambio\index.php:84]
+
+================================================================================
+2013-05-3 16-35-00 (127.0.0.1)
+WARNING(2): Illegal string offset 'products_name'
+  in C:\xampp\htdocs\gambio\templates\EyeCandy\source\classes\WhatsNewContentView.inc.php:141
+Backtrace: 
+#0  (#WhatsNewContentView) get_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes\whats_new.php:32]
+#1  include called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes.php:57]
+#2  require called at [C:\xampp\htdocs\gambio\index.php:84]
+
+================================================================================
+2013-05-3 16-35-03 (127.0.0.1)
+WARNING(2): Illegal string offset 'products_name'
+  in C:\xampp\htdocs\gambio\templates\EyeCandy\source\classes\WhatsNewContentView.inc.php:141
+Backtrace: 
+#0  (#WhatsNewContentView) get_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes\whats_new.php:32]
+#1  include called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes.php:57]
+#2  require called at [C:\xampp\htdocs\gambio\login.php:38]
+
+================================================================================
+2013-05-3 16-35-39 (127.0.0.1)
+WARNING(2): Illegal string offset 'products_name'
+  in C:\xampp\htdocs\gambio\templates\EyeCandy\source\classes\WhatsNewContentView.inc.php:141
+Backtrace: 
+#0  (#WhatsNewContentView) get_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes\whats_new.php:32]
+#1  include called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes.php:57]
+#2  require called at [C:\xampp\htdocs\gambio\index.php:84]
+
+================================================================================
+2013-05-5 15-58-06 (127.0.0.1)
+WARNING(512): C:/xampp/htdocs/gambio/cache/LanguageTextManager2box_gm_scroller-persistent_data_cache-b4ea9ae76c49cbd9b5d357c18c9bf3be.pdc is not writable
+  in C:\xampp\htdocs\gambio\system\core\DataCache.inc.php:210
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\core\DataCache.inc.php:210]
+#1  (#DataCache) write_persistent_data called at [C:\xampp\htdocs\gambio\system\core\DataCache.inc.php:127]
+#2  (#DataCache) set_data called at [C:\xampp\htdocs\gambio\system\controls\LanguageTextManager.inc.php:58]
+#3  (#LanguageTextManager) LanguageTextManager called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#4  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#5  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\plugins\function.load_language_text.php:30]
+#6  smarty_function_load_language_text called at [C:\xampp\htdocs\gambio\templates_c\%%D2^D29^D29F61E6%%box_gm_scroller.html.php:6]
+#7  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1274]
+#8  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\system\views\ContentView.inc.php:243]
+#9  (#ContentView) build_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\classes\ScrollerContentView.inc.php:37]
+#10  (#ScrollerContentView) get_html called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes\gm_scroller.php:22]
+#11  include called at [C:\xampp\htdocs\gambio\templates\EyeCandy\source\boxes.php:37]
+#12  require called at [C:\xampp\htdocs\gambio\login.php:38]
+
+================================================================================
+2013-05-5 20-24-27 (127.0.0.1)
+WARNING(2): session_destroy(): Session object destruction failed
+  in C:\xampp\htdocs\gambio\includes\functions\sessions.php:126
+Backtrace: 
+#0  session_destroy called at [C:\xampp\htdocs\gambio\includes\functions\sessions.php:126]
+#1  xtc_session_destroy called at [C:\xampp\htdocs\gambio\system\views\LogoffContentView.inc.php:68]
+#2  (#LogoffContentView) get_html called at [C:\xampp\htdocs\gambio\logoff.php:43]
+
+================================================================================
+2013-06-18 14-39-22 (127.0.0.1)
+FATAL ERROR(256): template not found: sh-webshop
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\includes\application_top.php:236]
+#8  include called at [C:\xampp\htdocs\gambio\index.php:27]
+
+================================================================================
+2013-06-18 14-40-37 (127.0.0.1)
+FATAL ERROR(256): template not found: sh-webshop
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\includes\application_top.php:236]
+#8  include called at [C:\xampp\htdocs\gambio\index.php:27]
+
+================================================================================
+2013-06-18 14-40-39 (127.0.0.1)
+FATAL ERROR(256): template not found: sh-webshop
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\includes\application_top.php:236]
+#8  include called at [C:\xampp\htdocs\gambio\index.php:27]
+
+================================================================================
+2013-06-18 14-40-51 (127.0.0.1)
+FATAL ERROR(256): template not found: sh-webshop
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\admin\includes\application_top.php:399]
+#8  require called at [C:\xampp\htdocs\gambio\admin\start.php:21]
+
+================================================================================
+2013-06-18 14-41-08 (127.0.0.1)
+FATAL ERROR(256): template not found: sh-webshop
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\includes\application_top.php:236]
+#8  include called at [C:\xampp\htdocs\gambio\index.php:27]
+
+================================================================================
+2013-06-18 14-51-19 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-51-19 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-51-25 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-51-25 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-19 (127.0.0.1)
+WARNING(512): Smarty error: file:../slideradmin/includes/db_functions.inc.php is not readable
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103]
+#1  (#Smarty_ORIGIN) trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.get_php_resource.php:66]
+#2  smarty_core_get_php_resource called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:25]
+#3  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#4  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#5  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#6  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-19 (127.0.0.1)
+WARNING(2): include(): Filename cannot be empty
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-19 (127.0.0.1)
+WARNING(2): include(): Failed opening '' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-20 (127.0.0.1)
+WARNING(512): Smarty error: file:../slideradmin/includes/db_functions.inc.php is not readable
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103]
+#1  (#Smarty_ORIGIN) trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.get_php_resource.php:66]
+#2  smarty_core_get_php_resource called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:25]
+#3  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#4  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#5  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#6  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-20 (127.0.0.1)
+WARNING(2): include(): Filename cannot be empty
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-54-20 (127.0.0.1)
+WARNING(2): include(): Failed opening '' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-06 (127.0.0.1)
+WARNING(512): Smarty error: file:../slideradmin/includes/db_functions.inc.php is not readable
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103]
+#1  (#Smarty_ORIGIN) trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.get_php_resource.php:66]
+#2  smarty_core_get_php_resource called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:25]
+#3  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#4  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#5  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#6  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-06 (127.0.0.1)
+WARNING(2): include(): Filename cannot be empty
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-06 (127.0.0.1)
+WARNING(2): include(): Failed opening '' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-10 (127.0.0.1)
+WARNING(512): Smarty error: file:../slideradmin/includes/db_functions.inc.php is not readable
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1103]
+#1  (#Smarty_ORIGIN) trigger_error called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.get_php_resource.php:66]
+#2  smarty_core_get_php_resource called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:25]
+#3  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#4  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#5  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#6  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-10 (127.0.0.1)
+WARNING(2): include(): Filename cannot be empty
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 14-55-10 (127.0.0.1)
+WARNING(2): include(): Failed opening '' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009
+Backtrace: 
+#0  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:2009]
+#1  (#Smarty_ORIGIN) _include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\internals\core.smarty_include_php.php:40]
+#2  smarty_core_smarty_include_php called at [C:\xampp\htdocs\gambio\templates_c\%%C0^C0B^C0BA0119%%home.php.php:142]
+#3  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#4  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#5  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-05 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-05 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-08 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-08 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-09 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-09 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-12 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-12 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-14 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-06-14 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:141]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-11-38 (127.0.0.1)
+FATAL ERROR(4096): Object of class Smarty could not be converted to string
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:13
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#1  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#2  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-11-42 (127.0.0.1)
+FATAL ERROR(4096): Object of class Smarty could not be converted to string
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:13
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#1  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#2  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-15 (127.0.0.1)
+WARNING(2): include(includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-15 (127.0.0.1)
+WARNING(2): include(): Failed opening 'includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-16 (127.0.0.1)
+WARNING(2): include(includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-16 (127.0.0.1)
+WARNING(2): include(): Failed opening 'includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-33 (127.0.0.1)
+WARNING(2): include(../slideradmin/includes/db_functions.inc.php): failed to open stream: No such file or directory
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-18 15-13-33 (127.0.0.1)
+WARNING(2): include(): Failed opening '../slideradmin/includes/db_functions.inc.php' for inclusion (include_path='.;C:\xampp\php\PEAR')
+  in C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14
+Backtrace: 
+#0  include called at [C:\xampp\htdocs\gambio\templates_c\%%8D^8D5^8D509947%%home.html.php:14]
+#1  include called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1267]
+#2  (#Smarty_ORIGIN) fetch called at [C:\xampp\htdocs\gambio\includes\classes\Smarty\Smarty.class.php:1116]
+#3  (#Smarty_ORIGIN) display called at [C:\xampp\htdocs\gambio\index.php:153]
+
+================================================================================
+2013-06-24 15-21-51 (127.0.0.1)
+FATAL ERROR(256): template not found: EyeCandy
+  in C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74
+Backtrace: 
+#0  trigger_error called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:74]
+#1  (#TemplateControl) load_template called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:63]
+#2  (#TemplateControl) TemplateControl called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#3  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#4  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio\system\controls\TemplateControl.inc.php:47]
+#5  (#TemplateControl) get_instance called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php(211) : eval()'d code:1]
+#6  eval called at [C:\xampp\htdocs\gambio\system\core\MainFactory.inc.php:211]
+#7  (#MainFactory) create_object called at [C:\xampp\htdocs\gambio2\includes\application_top.php:236]
+#8  include called at [C:\xampp\htdocs\gambio2\index.php:27]
+

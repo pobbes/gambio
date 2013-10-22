@@ -1,0 +1,35 @@
+{if $FREE_SHIPPING && !$module_content} 
+
+<div class="module_name">{$FREE_SHIPPING_TITLE} {$FREE_SHIPPING_ICON}</div>
+<div class="bottom_dotted">
+	<div id="free" class="module_option_checked">
+		<div id="free_title" class="module_option_title">{$FREE_SHIPPING_DESCRIPTION}</div>
+	</div>	
+</div>
+
+{else} 
+
+	{foreach name=aussen item=module_data from=$module_content} 
+		
+		<div class="module_name">{$module_data.module} {$module_data.icon}</div>
+		
+		{if $module_data.error != ''} 
+			<div class="error">{$module_data.error}</div>
+		{else} 
+			
+			<div class="bottom_dotted"{if $PAYPAL_EXPRESS == 1} onclick="paypal_shipping.submit();"{/if}>
+			{foreach name=aussen item=method_data from=$module_data.methods} 
+				{php} $rand = rand(); {/php}
+				<div id="{php} echo $rand; {/php}" class="module_option_overflow module_option{if $method_data.checked}_checked{/if}">
+					<div id="{php} echo $rand; {/php}_title" class="module_option_title">{$method_data.title}</div>
+					<div id="{php} echo $rand; {/php}_radio" class="module_option_radio">{$method_data.radio_field}</div>
+					<div id="{php} echo $rand; {/php}_price" class="module_option_price{if $method_data.checked}_bold{/if}">{$method_data.price}</div>
+					<div class="cleary">&nbsp;</div>
+				</div>							 				
+			{/foreach}
+			</div>
+		{/if}
+		
+	{/foreach} 
+	
+{/if}

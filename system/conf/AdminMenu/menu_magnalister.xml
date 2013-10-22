@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!-- {load_language_text section="admin_menu"} -->
+
+<admin_menu>
+	<menugroup id="BOX_HEADING_MAGNALISTER" sort="60" background="../../includes/magnalister/images/magnalister_gambio_icon.png" title="Marketing">
+		{php}
+		if (function_exists('magnaExecute'))
+			$this->assign("__ml_found", magnaExecute(
+				'magnaGenerateSideNav', array ('out' => 'xml'), array(),
+				MAGNA_WITHOUT_DB_INSTALL | MAGNA_WITHOUT_AUTH | MAGNA_WITHOUT_ACTIVATION
+			));
+		{/php}
+		{if isset($__ml_found) && !empty($__ml_found)}
+		{$__ml_found}
+		{else}
+		<menuitem link="FILENAME_MAGNALISTER" title="magnalister Admin" />
+		{/if}
+	</menugroup>
+</admin_menu>

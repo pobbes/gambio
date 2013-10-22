@@ -1,0 +1,182 @@
+{load_language_text section="checkout_paypal"}
+{load_language_text section="buttons" name="button"}
+{load_language_text section="checkout_payment" name="payment"}
+{load_language_text section="checkout_confirmation" name="info"}
+
+<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+<div id="checkout_shipping" class="checkout{if $LIGHTBOX == 'true'} lightbox_block{/if}">
+
+	<div class="head">
+		<div id="iconizing_icon">
+			<img src="{$tpl_path}icons/bestellaufgeben.gif" />
+		</div>
+		
+		<div id="iconized_page_head">
+			{$txt.heading_checkout}
+		</div>
+	</div>
+
+	{if $error!=''}<div class="error">{$error}</div>{/if}
+	
+	<br /><br />
+	{if $PRIVACY_CONFIRMATION}<div class="conditions_info"><img src="{$tpl_path}img/arrow_green.gif" /> {$PRIVACY_CONFIRMATION}</div>{/if}
+	{if $CONDITIONS_CONFIRMATION}<div class="conditions_info"><img src="{$tpl_path}img/arrow_green.gif" /> {$CONDITIONS_CONFIRMATION}</div>{/if}
+	{if $WITHDRAWAL_CONFIRMATION}<div class="conditions_info"><img src="{$tpl_path}img/arrow_green.gif" /> {$WITHDRAWAL_CONFIRMATION}</div>{/if}	
+
+	<form id="{$checkout_form_data.ID}" action="{$checkout_form_data.ACTION}" method="{$checkout_form_data.METHOD}">
+		<div id="gm_checkout_payment">
+			{if $WITHDRAWAL}
+			<div class="heading">
+				<img src="{$tpl_path}icons/agb.gif"  alt="{$payment.title_withdrawal}" title="{$payment.title_withdrawal}" />
+				<h2>
+					{$payment.title_withdrawal}
+				</h2>
+				<div class="subtitle">{$payment.text_withdrawal}</div>
+			</div>
+
+			<div class="textbox">{$WITHDRAWAL}</div>
+			{/if}
+
+			{if $CHECKBOX_WITHDRAWAL}
+				<div class="accept_box"><div class="accept_box_checkbox"><input class="accept_box_checkbox" type="checkbox" name="{$withdrawal_checkbox_data.NAME}" value="{$withdrawal_checkbox_data.VALUE}" {if $withdrawal_checkbox_data.CHECKED == 1}checked="checked" {/if} /></div><div class="accept_box_text">{$payment.text_accept_withdrawal}</div></div>
+			{/if}
+
+			{if $AGB}
+			<div class="heading">
+				<img src="{$tpl_path}icons/agb.gif"  alt="{$payment.title_agb}" title="{$payment.title_agb}" />
+				<h2>
+					{$payment.title_agb}
+				</h2>
+				<div class="subtitle">{$payment.text_agb}</div>
+			</div>
+
+			<div class="textbox">{$AGB}</div>
+			{/if}
+
+			{if $CHECKBOX_AGB}
+				<div class="accept_box"><div class="accept_box_checkbox"><input class="accept_box_checkbox" type="checkbox" name="{$conditions_checkbox_data.NAME}" value="{$conditions_checkbox_data.VALUE}" {if $conditions_checkbox_data.CHECKED == 1}checked="checked" {/if} /></div><div class="accept_box_text">{$payment.text_accept_agb}</div></div>
+			{/if}
+
+			<div class="heading">
+				<img src="{$tpl_path}icons/anmerkungen.gif"  alt="{$payment.title_comments}" title="{$payment.title_comments}" />
+				<h2>
+					{$payment.title_comments}
+				</h2>
+				<div class="subtitle">{$payment.text_comments}</div>
+			</div>
+
+			<div class="textbox">{$COMMENTS}</div>
+		</div>
+		<br />
+
+		{if $MODULE_BUTTONS!=''} {$MODULE_BUTTONS}<br />{/if}
+	
+	</form>
+	<br /><br />
+	
+	<div class="shipping_address_block">
+		<div class="text_block_heading">{$txt.title_payment_address}:</div>
+		<div class="text_block">{$ADDRESS_PAYMENT_LABEL}</div>
+		<div class="text_block_button">{$BUTTON_PAYMENT_ADDRESS}</div>
+	</div>
+	<br />
+	
+	{if $ADDRESS_SHIPPING_LABEL}
+		<div class="shipping_address_block">
+			<div class="text_block_heading">{$txt.title_shipping_address}:</div>
+			<div class="text_block">{$ADDRESS_SHIPPING_LABEL}</div>
+			<div class="text_block_button">{$BUTTON_SHIPPING_ADDRESS}</div>
+		</div>
+		
+		<div class="heading">
+			<img src="{$tpl_path}icons/versandart.gif"  alt="{$txt.title_shipping}" title="{$txt.title_shipping}" />
+			<h2>
+				{$txt.title_shipping}
+			</h2>
+			<div class="subtitle">{$txt.text_shipping}</div>
+		</div>
+		
+		{$FORM_SHIPPING_ACTION}
+		{$SHIPPING_BLOCK}
+		{$PAYMENT_HIDDEN}
+		{$FORM_END}		
+	{/if}
+
+	<div class="heading">
+		<img src="{$tpl_path}icons/merkzettel.gif"  alt="{$txt.text_products}" title="{$txt.text_products}" />
+		<h2>
+			{$txt.text_products}
+		</h2>
+		<div class="subtitle">{$txt.text_products_subtitle}</div>
+	</div>
+
+	<div id="products_overview">
+		<table cellspacing="0">
+			<tr>
+				<th>&nbsp;</th>
+				<th>{$txt.head_products}</th>
+				<th>{$txt.head_single_price}</th>
+				<th>{$txt.head_units}</th>
+				<th class="product_total_price">{$txt.head_price}</th>
+			</tr>
+
+		{foreach name=products_data item=products_item_array from=$products_data}
+			<tr class="{if $smarty.foreach.products_data.last}last{/if}">
+				<td class="product_image">{if $products_item_array.products_image}<img src="{$products_item_array.products_image}" alt="{$products_item_array.products_alt}" title="{$products_item_array.products_alt}" />{/if}<br /></td>
+				<td class="product_info">
+					<span class="product_name">{$products_item_array.products_name}</span>
+						{if $products_item_array.products_model}
+							<br />{$info.text_model}: {$products_item_array.products_model}
+						{/if}
+						{if $products_item_array.shipping_time}
+							<br />{$info.text_shipping_time}: {$products_item_array.shipping_time}
+						{/if}
+						{if $products_item_array.products_weight}
+							<br />{$info.text_weight}: {$products_item_array.products_weight} {$info.text_weight_unit}
+						{/if}
+
+						{foreach item=attributes_item_array from=$products_item_array.attributes}
+							{if $attributes_item_array.option != ''}
+								<br />
+								{$attributes_item_array.option}: {$attributes_item_array.value}
+							{/if}
+						{/foreach}
+						{if $products_item_array.checkout_information}
+							<br />
+							{$products_item_array.checkout_information}
+						{/if}
+						<br />
+						<a href="{$products_item_array.products_url}" class="lightbox_iframe" target="_blank"><u>{$info.text_detail_information}</u></a>
+				</td>
+				<td class="product_price">
+					<span class="product_single_price">{$products_item_array.price_formated}</span>
+					{if $products_item_array.products_vpe_array.vpe_text}
+						<br />
+						{$products_item_array.products_vpe_array.vpe_text}
+					{/if}
+				</td>
+				<td class="product_quantity">{$products_item_array.quantity}{if $products_item_array.unit} {$products_item_array.unit}{/if}</td>
+				<td class="product_total_price">{$products_item_array.final_price}</td>
+			</tr>
+		{/foreach}
+
+		{foreach name=total_block item=total_item_array from=$total_block}
+			<tr class="{if $smarty.foreach.total_block.last}total{/if}">
+				<td colspan="2">&nbsp;</td>
+				<td class="order_total_name" colspan="2">{$total_item_array.title}</td>
+				<td class="order_total_price">{$total_item_array.text}</td>
+			</tr>
+		{/foreach}
+		</table>
+
+		{if $CONFIRMATION_INFO|strip_tags:true|trim}
+			<div id="confirmation_info">{$CONFIRMATION_INFO}</div>
+		{/if}
+	</div>
+
+	<p><a href="{page_url}#" class="paypal_action_submit"><img src="templates/gambio/buttons/{$language}/bestellung.gif" /></a><br /><br /></p>
+	
+	<div id="footer">{$button.close}</div>
+	
+</div>	
+</div>

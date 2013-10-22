@@ -1,0 +1,22 @@
+ {config_load file="$language/lang_$language.conf" section="boxes"}
+
+
+ 
+<div id="menubox_add_a_quickie" class="c_add_quickie">
+	<div id="menubox_add_a_quickie_head" class="c_boxhead">
+		{#heading_add_a_quickie#}
+	</div>
+
+	<div id="menubox_add_a_quickie_body">
+		{#text_quickie#}
+		
+		<div class="quickie_absolute">
+			{$FORM_ACTION}
+				<span class="quickie_text_field">{$INPUT_FIELD}</span><span class="quickie_submit">{$SUBMIT_BUTTON}</span>
+			{$FORM_END}
+		</div>
+
+		
+	</div>
+</div>
+

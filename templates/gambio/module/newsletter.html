@@ -1,0 +1,45 @@
+{config_load file="$language/lang_$language.conf" section="newsletter"}
+	
+<div id="account">
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{#heading_title#}" title="{#heading_title#}" />
+	</div>
+	<h1>
+		{#heading_title#}
+	</h1>
+	{$FORM_ACTION}	
+	{$info_message}
+	<div class="heading_form">
+		<h2>
+			{#heading_text#}
+		</h2>
+	</div>
+	<div class="box_content">
+		<div class="cell_left vvcode">{#text_sec_code#}</div>
+		<div class="cell_right vvcode">{$VVIMG}</div>
+		
+		<div class="cell_left">{#text_inp_code#}</div>
+		<div class="cell_right">{$INPUT_CODE}</div>
+
+		<div class="cell_left">{#text_email#}</div>
+		<div class="cell_right">{$INPUT_EMAIL}</div>
+
+		<div class="cell_left"></div>
+		<div class="cell_right">{$CHECK_INP}{#text_in#}</div>
+		
+		<div class="cell_left"></div>
+		<div class="cell_right">{$CHECK_DEL}{#text_out#}</div>
+
+		{if $GM_PRIVACY_LINK != '0'}
+		<br />
+		<div id="gm_privacy">	
+			{$GM_PRIVACY_LINK}
+		</div>	
+		<br />		
+		{/if}
+
+		<div class="box_left">{$BUTTON_BACK}</div>
+		<div class="align_right">{$BUTTON_SUBMIT}</div>				
+	</div>
+	</form>
+</div>

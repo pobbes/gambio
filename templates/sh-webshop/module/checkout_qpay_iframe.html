@@ -1,0 +1,28 @@
+{load_language_text section="checkout_success"}
+{load_language_text section="buttons" name="button"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div>
+	<div id="checkout_success" class="checkout">
+		
+		{$FORM_ACTION}
+		
+		<div id="content_qpay">
+		
+			<div class="heading_success">
+				{$CHECKOUT_HEADER}
+			</div>
+			<div class="content">
+				{$CHECKOUT_CONTENT}
+			</div>
+		
+		<div class="continue">
+			<div class="button_back"></div>
+			{if !$NC_SUCCESS_INFO}<div class="button_continue">{$BUTTON_CONTINUE}</div>{/if}
+		</div>	
+		</div>
+		
+		{$FORM_END}
+		<div id="footer">{$button.close}</div>
+	</div>
+</div>

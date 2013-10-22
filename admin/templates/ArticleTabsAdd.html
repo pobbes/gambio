@@ -1,0 +1,66 @@
+{load_language_text section="buttons"}
+<p><input type='text' id='tab_headline' style='width: 755px;' /></p>
+
+<p><textarea id='tab_content' name='tab_content' style='width: 755px; height: 300px;'></textarea></p>
+
+<div class="google_category_save">
+    <a href="#" class="button cancel" style="float: left;">{$txt.canel}</a>
+    <a href="#" class="button save" style="float: right;">{$txt.save}</a>
+    <div style="clear: both;"> <!-- --> </div>
+</div>
+
+{literal}
+<script type="text/javascript">
+    $('.lightbox_package_header').html('Tabs');    
+    
+    if(use_wysiwyg == true){
+        var fckeditor = new FCKeditor('tab_content');
+        fckeditor.BasePath = "gm/fckeditor/";
+        fckeditor.ToolbarSet = "Big";
+        fckeditor.Width = 755;
+        fckeditor.Height = 300;
+        fckeditor.Config["AutoDetectLanguage"] = true;
+        fckeditor.ReplaceTextarea();
+    }
+    
+    $('.lightbox_package_content .cancel').bind('click', function(){
+        lightbox_close();
+        return false;
+    });
+    
+    $('.lightbox_package_content .save').bind('click', function(){
+        var tmp_tab_content = '';
+        if(use_wysiwyg == true){
+            tmp_tab_content = $.trim(FCKeditorAPI.GetInstance('tab_content').GetHTML(true));
+        }else{
+            tmp_tab_content = $.trim($('#tab_content').val());
+        }
+        if($.trim($('.lightbox_package_content #tab_headline').val()) != '' && tmp_tab_content != ''){
+            var t_id = $(container).attr('id');
+            var t_id_array = t_id.split('_');
+            var t_lang_id = t_id_array[1];
+            
+            var t_product_tab_box = $('<div></div>').addClass('product_tab_box');
+			var t_product_tab_headline = $('<div></div>').addClass('product_tab_headline').text($.trim($('.lightbox_package_content #tab_headline').val()));
+            var t_input = $('<input name="products_tab_headline_'+t_lang_id+'[]" value="'+$.trim($('.lightbox_package_content #tab_headline').val())+'" />');
+            var t_textarea = $('<textarea name="products_tab_'+t_lang_id+'[]"></textarea>').val(tmp_tab_content);
+            var t_product_tab_delete = $('<img border="0" alt=""></img>').addClass('product_tab_delete').attr('src', 'images/buttons/button_cancel_red_cross.png');
+            var t_product_tab_edit = $('<img border="0" alt=""></img>').addClass('product_tab_edit').attr('src', 'images/buttons/button_edit_pencil.png');
+            var t_product_tab_clear = $('<div></div>').addClass('product_tab_clear').html('<!-- -->');
+            
+            $(t_product_tab_box).append(t_product_tab_headline).append(t_input).append(t_textarea).append(t_product_tab_delete).append(t_product_tab_edit).append(t_product_tab_clear);
+			if( $( ".product_tab_box", container).length > 0 )
+			{
+				$( ".product_tab_box:last", container).after(t_product_tab_box);
+			}
+			else
+			{
+				$( ".product_tabs_headline", container).after(t_product_tab_box);
+			}
+            
+            lightbox_close();
+        }
+        return false;
+    });
+</script>
+{/literal}

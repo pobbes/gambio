@@ -1,0 +1,121 @@
+{config_load file="$language/lang_$language.conf" section="account"}
+<div id="account">
+	
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{#heading_account#}" title="{#heading_account#}" />
+	</div>
+	<h1>
+		{#heading_account#}
+	</h1>
+	<div class="class_error">
+		{$error_message}
+	</div>
+	<div class="box_left">
+		<h2>
+			{#title_welcome#}
+		</h2>
+		<div class="box_content">
+			{#text_welcome#}
+			{if $LINK_LOGIN}
+				<br />
+				<a href="{$LINK_LOGIN}">{#text_login#}</a>
+			{/if}
+		</div>
+		
+		{if $products_history}
+			<h2>
+				{#title_viewed_products#}
+			</h2>
+							
+			{foreach name=history_products item=products_history from=$products_history}
+			<div class="box_content">
+				<div class="product_box">
+					{if $products_history.PRODUCTS_IMAGE!=''}
+						<a href="{$products_history.PRODUCTS_LINK}">
+							<img src="{$products_history.PRODUCTS_IMAGE}" alt="{$products_history.PRODUCTS_NAME}" border="0" />
+						</a>						
+					{/if}
+					<span class="gm_products_name">
+						<a href="{$products_history.PRODUCTS_LINK}">{$products_history.PRODUCTS_NAME}</a>
+					</span>
+					<br />
+					<span class="gm_products_price">
+						{$products_history.PRODUCTS_PRICE}
+					</span>
+					<br />
+					{if $products_history.PRODUCTS_VPE}{$products_history.PRODUCTS_VPE}<br />{/if}
+					{$products_history.PRODUCTS_TAX_INFO}{$products_history.PRODUCTS_SHIPPING_LINK}					
+					<br />					
+				</div>
+				<div class="product_box_bottom">
+					<a href="{$products_history.PRODUCTS_CATEGORY_URL}">{#text_goto_cat#}</a>
+				</div>
+			</div>				
+			{/foreach}			
+		{/if}
+
+		{if $order_content && $products_history eq ''}
+			<h2>
+				{#title_orders#}  <span class="smallHeading"><a href="{$LINK_ALL}">{#text_all#}</a></span>
+			</h2>
+			
+			<div class="box_content">
+				
+				{foreach name=aussen item=order_data from=$order_content}
+					<div class="td_left strong"><a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a></div>
+					<div class="td_right">&nbsp;</div>
+					<div class="td_left">{#order_nr#}{$order_data.ORDER_ID}</div>
+					<div class="td_right">{#order_total#}{$order_data.ORDER_TOTAL}</div>
+					<div class="td_left">{#order_status#} {$order_data.ORDER_STATUS}</div>
+					<div class="td_right">{$order_data.ORDER_BUTTON}</div>
+					<br />
+				{/foreach}			
+			</div>
+		{/if}
+	</div>
+
+	<div class="box_right">
+		<h2>
+			{#title_account#}
+		</h2>
+		<div class="box_content">
+			<a href="{$LINK_EDIT}">{#text_edit#}</a>
+			<br />
+			<a href="{$LINK_ADDRESS}">{#text_address#}</a>
+			<br />
+			{if $NO_GUEST == 1}
+			<a href="{$LINK_PASSWORD}">{#text_password#}</a>
+			<br />
+			{/if}
+			<a href="{$LINK_DELETE_ACCOUNT}">{#text_delete_account#}</a>			
+		</div>
+
+		{if $LINK_NEWSLETTER}
+		<h2>
+			{#title_notification#}
+		</h2>
+		<div class="box_content">
+			<a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a>
+		</div>
+		{/if}
+
+		{if $order_content && $products_history}
+			<h2>
+				<div style="float:left">{#title_orders#}</div><div class="smallHeading"><a href="{$LINK_ALL}">{#text_all#}</a></div>
+			</h2>
+
+			
+			<div class="box_content">			
+				{foreach name=aussen item=order_data from=$order_content}
+					<div class="td_left strong"><a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a></div>
+					<div class="td_right">&nbsp;</div>
+					<div class="td_left">{#order_nr#}{$order_data.ORDER_ID}</div>
+					<div class="td_right">{#order_total#}{$order_data.ORDER_TOTAL}</div>
+					<div class="td_left">{#order_status#} {$order_data.ORDER_STATUS}</div>
+					<div class="td_right">{$order_data.ORDER_BUTTON}</div>
+					<br />
+				{/foreach}			
+			</div>
+		{/if}
+	</div>
+</div>

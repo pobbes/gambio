@@ -1,0 +1,21 @@
+<table cellspacing="0" cellpadding="4" border="0" align="center" width="100%">
+    <tbody>
+        {if $gm_logo_mail}
+        <tr>
+            <td style="border-color: rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
+            <div align="right">{$gm_logo_mail}</div>
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <td><font face="Verdana, Arial, Helvetica, sans-serif" size="2"><strong>Dear {$NAME}, </strong><br />
+            <br />
+            The status of your order </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">{$ORDER_NR} from </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">{$ORDER_DATE} </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">changed.<br />
+            {if $NOTIFY_COMMENTS}<br />
+            Comments:  {$NOTIFY_COMMENTS} <br />
+            {/if} <br />
+            New status:  <b>{$ORDER_STATUS}</b> <br />
+            For questions, feel free to anwser to this mail. </font></td>
+        </tr>
+    </tbody>
+</table>

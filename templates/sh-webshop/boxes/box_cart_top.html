@@ -1,0 +1,67 @@
+{load_language_text section="box_cart_top"}
+
+<!-- start: box_cart_top -->
+
+{if $deny_cart neq 'true'}
+	{if $empty=='false'}
+		<div id="cart_on_top">
+			
+			<div id="cart_on_top_heading">{$txt.heading_cart}:</div>
+			
+			<div id="cart_on_top_body">
+				{php} $cnt=0; {/php}
+				{foreach name=aussen item=products_data from=$products}
+					{php} $cnt++; {/php}
+				{/foreach}
+						
+				<div id="box_cart_qty">
+					{php}
+						if($cnt <= 0) { {/php}{$txt.text_empty_cart}{php} }
+						if($cnt == 1) { {/php}{$txt.gm_cart_one_prod}{php} }
+						if($cnt >  1) { echo "$cnt ";{/php}{$txt.gm_cart_sev_prod}{php} }
+					{/php}
+				</div>	
+		
+        {if $DISCOUNT}{$txt.text_discount}&nbsp;{$DISCOUNT}<br>{/if}
+
+				{$UST}<strong>{$txt.text_total}</strong>{$TOTAL}{if $SHIPPING_INFO}<br />{$SHIPPING_INFO}{/if}
+				
+				{if $coupon_valid == 'true'}
+					<div class="box_overflow">
+						<div class="box_left">
+							<img src="{$tpl_path}img/img_gift.gif" alt="{$heading_cart}" title="{$heading_cart}" />
+						</div>
+						<div class="box_right">
+								{$txt.cart_coupon}
+								{$txt.coupon_amount}
+						</div>						
+					</div>
+				{/if}
+			</div>
+		</div>
+	
+	{else} <!-- cart has no content --> 
+		<div id="cart_on_top">
+
+			<div id="cart_on_top_heading">{$txt.heading_cart}:</div>
+		
+			<div id="cart_on_top_body">
+				{$txt.text_empty_cart}
+	
+				{if $coupon_valid == 'true'}
+					<div class="box_overflow">
+						<div class="box_left">
+							<img src="{$tpl_path}img/img_gift.gif" alt="{$heading_cart}" title="{$heading_cart}" />
+						</div>
+						<div class="box_right">
+								{$txt.cart_coupon}
+								{$txt.coupon_amount}
+						</div>						
+					</div>
+				{/if}
+			</div>
+		</div>
+	{/if}	
+{/if}
+
+<!-- end: box_cart_top -->

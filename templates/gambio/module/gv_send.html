@@ -1,0 +1,98 @@
+{config_load file="$language/lang_$language.conf" section="gv_send"}
+
+<div id="contact_us">
+	
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{$CONTACT_HEADING}" title="{$CONTACT_HEADING}" />
+	</div>
+	<h1>
+		{#heading_gvsend#}
+	</h1>	
+	
+{if $action eq 'process'}
+		<br />		
+		<h2>
+			{#heading_gvsend#}
+		</h2>
+		<div class="box_content">
+			{#text_success#}			
+			<br />
+			<br />
+			<div class="cell_left">
+				&nbsp;
+			</div>
+			<div class="cell_right align_right">
+				{$LINK_DEFAULT}  
+			</div>
+
+		</div>		
+{elseif $action eq 'send'}
+	{$FORM_ACTION}
+		<br />		
+		<h2>
+			{#heading_gvsend#}
+		</h2>
+		<div class="box_content">
+			{if $POST_MESSAGE neq ''}
+			{$MAIN_MESSAGE}
+			<br />
+			{$POST_MESSAGE}
+			{/if}
+			<br />
+			<br />
+			<div class="cell_left">
+				{$LINK_BACK}
+			</div>
+			<div class="cell_right align_right">
+				{$LINK_SUBMIT}   
+			</div>
+
+		</div>		
+		{$HIDDEN_FIELDS}		
+		{$FORM_END}
+
+	{elseif $action eq ''}
+
+		<div class="content_contact">{#heading_text#}</div>
+		
+		<br />
+
+		{$FORM_ACTION}
+		<h2>
+			{#heading_gvsend#}
+		</h2>
+		<div class="box_content">
+			<div class="cell_left">
+				{#entry_name#}
+			</div>
+			<div class="cell_right">
+				{$INPUT_TO_NAME}
+			</div>
+			<div class="cell_left">
+				{#entry_email#}
+			</div>
+			<div class="cell_right">
+				{$INPUT_EMAIL} {if $ERROR_EMAIL neq ''}{#error_entry_email_address_check#}{/if}
+			</div>
+			<div class="cell_left">
+				{#entry_amount#}
+			</div>
+			<div class="cell_right">
+				{$INPUT_AMOUNT} {if $ERROR_AMOUNT neq ''}{#error_entry_amount_check#}{/if}
+			</div>
+			<div class="cell_left">
+				{#entry_message#}
+			</div>
+			<div class="cell_right">
+				{$TEXTAREA_MESSAGE}
+			</div>
+			<div class="cell_left">
+				&nbsp;
+			</div>
+			<div class="cell_right align_right">
+				{$LINK_SUBMIT}
+			</div>
+		</div>
+		{$FORM_END}
+	{/if}
+</div>

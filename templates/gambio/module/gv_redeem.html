@@ -1,0 +1,31 @@
+{config_load file="$language/lang_$language.conf" section="gv_redeem"}
+<div id="contact_us">	
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{$CONTACT_HEADING}" title="{$CONTACT_HEADING}" />
+	</div>
+	<h1>
+		{#heading_gvredeem#}
+	</h1>	
+	<br />		
+	<h2>
+		{#heading_gvredeem#}
+	</h2>
+	<div class="box_content">
+		{#text_information#}
+		<br />
+		<br />
+		{if $error eq 'true'}
+			{#text_invalid_gv#}
+		{else}
+			{#text_valid_gva#} {$coupon_amount} {#text_valid_gvb#}
+		{/if}
+		<br />
+		<br />
+		<div class="cell_left">
+			&nbsp;
+		</div>
+		<div class="cell_right align_right">
+			{$LINK_DEFAULT}  
+		</div>
+	</div>
+</div>

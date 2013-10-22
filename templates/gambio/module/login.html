@@ -1,0 +1,61 @@
+{config_load file="$language/lang_$language.conf" section="login"}
+
+<div id="account">
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/login.gif" alt="{#heading_login#}" title="{#heading_login#}" />
+	</div>
+	
+	<h1>
+		{#heading_login#}
+	</h1>
+
+ 	{if $info_message!=''}
+		<br />
+			{$info_message}
+		<br />
+	{/if}
+	
+	<div class="box_left">
+
+		{if $account_option=='account' or $account_option=='both'} 
+			<h2>
+				{#title_new#}
+			</h2>
+			<div class="box_content">
+				{#text_new#}	
+				<br />
+				<br />
+				<div class="align_right">{$BUTTON_NEW_ACCOUNT}</div>							
+			</div>
+		{/if}
+
+		{if $account_option=='guest' or $account_option=='both'} 
+			<h2>
+				{#title_guest#}
+			</h2>
+			<div class="box_content">
+				{#text_guest#}
+				<br />
+				<br />
+				<div class="align_right">{$BUTTON_GUEST}</div>
+			</div>
+		{/if}
+	</div>
+
+
+	<div class="box_right">
+		{$FORM_ACTION}
+			<h2>
+				{#title_returning#}
+			</h2>
+			<div class="box_form">
+				<div class="box_main">
+					<div class="login_left">{#text_email#}</div><div class="login_right">{$INPUT_MAIL}</div>
+					<div class="login_left">{#text_password#}</div><div class="login_right">{$INPUT_PASSWORD}</div>
+					<div class="login_left">&nbsp;</div><div class="login_right"><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></div>
+					<div class="login_left">&nbsp;</div><div class="login_right">{$BUTTON_LOGIN}</div>
+				</div>
+			</div>
+		{$FORM_END}
+	</div>
+</div>

@@ -1,0 +1,84 @@
+/*
+   Released under the GNU General Public License (Version 2)
+   [http://www.gnu.org/licenses/gpl-2.0.html]
+*/
+
+html,body { 
+  background-color: #ffffff 
+}
+#defaultData{
+}
+#frontendForm{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-width: auto;
+}
+tr[id=notMandatoryRow] { 
+  display: none; 
+}
+tr[id=spacer1] { 
+  display: none; 
+}
+tr[id=spacer2] { 
+  display: none; 
+}
+tr[id=spacer3] { 
+  display: none; 
+}
+tr[id=spacer4] { 
+  display: none; 
+}
+tr[id=contactBlock] { 
+  display: none; 
+}
+tr[id=userInfoBlock] { 
+  display: none; 
+}
+tr[id=addressBlock] { 
+  display: none; 
+}
+tr#notMandatoryRow, tr#addressBlock, tr#userInfoBlock, tr#contactBlock, tr#spacer1, tr#spacer2, tr#spacer3, tr#spacer4 { 
+  display: none; 
+}
+td { 
+  color: #000000; 
+}
+input,select { 
+  color: #000000; 
+  background-color: #ffffff;
+}
+a:link { 
+  color:#000000; 
+}
+a:visited { 
+  color:#000000;
+}
+a:hover { 
+  color:#000000;
+}
+a:active { 
+  color:#000000;
+}
+a:focus { 
+  color:#000000;
+}
+.bar{
+  display: none;
+}
+select#paymentMethod{
+  display: none;
+}
+#paymentSelection{
+  display: none;
+}
+a#send{
+  float: right;
+  position: absolute;
+  right: 10px;
+}
+a#cancel{
+  float: left;
+  position: absolute;
+  left: 10px;
+}

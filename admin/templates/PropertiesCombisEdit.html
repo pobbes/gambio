@@ -1,0 +1,466 @@
+{load_language_text section="google_categories_administration"}
+<div class="template_properties_combis_edit">
+	<div class="template_porperties_combis_edit_content">	
+		<div class="navigation_buttons"><a href="#" class="button previous" style="float: left;">Zur&uuml;ck</a><a href="#" class="button next" style="float: right;">Weiter</a><div style="clear: both;"> <!-- --> </div></div>
+		<p>
+			<label>ID:</label>
+			<span style="height: 20px; line-height: 20px;">{$content_data.properties_combis_data.properties_combis_id}</span>
+		</p>
+		{foreach item=item_array from=$content_data.properties_combis_data.properties_dropdowns name=properties_dropdowns}	
+			<p>
+                            {if $item_array.properties_admin_name}
+				<label>{$item_array.properties_admin_name}:</label>
+                            {else}
+				<label>{$item_array.properties_name}:</label>
+                            {/if}
+				<select class="properties_values_select" name="properties_values_ids[]">
+					{foreach key=key2 item=item from=$item_array.properties_values_array name=properties_values_array}	
+						{if in_array($key2|replace:"pv_id-":"", $content_data.properties_combis_data.properties_values)}
+							<option value="{$key2|replace:"pv_id-":""}" selected="selected">{$item}</option>
+						{else}
+							<option value="{$key2|replace:"pv_id-":""}">{$item}</option>
+						{/if}
+					{/foreach}
+				</select>
+			</p>
+		{/foreach}
+		<p>
+			<label for="sort_order">Sortiernr:</label>
+			<input id="sort_order" name="sort_order" type="text" value="{$content_data.properties_combis_data.sort_order}" size="4" />
+		</p>
+		<p>
+			<label for="combi_model">Artikelnr:</label>
+			<input id="combi_model" name="combi_model" type="text" value="{$content_data.properties_combis_data.combi_model}" size="10" />
+		</p>
+		<p>
+			<label for="combi_quantity">Bestand:</label>
+			<input id="combi_quantity" name="combi_quantity" type="text" value="{$content_data.properties_combis_data.combi_quantity}" size="10" />
+		</p>
+		<p>
+			<label for="combi_weight">Gewicht:</label>
+			<input id="combi_weight" name="combi_weight" type="text" value="{$content_data.properties_combis_data.combi_weight}" size="10" />
+		</p>
+		<p>
+			<label for="combi_price">Preis:</label>
+			<input id="combi_price" name="combi_price" type="text" value="{$content_data.properties_combis_data.combi_price}" size="10" />
+		</p>
+		<p>
+			<label for="vpe_value">VPE:</label>
+			<input id="vpe_value" name="vpe_value" type="text" value="{$content_data.properties_combis_data.vpe_value}" size="10" />
+			<select name="products_vpe_id" id="products_vpe_id">
+				<option value="0"></option>
+				{foreach item=item_array2 from=$content_data.properties_combis_data.VPE_DATA name=vpe_data}
+					{if $item_array2.products_vpe_id == $content_data.properties_combis_data.products_vpe_id}
+						<option value="{$item_array2.products_vpe_id}" selected="selected">{$item_array2.products_vpe_name}</option>
+					{else}
+						<option value="{$item_array2.products_vpe_id}">{$item_array2.products_vpe_name}</option>
+					{/if}
+				{/foreach}
+			</select>
+		</p>
+		<p>
+			<label>Lieferzeit:</label>
+			<select name="shipping_status_id" id="shipping_status_id">
+				<option value="0"></option>
+				{foreach item=item_array2 from=$content_data.properties_combis_data.SHIPPING_STATUS_DATA name=shipping_status_data}
+					{if $item_array2.shipping_status_id == $content_data.properties_combis_data.combi_shipping_time_id}
+						<option value="{$item_array2.shipping_status_id}" selected="selected">{$item_array2.shipping_status_name}</option>
+					{else}
+						<option value="{$item_array2.shipping_status_id}">{$item_array2.shipping_status_name}</option>
+					{/if}
+				{/foreach}
+			</select>
+		</p>
+		<p>
+			<label>Bild:</label>
+			<input id="combi_image" name="combi_image" type="file" size="44" maxlength="100000" accept="text/*" />
+			{if $content_data.properties_combis_data.combi_image != ""}
+			<a href="../images/product_images/properties_combis_images/{$content_data.properties_combis_data.combi_image}" style="font-size: 12px; display: block; width: 80px; float: left; margin: 5px 0 0 120px;" target="blank"><img src="images/icons/icon_jpg.jpg" style="width: 11px; border: 0;" /> &Ouml;ffnen</a><span style="display: block; float: left; margin: 5px 0 0 10px;"><input type="checkbox" name="delete_image" id="delete_image" value="{$content_data.properties_combis_data.combi_image}" style="float: left; width: 16px; height: 16px;" />&nbsp;&nbsp;Bild l&ouml;schen</span>
+			{/if}
+			<span style="clear: both; display: block;"> <!-- --> </span>
+		</p>
+	</div>
+	<div style="width: 560px;"><a href="#" class="button cancel" style="float: left;">{$txt.button_cancel}</a><a href="#" class="button save_close" style="float: right; width: 160px;">{$txt.button_save} und Schlieﬂen</a><a href="#" class="button save" style="float: right;">{$txt.button_save}</a><div style="clear: both;"> <!-- --> </div></div>
+</div>
+{literal}
+<style>
+	.template_porperties_combis_edit_content{
+		width: 550px;
+	}
+	
+	.template_properties_combis_edit p{
+		margin: 6px 0;
+	}
+	
+	.template_properties_combis_edit label{
+		width: 120px;
+		height: 18px;
+		line-height: 18px;
+		display: block;
+		float: left;
+		cursor: pointer;
+	}
+	
+	.template_properties_combis_edit input{
+		width: 425px;
+		height: 20px;
+		line-height: 18px;
+		display: block;
+		padding: 0px;
+		margin: 0px;
+		border: 1px solid #ccc;
+		font-size: 11px;
+	}
+	
+	.template_properties_combis_edit select{
+		width: 427px;
+		height: 20px;
+		display: block;
+		margin: 0;
+		border: 1px solid #ccc;
+		font-size: 11px;
+	}
+	
+	#vpe_value{
+		width: 150px;
+		float: left;
+		margin: 0 20px 0 0;
+	}
+	
+	#products_vpe_id{
+		width: 255px;
+	}
+	
+	#combi_image{
+		width: 428px;
+		border: 1px solid #ccc;
+		padding: 0;
+		margin: 0;
+		float: right;
+	}
+	
+	.template_properties_combis_edit a.button.active{
+		height: 13px;
+		background: #fff url("../images/loading.gif") no-repeat center center !important;
+	}
+</style>
+
+<script type="text/javascript" src="../gm/javascript/jquery/plugins/ajaxfileupload/ajaxfileupload_uncompressed.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){		
+		if("${properties_combis_id}" == ""){
+			$(".lightbox_package_header").html("Kombination hinzuf&uuml;gen");
+			$(".navigation_buttons").hide();
+		}else{
+			$(".lightbox_package_header").html("Kombination bearbeiten");			
+			
+			if($("#box_properties_combis_row_${properties_combis_id}").next().attr("id") == undefined){
+				$(".next").css("visibility", "hidden");
+			}
+			
+			if($("#box_properties_combis_row_${properties_combis_id}").prev().attr("id") == ""){
+				$(".previous").css("visibility", "hidden");
+			}
+			
+			$(".previous").bind("click", function(){
+				var lightbox_package = $(".lightbox_package");
+				var prev_properties_id = $("#box_properties_combis_row_${properties_combis_id}").prev().attr("id").split("_")[4];
+				var url_param = {"products_id": "${products_id}",
+								 "properties_combis_id": prev_properties_id};
+				if(prev_properties_id != undefined){
+					$(this).addClass("active").html("");
+					$.ajax({
+						type: "POST",
+						url: "request_port.php?module=LightboxPluginAdmin",
+						data: {"action": "get_template", "template": "PropertiesCombisEdit.html", "className": "PropertiesCombis", "param": url_param},
+						success: function(template){
+							if(template.match(/WARNING\(512\)/) || template == ""){
+								lightbox_package.remove();
+								alert("Smarty Error - Unable to find Template");
+							}else{
+								$(".lightbox_package_content").empty();
+								$.template( "lightboxTemplate", template );
+								$.tmpl( template, url_param ).appendTo( ".lightbox_package_content" );
+							}			
+						},
+						error: function(){
+							lightbox_package.remove();
+							alert("Connection Error - Unable to connect to server");
+						}
+					});
+				}
+				return false;
+			});
+			
+			$(".next").bind("click", function(){
+				var lightbox_package = $(".lightbox_package");
+				var next_properties_id = $("#box_properties_combis_row_${properties_combis_id}").next().attr("id").split("_")[4];
+				var url_param = {"products_id": "${products_id}",
+								 "properties_combis_id": next_properties_id};
+				if(next_properties_id != undefined){
+					$(this).addClass("active").html("");
+					$.ajax({
+						type: "POST",
+						url: "request_port.php?module=LightboxPluginAdmin",
+						data: {"action": "get_template", "template": "PropertiesCombisEdit.html", "className": "PropertiesCombis", "param": url_param},
+						success: function(template){
+							if(template.match(/WARNING\(512\)/) || template == ""){
+								lightbox_package.remove();
+								alert("Smarty Error - Unable to find Template");
+							}else{
+								$(".lightbox_package_content").empty();
+								$.template( "lightboxTemplate", template );
+								$.tmpl( template, url_param ).appendTo( ".lightbox_package_content" );
+							}			
+						},
+						error: function(){
+							lightbox_package.remove();
+							alert("Connection Error - Unable to connect to server");
+						}
+					});
+				}
+				return false;
+			});
+		}
+		
+		$(".cancel").bind("click", function(){
+			lightbox_close();
+			return false;
+		});
+		
+		$(".save").bind("click", function(){
+			$(this).addClass("active").html();
+			
+			if("${properties_combis_id}" == ""){
+				var t_transfer_data = [];
+				t_transfer_data.push('module=properties_combis_exists');
+				t_transfer_data.push('products_id=${products_id}');
+				t_transfer_data.push('need_qty=false');
+
+				$.each($(".properties_values_select"), function(key, value){
+					t_transfer_data.push('properties_values_ids[]=' + $(value).val());
+				});
+
+				$.ajax({
+					url: 		'../request_port.php',
+					data: 		t_transfer_data.join('&'),
+					dataType: 	'json',
+					async: 		true,
+					success: 	function(response)
+								{
+									if(response == "0"){
+										upload_image_1();
+									}else{
+										$(".save").removeClass("active").html("Speichern");
+										alert("Kombination bereits vorhanden");
+									}								
+								}
+				});
+			}else{
+				upload_image_1();
+			}
+			
+			return false;
+		});
+		
+		$(".save_close").bind("click", function(){
+			$(this).addClass("active").html();
+			
+			if("${properties_combis_id}" == ""){
+				var t_transfer_data = [];
+				t_transfer_data.push('module=properties_combis_exists');
+				t_transfer_data.push('products_id=${products_id}');
+				t_transfer_data.push('need_qty=false');
+
+				$.each($(".properties_values_select"), function(key, value){
+					t_transfer_data.push('properties_values_ids[]=' + $(value).val());
+				});
+
+				$.ajax({
+					url: 		'../request_port.php',
+					data: 		t_transfer_data.join('&'),
+					dataType: 	'json',
+					async: 		true,
+					success: 	function(response)
+								{
+									if(response == "0"){
+										upload_image_2();
+									}else{
+										$(".save_close").removeClass("active").html("Speichern und schlieﬂen");
+										alert("Kombination bereits vorhanden");
+									}								
+								}
+				});
+			}else{
+				upload_image_2();
+			}			
+			
+			return false;
+		});
+		function upload_image_1(){
+			var inputs = [];
+			$('.template_properties_combis_edit input[type=text]').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			$('.template_properties_combis_edit input[type=checkbox]:checked').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			$('.template_properties_combis_edit select').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			inputs.push("products_id=${products_id}");
+			inputs.push("products_properties_combis_id=${properties_combis_id}");
+			inputs.push("combi_quantity_type=");
+			inputs.push("combi_price_type=plus");
+			
+			$.ajax({
+				data: 		inputs.join('&'),
+				url: 		"request_port.php?module=properties_combis_admin&action=save&type=properties_combis",
+				type: 		"POST",
+				timeout: 	2000,
+				dataType:	"text",
+				error: 		function(){ if(fb)console.log('error while sending properties_combis-create'); 
+										$(".save").removeClass("active").html("Speichern");},
+				success: 	function(p_result){
+					$.ajaxFileUpload({
+						url: 'request_port.php?module=properties_combis_image_upload&combis_id='+p_result,
+						secureuri: false,
+						fileElementId: "combi_image",
+						dataType: 'text',
+						success: function (data, status)
+						{
+							var t_table_container = $('#box_properties_combis_row_' + p_result);
+							t_table_container.remove();
+							var t_added = false;	
+
+							$.each($(".box_properties_combis_row"), function(){	
+								if(parseInt($(".properties_table_sortnr" ,this).html()) > parseInt($("#sort_order").val()) && t_added == false){
+									$(this).before('<tr id="box_properties_combis_row_'+p_result+'"></tr>');
+									t_added = true;
+								}
+							});		
+							if(t_added == false){
+								$(".properties_view2 table").append('<tr id="box_properties_combis_row_'+p_result+'"></tr>');
+							}
+							$.ajax({
+								url: 		'request_port.php?module=properties_combis_admin&action=load&type=properties_combis_table&properties_combis_id='+p_result,
+								timeout: 	2000,
+								dataType:	"text",
+								success: 	function(p_data)
+								{
+									$(".save").removeClass("active").html("Speichern");
+									$('#box_properties_combis_row_' + p_result).replaceWith(p_data);
+								},
+								error: function(){							
+									$(".save").removeClass("active").html("Speichern");
+								}
+							});
+							var url_param = {"products_id": "${products_id}",
+								 "properties_combis_id": p_result};
+							$.ajax({
+								type: "POST",
+								url: "request_port.php?module=LightboxPluginAdmin",
+								data: {"action": "get_template", "template": "PropertiesCombisEdit.html", "className": "PropertiesCombis", "param": url_param},
+								success: function(template){
+									if(template.match(/WARNING\(512\)/) || template == ""){
+										alert("Smarty Error - Unable to find Template");
+									}else{
+										$(".lightbox_package_content").empty();
+										$.template( "lightboxTemplate", template );
+										$.tmpl( template, url_param ).appendTo( ".lightbox_package_content" );
+									}			
+								},
+								error: function(){
+									alert("Connection Error - Unable to connect to server");
+								}
+							});
+						},
+						error: function (data, status, e)
+						{
+							if(fb)console.log('error while image upload');
+							$(".save").removeClass("active").html("Speichern");
+						}
+
+					});
+				}
+			});
+		}
+		
+		function upload_image_2(){
+			var inputs = [];
+			$('.template_properties_combis_edit input[type=text]').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			$('.template_properties_combis_edit input[type=checkbox]:checked').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			$('.template_properties_combis_edit select').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			inputs.push("products_id=${products_id}");
+			inputs.push("products_properties_combis_id=${properties_combis_id}");
+			inputs.push("combi_quantity_type=");
+			inputs.push("combi_price_type=plus");
+			
+			$.ajax({
+				data: 		inputs.join('&'),
+				url: 		"request_port.php?module=properties_combis_admin&action=save&type=properties_combis",
+				type: 		"POST",
+				timeout: 	2000,
+				dataType:	"text",
+				error: 		function(){ if(fb)console.log('error while sending properties_combis-create'); 
+										lightbox_close();},
+				success: 	function(p_result){
+					$.ajaxFileUpload({
+						url: 'request_port.php?module=properties_combis_image_upload&combis_id='+p_result,
+						secureuri: false,
+						fileElementId: "combi_image",
+						dataType: 'text',
+						success: function (data, status)
+						{
+							var t_table_container = $('#box_properties_combis_row_' + p_result);
+							t_table_container.remove();
+							var t_added = false;	
+
+							$.each($(".box_properties_combis_row"), function(){	
+								if(parseInt($(".properties_table_sortnr" ,this).html()) > parseInt($("#sort_order").val()) && t_added == false){
+									$(this).before('<tr id="box_properties_combis_row_'+p_result+'"></tr>');
+									t_added = true;
+								}
+							});		
+							if(t_added == false){
+								$(".properties_view2 table").append('<tr id="box_properties_combis_row_'+p_result+'"></tr>');
+							}
+							$.ajax({
+								url: 		'request_port.php?module=properties_combis_admin&action=load&type=properties_combis_table&properties_combis_id='+p_result,
+								timeout: 	2000,
+								dataType:	"text",
+								success: 	function(p_data)
+								{
+									$('#box_properties_combis_row_' + p_result).replaceWith(p_data);
+									lightbox_close();
+								},
+								error: function(){							
+									if(fb)console.log('error while getting new list template');
+									lightbox_close();
+								}
+							});
+						},
+						error: function (data, status, e)
+						{
+							if(fb)console.log('error while image upload');
+							lightbox_close();
+						}
+					});
+				}
+			});
+		}
+	});
+</script>
+{/literal}

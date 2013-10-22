@@ -1,0 +1,107 @@
+{load_language_text section="google_categories_administration"}
+<div class="template_properties_values_edit">
+	<div class="template_porperties_values_edit_content">		
+		{foreach item=item_array from=$content_data.properties_values_data.PROPERTIES_VALUES_NAMES name=properties_values_names}	
+			<p>
+				<label for="properties_values_name[{$item_array.code}]">Name ({$item_array.code}):</label>
+				<input id="properties_values_name[{$item_array.code}]" name="properties_values_name[{$item_array.code}]" type="text" value="{$item_array.properties_values_name}" size="20" />
+			</p>
+		{/foreach}
+		<p>
+			<label for="sort_order">Sortiernr:</label>
+			<input id="sort_order" name="sort_order" type="text" value="{$content_data.properties_values_data.sort_order}" size="4" />
+		</p>
+		<p>
+			<label for="value_model">Artikelnr:</label>
+			<input id="value_model" name="value_model" type="text" value="{$content_data.properties_values_data.value_model}" size="10" />
+		</p>
+		<p>
+			<label for="value_price">Preis:</label>
+			<input id="value_price" name="value_price" type="text" value="{$content_data.properties_values_data.value_price}" size="10" />
+		</p>
+	</div>
+	<div><a href="#" class="button cancel" style="float: left;">{$txt.button_cancel}</a><a href="#" class="button save" style="float: right;">{$txt.button_save}</a><div style="clear: both;"> <!-- --> </div></div>
+</div>
+{literal}
+<style>
+	.template_properties_values_edit label{
+		width: 120px;
+		height: 24px;
+		line-height: 24px;
+		display: block;
+		float: left;
+		cursor: pointer;
+	}
+	
+	.template_properties_values_edit input{
+		width: 435px;
+		height: 24px;
+		line-height: 22px;
+		display: block;
+		padding: 0px;
+		margin: 0px;
+		border: 1px solid #ccc;
+		font-size: 12px;
+	}
+	
+	.template_properties_values_edit select{
+		width: 435px;
+		height: 24px;
+		display: block;
+		padding: 3px 0px;
+		margin: 0px;
+		border: 1px solid #ccc;
+		font-size: 12px;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){		
+		if("${properties_values_id}" == ""){
+			$(".lightbox_package_header").html("Wert hinzuf&uuml;gen");
+		}else{
+			$(".lightbox_package_header").html("Wert bearbeiten");
+		}
+		
+		$(".cancel").bind("click", function(){
+			lightbox_close();
+			return false;
+		});
+		
+		$(".save").bind("click", function(){
+			var inputs = [];
+			$('.template_properties_values_edit input').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			$('.template_properties_values_edit select').each(function() 
+			{
+				inputs.push(this.name + '=' + escape(this.value));
+			});
+			inputs.push("properties_id=${properties_id}");
+			inputs.push("properties_values_id=${properties_values_id}");
+			inputs.push("price_type=plus");
+			
+			$.ajax({
+				data: 		inputs.join('&'),
+				url: 		"request_port.php?module=properties_admin&action=save&type=properties_values",
+				type: 		"POST",
+				async:		false,
+				timeout: 	2000,
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function()
+							{ 
+								$('#properties_table_container_${properties_id}').load(
+																					'request_port.php?module=properties_admin&action=load&type=properties_table&properties_id=${properties_id}', 
+																					function() {
+																						if(fb)console.log('loaded: properties_table_container_${properties_id}');
+																					}
+																				);
+								lightbox_close();
+							}
+			});
+			return false;
+		});
+	});
+</script>
+{/literal}

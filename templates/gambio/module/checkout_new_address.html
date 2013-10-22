@@ -1,0 +1,91 @@
+{config_load file="$language/lang_$language.conf" section="checkout_new_address"}
+
+<div class="heading">
+	<img src="{$tpl_path}icons/neueadresse.gif"  alt="{#title_new_address#}" title="{#title_new_address#}" />
+	<h2>
+		{#title_new_address#}
+	</h2>
+	<div class="subtitle">{#text_new_address#}</div>
+</div>
+
+<div class="text_must">{#text_must#}</div>
+
+{if $gender=='1'} 
+	<div class="gender">
+		<div id="left_gender" class="cell_left">{#text_gender#}</div>
+		<div id="gender" class="cell_right">{$INPUT_MALE} {$INPUT_FEMALE}
+		{if $error_gender}
+			<span class="class_error_message">{$error_gender}</span>
+		{/if}
+		</div>
+	</div>
+{/if} 
+
+<div id="left_firstname" class="cell_left">{#text_firstname#}</div>
+<div id="firstname" class="cell_right">{$INPUT_FIRSTNAME}
+{if $error_first_name}
+	<span class="class_error_message">{$error_first_name}</span>
+{/if}
+</div>
+
+<div id="left_lastname" class="cell_left">{#text_lastname#}</div>
+<div id="lastname" class="cell_right">{$INPUT_LASTNAME}
+{if $error_last_name}
+	<span class="class_error_message">{$error_last_name}</span>
+{/if}
+</div>
+
+
+{if $company=='1'} 
+	<div id="left_company" class="cell_left">{#text_company#}</div>
+	<div id="company" class="cell_right">{$INPUT_COMPANY}</div>
+{/if} 
+
+<div id="left_street" class="cell_left">{#text_street#}</div>
+<div id="street" class="cell_right">{$INPUT_STREET}
+{if $error_street}
+	<span class="class_error_message">{$error_street}</span>
+{/if}
+</div>
+
+{if $INPUT_SUBURB}
+<div id="left_suburb" class="cell_left">{#text_suburb#}</div>
+<div id="suburb" class="cell_right">{$INPUT_SUBURB}</div>
+{/if}
+
+<div id="left_code" class="cell_left">{#text_code#}</div>
+<div id="code" class="cell_right">{$INPUT_CODE}
+{if $error_post_code}
+	<span class="class_error_message">{$error_post_code}</span>
+{/if}
+</div>
+
+<div id="left_city" class="cell_left">{#text_city#}</div>
+<div id="city" class="cell_right">{$INPUT_CITY}
+{if $error_city}
+	<span class="class_error_message">{$error_city}</span>
+{/if}
+</div>
+
+{if $INPUT_STATE}
+<div class="gender">
+	<div id="left_state" class="cell_left">{#text_state#}</div>
+	<div id="state" class="cell_right">{$INPUT_STATE}
+	{if $error_state}
+		<span class="class_error_message">{$error_state}</span>
+	{/if}
+	</div>
+</div>		
+{/if}
+
+<div id="left_country" class="cell_left">{#text_country#}</div>
+<div id="country" class="cell_right">{$SELECT_COUNTRY}
+{if $error_country}
+	<span class="class_error_message">{$error_country}</span>
+{/if}
+</div>
+
+{if $new=='1'} 
+	{$CHECKBOX_PRIMARY}
+	{#text_standard#}
+{/if}

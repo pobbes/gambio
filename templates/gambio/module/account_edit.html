@@ -1,0 +1,102 @@
+{config_load file="$language/lang_$language.conf" section="account_edit"} 
+<div id="account">	
+	<div id="iconizing_icon">
+		<img src="{$tpl_path}icons/persdaten.gif" alt="{#heading_account#}" title="{#heading_account#}" />
+	</div>
+	
+	<h1>
+		{#heading_account#}
+	</h1>
+	<div class="cell_note">
+		{#text_must#}
+	</div>
+	{$FORM_ACTION}	
+	
+	<div class="heading">
+		<h2>
+			{#title_personal#}
+		</h2>
+	</div>
+	
+	<div class="box_form">
+		<div class="cell_left {if $error_gender} class_error{/if}">{#text_gender#}</div>
+		<div class="cell_right{if $error_gender} class_error{/if}">{$INPUT_MALE}{$INPUT_FEMALE}
+		{if $error_gender}
+			<span class="class_error_message">{$error_gender}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_first_name} class_error{/if}">{#text_firstname#}</div>
+		<div class="cell_right{if $error_first_name} class_error{/if}{if $error_first_name} class_error{/if}">{$INPUT_FIRSTNAME}
+		{if $error_first_name}
+			<span class="class_error_message">{$error_first_name}</span>
+		{/if}
+		</div>
+
+		
+		<div class="cell_left {if $error_last_name} class_error{/if}">{#text_lastname#}</div>
+		<div class="cell_right{if $error_last_name} class_error{/if}">{$INPUT_LASTNAME}
+		{if $error_last_name}
+			<span class="class_error_message">{$error_last_name}</span>
+		{/if}
+		</div>
+
+		{if $birthdate=='1'}
+			<div class="cell_left {if $error_birth_day} class_error{/if}">{#text_birthdate#}</div>
+			<div class="cell_right{if $error_birth_day} class_error{/if}">{$INPUT_DOB}
+			{if $error_birth_day}
+				<span class="class_error_message">{$error_birth_day}</span>
+			{/if}
+			</div>
+		{/if}
+		
+		<div class="cell_left {if $error_mail} class_error{/if}">{#text_email#}</div>
+		<div class="cell_right{if $error_mail} class_error{/if}">{$INPUT_EMAIL}
+		{if $error_mail}
+			<span class="class_error_message">{$error_mail}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left {if $error_tel} class_error{/if}">{#text_tel#}</div>
+		<div class="cell_right{if $error_tel} class_error{/if}">{$INPUT_TEL}
+		{if $error_tel}
+			<span class="class_error_message">{$error_tel}</span>
+		{/if}
+		</div>
+
+		<div class="cell_left">{#text_fax#}</div>
+		<div class="cell_right">{$INPUT_FAX}</div>
+		
+		{if $vat=='1'}
+			<div class="cell_left {if $error_vat} class_error{/if}">{#text_ustid#}</div>
+			<div class="cell_right{if $error_vat} class_error{/if}">{$INPUT_VAT}
+			{if $error_vat}
+				<span class="class_error_message">{$error_vat}</span>
+			{/if}
+			</div>
+		{/if}			
+
+		{if $check_privacy || $show_privacy}
+			<br />
+			<div class="cell_right{if $error_vat} class_error{/if}">
+			{$INPUT_PRIVACY}
+			{$PRIVACY_LINK}	
+			
+			{if $error_privacy}
+				<span class="class_error_message">{$error_privacy}</span>
+			{/if}
+			</div>
+		{/if}			
+		{if $GM_PRIVACY_LINK != '0'}
+		<br />
+		<div id="gm_privacy">	
+			{$GM_PRIVACY_LINK}
+		</div>	
+		<br />		
+		{/if}
+		<br />
+		<div class="box_left">{$BUTTON_BACK}</div>
+		<div class="box_right">{$BUTTON_SUBMIT}</div>
+	</div>		
+	{$FORM_END}
+</div>

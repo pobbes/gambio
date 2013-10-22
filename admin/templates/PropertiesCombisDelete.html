@@ -1,0 +1,75 @@
+{load_language_text section="google_categories_administration"}
+<div id="template_properties_combis_delete">
+	<p>M&ouml;chten Sie die Kombination wirklich l&ouml;schen?</p>
+	{foreach item=item_array from=$content_data.properties_combis_data.properties_dropdowns name=properties_dropdowns}	
+		<div>
+                {if $item_array.properties_admin_name}
+                    {$item_array.properties_admin_name}:
+                {else}
+                    {$item_array.properties_name}:
+                {/if}
+			{foreach key=key2 item=item from=$item_array.properties_values_array name=properties_values_array}	
+				{if in_array($key2|replace:"pv_id-":"", $content_data.properties_combis_data.properties_values)}
+					{$item}
+				{/if}
+			{/foreach}
+		</div>
+	{/foreach}
+	<div>Sortiernr: {$content_data.properties_combis_data.sort_order}</div>
+	<div>Artikelnr: {$content_data.properties_combis_data.combi_model}</div>
+	<div>Bestand: {$content_data.properties_combis_data.combi_quantity}</div>
+	<div>Gewicht: {$content_data.properties_combis_data.combi_weight} kg</div>
+	<div>Preis: {$content_data.properties_combis_data.combi_price}</div>
+	<div>VPE: {$content_data.properties_combis_data.vpe_value}&nbsp;
+		{foreach item=item_array2 from=$content_data.properties_combis_data.VPE_DATA name=vpe_data}
+			{if $item_array2.products_vpe_id == $content_data.properties_combis_data.products_vpe_id}
+				{$item_array2.products_vpe_name}
+			{/if}
+		{/foreach}</div>
+	{if $content_data.properties_combis_data.combi_image != ""}
+		<div><span style="float: left; margin: 0 10px 0 0;">Bild:</span> <a href="../images/product_images/properties_combis_images/{$content_data.properties_combis_data.combi_image}" style="font-size: 12px; display: block; width: 80px; float: left;" target="blank"><img src="images/icons/icon_jpg.jpg" style="width: 11px; border: 0;" /> &Ouml;ffnen</a><span style="clear: both; display: block;"> <!-- --> </span></div>
+	{/if}
+	<br />
+	<div><a href="#" class="button cancel" style="float: left;">Abbrechen</a><a href="#" class="button delete" style="float: right;">L&ouml;schen</a><div style="clear: both;"> <!-- --> </div></div>
+</div>
+{literal}
+<style>
+	#template_properties_combis_delete a.button.active{
+		height: 13px;
+		background: #fff url("../images/loading.gif") no-repeat center center !important;
+	}
+	
+	#template_properties_combis_delete div{
+		margin: 2px 0;
+	}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".lightbox_package_header").html("Kombination l&ouml;schen");
+		
+		$(".cancel").bind("click", function(){
+			lightbox_close();
+			return false;
+		});
+		
+		$(".delete").bind("click", function(){
+			$(this).addClass("active").html("");
+			var properties_combis_id_array = new Array();
+			properties_combis_id_array.push("${properties_combis_id}");
+			$.ajax({
+				data: 		{"properties_combis_id_array": properties_combis_id_array},
+				url: 		"request_port.php?module=properties_combis_admin&action=delete",
+				type: 		"POST",
+				async:		false,
+				timeout: 	2000,
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function(){ if(fb)console.log('success'); }
+			});
+			
+			$('#box_properties_combis_row_${properties_combis_id}').remove();
+			lightbox_close();
+			return false;
+		});
+	});
+</script>
+{/literal}

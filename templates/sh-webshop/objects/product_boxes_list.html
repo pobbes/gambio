@@ -1,0 +1,40 @@
+{config_load file="$language/lang_$language.conf" section="new_products"}{config_load file="$language/lang_$language.conf" section="index"}             
+                        <div class="article-list cols clearfix">
+{foreach item=module_data from=$content_data.PRODUCTS_DATA}                            
+                            <!-- start: product_box -->
+                            <div class="product_box left">                            
+                                <div class="product_box_inner">                                
+                                    <div class="product_image">{if $module_data.PRODUCTS_IMAGE}                                    
+                                       <span id="{$content_data.ID_PREFIX}_{$module_data.PRODUCTS_ID}" class="flyover_item">
+                                           <a href="{$module_data.PRODUCTS_LINK}">                                   
+                                               <img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME|replace:'"':'&quot;'}" title="{$module_data.PRODUCTS_IMAGE_ALT|default:$module_data.PRODUCTS_NAME|replace:'"':'&quot;'}" />
+                                           </a>
+                                        </span>
+                                    {/if}</div>
+                                    
+                                    <div class="product_description">
+                                        <a href="{$module_data.PRODUCTS_LINK}"{if $module_data.PRODUCTS_META_DESCRIPTION != ''} title="{$module_data.PRODUCTS_META_DESCRIPTION|truncate:80:"..."|replace:'"':'&quot;'}"{/if}>{$module_data.PRODUCTS_NAME|truncate:$content_data.TRUNCATE_PRODUCTS_NAME:"..."}</a>
+                                    </div>
+                                    
+                                    <div class="product_info">                                
+                                        <span class="product_details left">
+                                            <a href="{$module_data.PRODUCTS_LINK}">details</a>
+                                        </span>
+                                        
+                                        <span class="product_price right">
+                                            <a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_PRICE}</a>
+                                        </span>
+    
+                                        {if $module_data.PRODUCTS_TAX_INFO neq '' || $module_data.PRODUCTS_SHIPPING_LINK neq ''}<br />
+                                        {* <span class="small">{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}<br /></span> *}
+                                        {/if}
+                                        {if $module_data.PRODUCTS_VPE}
+                                        <span class="small">
+                                        {$module_data.PRODUCTS_VPE}
+                                        <br />
+                                        </span>{/if}
+                                    </div>
+                                </div>                        
+                            </div>                
+                            <!-- end: product_box -->{/foreach}                        
+                        </div>

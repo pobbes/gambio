@@ -1,0 +1,46 @@
+{load_language_text section="google_categories_administration"}
+<div>
+	<p>M&ouml;chten Sie die Eigenschaft wirklich l&ouml;schen?</p>
+	<div>ID: {$content_data.properties_data.properties_id}</div>
+     
+	{foreach item=item_array from=$content_data.properties_data.PROPERTIES_NAMES_FIELDS name=properties_names}
+            {if $item_array.properties_admin_name}
+                <div>Name ({$item_array.code}): {$item_array.properties_admin_name} ({$item_array.properties_name})</div>
+            {else}
+                <div>Name ({$item_array.code}): {$item_array.properties_name}</div>
+            {/if}     
+	{/foreach}
+	<div style="margin: 0 0 10px 0;">Sortiernummer: {$content_data.properties_data.sort_order}</div>
+	{if $content_data.properties_data.properties_in_combis_count > 0}
+		<div style="color: red; margin: 10px 0;">Hinweis: Diese Eigenschaft ist sind noch in {$content_data.properties_data.properties_in_combis_count} Kombinationen enthalten!</div>
+	{/if}
+	<div><a href="#" class="button cancel" style="float: left;">Abbrechen</a><a href="#" class="button delete" style="float: right;">L&ouml;schen</a><div style="clear: both;"> <!-- --> </div></div>
+</div>
+{literal}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".lightbox_package_header").html("Eigenschaft l&ouml;schen");
+		
+		$(".cancel").bind("click", function(){
+			lightbox_close();
+			return false;
+		});
+		
+		$(".delete").bind("click", function(){
+			$.ajax({
+				url: 		"request_port.php?module=properties_admin&action=delete&type=properties&properties_id=${properties_id}",
+				type: 		"GET",
+				async:		false,
+				timeout: 	2000,
+				error: 		function(){ if(fb)console.log('error'); },
+				success: 	function(){ 
+								if(fb)console.log('success'); 
+								$("#properties_table_container_${properties_id}").remove();
+								lightbox_close(); 
+							}
+			});
+			return false;
+		});
+	});
+</script>
+{/literal}

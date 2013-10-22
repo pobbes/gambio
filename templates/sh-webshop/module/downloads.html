@@ -1,0 +1,28 @@
+{load_language_text section="downloads"}
+
+{if $dl neq ''}
+<div class="product-documents clearfix">
+	<h4>{$txt.heading_download}</h4>
+	{if $dl_prevented == 'true'}
+	<h4>{$txt.download_not_allowed}</h4>
+	{else}
+		{foreach name=aussen item=dl_data from=$dl}
+		<dl>
+			<dt>
+			{if $dl_data.pic_link}
+				<a href="{$dl_data.pic_link}">
+					<img class="png-fix" src="{$tpl_path}img/icons/document.png" alt="" title="" border="0" />
+				</a>
+			{else}
+				<img class="png-fix" src="{$tpl_path}img/icons/document.png" alt="" title="" border="0" />
+			{/if}
+			</dt>
+			<dd>
+			{$dl_data.download_link}<br />
+			{$txt.text_download_count} {$dl_data.count} {$txt.text_download_date} {$dl_data.date_short}
+			</dd>
+		</dl>
+		{/foreach}
+	{/if}
+</div>
+{/if}

@@ -1,0 +1,30 @@
+<tr id="box_properties_combis_row_{$content_data.products_properties_combis_id}" class="box_properties_combis_row" valign="top">
+	<td class="properties_table_combination">
+		{foreach item=item from=$content_data.COMBIS_VALUES name=combis_values}
+			{if $item}
+				{if !$smarty.foreach.combis_values.first}
+					<div class="combi_name_placeholder">/</div>
+				{/if}
+				<div class="combi_name_container">
+                                     {if $item.properties_admin_name}
+					<div class="combi_name_text">{$item.properties_admin_name}:</div>
+                                     {else}
+					<div class="combi_name_text">{$item.properties_name}:</div>
+                                     {/if}
+					<div class="combi_name_value">{$item.values_name}</div>
+				</div>
+			{/if}
+		{/foreach}
+	</td>
+	<td class="properties_table_sortnr">{$content_data.sort_order}&nbsp;</td>
+	<td class="properties_table_artnr">{$content_data.combi_model}&nbsp;</td>
+	<td class="properties_table_quantity">{$content_data.combi_quantity}&nbsp;{$content_data.products_quantity_unit_name}</td>
+	<td class="properties_table_quantity">{$content_data.combi_weight} kg</td>
+	<td class="properties_table_price">{$content_data.combi_price}&nbsp;</td>
+	<td class="properties_table_vpe">{$content_data.vpe_value} {$content_data.products_vpe_name}&nbsp;</td>
+	<td class="properties_table_shipping_time">{$content_data.combi_shipping_status_name}</td>
+	<td class="properties_table_image">{if $content_data.combi_image != ""}<a href="../images/product_images/properties_combis_images/{$content_data.combi_image}" target="blank"><img src="images/icons/icon_jpg.jpg" style="border: 0;" /></a>{else}&nbsp;{/if}</td>
+	<td class="properties_table_button"><a href="#" title="Bearbeiten" class="properties_button button_propertie_combi_edit button_edit_pencil"> <!-- --> </a></td>
+	<td class="properties_table_button"><a href="#" title="L&ouml;schen" class="properties_button button_propertie_combi_delete button_cancel_red_cross"> <!-- --> </a></td>
+	<td class="properties_table_button"><input type="checkbox" name="check_propertie[]" value="{$content_data.products_properties_combis_id}" class="check_propertie" /></td>
+</tr>

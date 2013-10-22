@@ -1,0 +1,127 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+<div id="menubox_trusted" class="c_trusted">
+	<div id="menubox_trusted_head" class="c_boxhead">
+		Trusted Shops
+	</div>
+	<div id="menubox_trusted_body">
+		{php}
+			if(gm_is_valid_trusted_shop_id(gm_get_conf('TRUSTED_SHOP_ID')) == false) {
+				echo 'Diese Box kann nur durch Eingabe einer gültigen Trusted Shops Shop-ID im Adminbereich freigeschaltet werden.';
+			} else { 
+				if((int) $_SESSION['languages_id'] == 1) {
+		{/php}
+
+			<form name="formSiegel" method="post" action="https://www.trustedshops.com/shop/certificate.php" target="_blank">
+				<input name="shop_id" type="hidden" value="{php}echo gm_get_conf('TRUSTED_SHOP_ID') {/php}" />
+
+				<table border="0" cellpadding="0" cellspacing="4" style="border-collapse: collapse" width="100%" bgcolor="#EFEFEF">
+					<tr>
+						<td width="100%" height="16">
+							<p align="center">
+								<b>
+									<font face="Verdana, Arial, Helvetica, Geneva, sans-serif" size="1" color="#666666">
+										<a target="_blank" href="http://www.trustedshops.com/" style="text-decoration: none">
+											<font color="#666666">
+												Safe web shopping
+											</font>
+										</a>
+									</font>
+								</b>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="100%" align="center">
+							<table cellpadding="0" cellspacing="0" width="95%" align="center">
+								<tr>
+									<td width="100%">
+										<div align="center">
+											<table width="100%" border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse; border:1px solid #C0C0C0;">
+												<tr valign="middle" bgcolor="#ffffff">
+													<td bgcolor="#ffffff" height="70" width="100%" align="center">
+														<p align="center">
+															<input type="image" src="images/trusted_siegel.gif" title="Trusted Shops G&uuml;tesiegel - Bitte hier G&uuml;ltigkeit pr&uuml;fen!" name="Seal" align="middle" />
+														</p>
+													</td>
+												</tr>
+												<tr valign="middle" bgcolor="#ffffff">
+													<td bgcolor="#ffffff" height="70">
+														<a target="_blank" href="http://www.trustedshops.com/news/conditions-privacy/" style="text-decoration: none">
+															<font face="Verdana, Arial, Helvetica, Geneva, sans-serif" size="1" color="#666666">
+																Certified online shop with buyer protection by Trusted Shops. Click to verify!
+															</font>
+														</a>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<br />		
+						</td>
+					</tr>
+				</table>
+			</form>
+		{php}
+			} else {
+		{/php}
+			<form name="formSiegel" method="post" action="https://www.trustedshops.com/shop/certificate.php" target="_blank">
+				<input name="shop_id" type="hidden" value="{php}echo gm_get_conf('TRUSTED_SHOP_ID') {/php}" />
+
+				<table border="0" cellpadding="0" cellspacing="4" style="border-collapse: collapse" width="100%" bgcolor="#EFEFEF">
+					<tr>
+						<td width="100%" height="16">
+							<p align="center">
+								<b>
+									<font face="Verdana, Arial, Helvetica, Geneva, sans-serif" size="1" color="#666666">
+										<a target="_blank" href="http://www.trustedshops.de/" style="text-decoration: none">
+											<font color="#666666">
+												Sicher Einkaufen
+											</font>
+										</a>
+									</font>
+								</b>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td width="100%" align="center">
+							<table cellpadding="0" cellspacing="0" width="95%" align="center">
+								<tr>
+									<td width="100%">
+										<div align="center">
+											<table width="100%" border="0" cellpadding="3" cellspacing="0" style="border-collapse: collapse; border:1px solid #C0C0C0;">
+												<tr valign="middle" bgcolor="#ffffff">
+													<td bgcolor="#ffffff" height="70" width="100%" align="center">
+														<p align="center">
+															<input type="image" src="images/trusted_siegel.gif" title="Trusted Shops G&uuml;tesiegel - Bitte hier G&uuml;ltigkeit pr&uuml;fen!" name="Seal" align="middle" />
+														</p>
+													</td>
+												</tr>
+												<tr valign="middle" bgcolor="#ffffff">
+													<td bgcolor="#ffffff" height="70">
+														<a target="_blank" href="http://www.trustedshops.de/info/garantiebedingungen/" style="text-decoration: none">
+															<font face="Verdana, Arial, Helvetica, Geneva, sans-serif" size="1" color="#666666">
+															Gepr&uuml;fter Online-Shop mit K&auml;uferschutz von Trusted Shops. Klicken Sie auf das G&uuml;tesiegel, um die	G&uuml;ltigkeit zu pr&uuml;fen.
+															</font>
+														</a>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<br />		
+						</td>
+					</tr>
+				</table>
+			</form>
+		{php}
+			}
+		}
+		{/php}
+	</div>
+</div>

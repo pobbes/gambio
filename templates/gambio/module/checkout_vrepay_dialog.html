@@ -1,0 +1,35 @@
+{config_load file="$language/lang_$language.conf" section="checkout_confirmation"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+	<div id="gm_checkout_confirmation" class="checkout{if $LIGHTBOX == 'true'} lightbox_block{/if}">
+	
+		<div class="head">
+			<div id="iconizing_icon">
+				<img src="{$tpl_path}icons/bestellaufgeben.gif" />
+			</div>
+	
+			<div id="iconized_page_head">
+				{#heading_confirmation#}
+			</div>
+		</div>
+	
+		<div align="center">
+			<p>{$VREPAY_MESSAGE}</p>
+			<iframe src={$VREPAY_REDIRECT} {$IFRAME_LAYOUT}>
+				<p>Ihr Browser kann leider keine eingebetteten Frames anzeigen</p>
+			</iframe>
+	</div>
+		
+		<div class="navbar_line"><img src="{$tpl_path}img/checkout_bullet.gif" alt="" /></div>
+		<div class="navabar">
+			<div class="navabar_text">{#text_shipping_info#}</div>
+			<div class="navabar_text">{#text_payment_info#}</div>
+			<div class="navabar_text">{#text_confirm#}</div>
+			<div class="navabar_text_current">{#text_finished#}</div>
+		</div>
+		
+		<div id="footer">{#gm_window_close#}</div>
+	
+	</div>
+</div>

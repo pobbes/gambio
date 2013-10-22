@@ -1,0 +1,203 @@
+{config_load file="$language/lang_$language.conf" section="create_account"}
+{config_load file="$language/gm_lang_$language.conf" section="lightbox"}
+
+	<div{if $LIGHTBOX == 'true'} id="lightbox_content"{/if}>
+	<div id="create_account_page"{if $LIGHTBOX == 'true'} class="lightbox_block"{/if}>
+		
+		<div id="iconizing_icon">
+			<img src="{$tpl_path}icons/kukoinfo.gif" alt="{#heading_create_account#}" title="{#heading_create_account#}" />
+		</div>
+
+		<div id="iconized_page_head">
+			{#heading_create_account#}
+		</div>
+	
+		{$FORM_ACTION}	
+		
+		<div class="heading">
+			<img src="{$tpl_path}icons/persdaten.gif" alt="{#title_personal#}" title="{#title_personal#}" />
+			<h2>
+				{#title_personal#}
+			</h2>
+			<div class="cell_note">
+				{#text_must#}
+			</div>
+		</div>
+
+		{if $INPUT_MALE}
+		<div class="gender">
+			<div id="left_gender" class="cell_left">{#text_gender#}</div>
+			<div id="gender" class="cell_right">{$INPUT_MALE} {$INPUT_FEMALE}
+			{if $error_gender}
+				<span class="class_error_message">{$error_gender}</span>
+			{/if}
+			</div>
+		</div>
+		{/if}
+		
+		<div id="left_firstname" class="cell_left">{#text_firstname#}</div>
+		<div id="firstname" class="cell_right">{$INPUT_FIRSTNAME}
+		{if $error_first_name}
+			<span class="class_error_message">{$error_first_name}</span>
+		{/if}
+		</div>
+
+		
+		<div id="left_lastname" class="cell_left">{#text_lastname#}</div>
+		<div id="lastname" class="cell_right">{$INPUT_LASTNAME}
+		{if $error_last_name}
+			<span class="class_error_message">{$error_last_name}</span>
+		{/if}
+		</div>
+
+		{if $birthdate=='1'}
+			<div id="left_birthdate" class="cell_left">{#text_birthdate#}</div>
+			<div id="birthdate" class="cell_right">{$INPUT_DOB}
+			{if $error_birth_day}
+				<span class="class_error_message">{$error_birth_day}</span>
+			{/if}
+			</div>
+		{/if}
+		
+		<div id="left_email" class="cell_left">{#text_email#}</div>
+		<div id="email" class="cell_right">{$INPUT_EMAIL}
+		{if $error_mail}
+			<span class="class_error_message">{$error_mail}</span>
+		{/if}
+		</div>
+
+		{if $company=='1'}
+			<div class="heading">
+				<img src="{$tpl_path}icons/geschadresse.gif"  alt="{#title_company#}" title="{#title_company#}" />
+				<h2>
+					{#title_company#}
+				</h2>
+			</div>
+			<div id="left_company" class="cell_left">{#text_company#}</div>
+			<div id="company" class="cell_right">{$INPUT_COMPANY}</div>
+
+			{if $vat=='1'}
+				<div id="left_vat" class="cell_left">{#text_ustid#}</div>
+				<div id="vat" class="cell_right">{$INPUT_VAT}</div>
+				{if $error_vat}
+					<div class="cell_left class_error_message">&nbsp;</div>
+					<div class="cell_right class_error_message">{$error_vat}</div>				
+				{/if}			
+			{/if}
+		{/if}
+		
+		<div class="heading">
+			<img src="{$tpl_path}icons/adresse.gif"  alt="{#title_address#}" title="{#title_address#}" />
+			<h2>
+				{#title_address#}
+			</h2>
+		</div>
+		<div id="left_street" class="cell_left">{#text_street#}</div>
+		<div id="street" class="cell_right">{$INPUT_STREET}
+		{if $error_street}
+			<span class="class_error_message">{$error_street}</span>
+		{/if}
+		</div>
+
+		{if $INPUT_SUBURB}
+		<div id="left_suburb" class="cell_left">{#text_suburb#}</div>
+		<div id="suburb" class="cell_right">{$INPUT_SUBURB}</div>
+		{/if}
+		
+		<div id="left_code" class="cell_left">{#text_code#}</div>
+		<div id="code" class="cell_right">{$INPUT_CODE}
+		{if $error_post_code}
+			<span class="class_error_message">{$error_post_code}</span>
+		{/if}
+		</div>
+
+		<div id="left_city" class="cell_left">{#text_city#}</div>
+		<div id="city" class="cell_right">{$INPUT_CITY}
+		{if $error_city}
+			<span class="class_error_message">{$error_city}</span>
+		{/if}
+		</div>
+
+		{if $INPUT_STATE}
+		<div class="gender">
+			<div id="left_state" class="cell_left">{#text_state#}</div>
+			<div id="state" class="cell_right">{$INPUT_STATE}
+			{if $error_state}
+				<span class="class_error_message">{$error_state}</span>
+			{/if}
+			</div>
+		</div>		
+		{/if}
+		
+		<div id="left_country" class="cell_left">{#text_country#}</div>
+		<div id="country" class="cell_right">{$SELECT_COUNTRY}
+		{if $error_country}
+			<span class="class_error_message">{$error_country}</span>
+		{/if}
+		</div>
+
+		{if $INPUT_TEL || $INPUT_FAX}
+			<div class="heading">
+				<img src="{$tpl_path}icons/kontakt.gif"  alt="{#title_contact#}" title="{#title_contact#}" />
+				<h2>
+					{#title_contact#}
+				</h2>
+			</div>
+			{if $INPUT_TEL}
+				<div id="left_tel" class="cell_left">{#text_tel#}</div>
+				<div id="tel" class="cell_right">{$INPUT_TEL}
+				{if $error_tel}
+					<span class="class_error_message">{$error_tel}</span>
+				{/if}
+				</div>
+			{/if}
+			{if $INPUT_FAX}
+				<div id="left_fax" class="cell_left">{#text_fax#}</div>
+				<div id="fax" class="cell_right">{$INPUT_FAX}</div>
+			{/if}
+		{/if}
+
+		<div class="heading">
+			<img src="{$tpl_path}icons/pwspeichern.gif"  alt="{#title_password#}" title="{#title_password#}" />
+			<h2>
+				{#title_password#}
+			</h2>
+		</div>
+
+		<div id="left_password" class="cell_left">{#text_password#}</div>
+		<div id="password" class="cell_right">{$INPUT_PASSWORD}
+		{if $error_password}
+			<span class="class_error_message">{$error_password}</span>
+		{/if}
+		</div>
+
+		<div id="left_confirmation" class="cell_left">{#text_confirmation#}</div>
+		<div id="confirmation" class="cell_right">{$INPUT_CONFIRMATION}
+		{if $error_password2}
+			<span class="class_error_message">{$error_password2}</span>
+		{/if}
+		</div>
+		
+		{if $show_privacy}
+		<div class="heading">
+			<img src="{$tpl_path}icons/datenschutz.gif"  alt="{#title_password#}" title="{#title_password#}" />
+			<h2>
+				{#title_privacy#}
+			</h2>
+		</div>
+		
+		<div id="privacy" class="">
+		{$PRIVACY_LINK}				
+		</div>
+		<br />
+		{/if}
+		
+		<div class="form_buttons">
+			<div class="cell_back">{$BUTTON_BACK}</div>
+			<div class="cell_continue">{$BUTTON_SUBMIT}</div>
+		</div>
+		{$FORM_END}
+		
+		<div id="footer" onclick="document.location.href = '{$LINK_CLOSE}';">{#gm_window_close#}</div>
+	</div>
+	</div>

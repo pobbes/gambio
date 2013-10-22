@@ -1,0 +1,19 @@
+{load_language_text section="buttons" name="button"}
+<div id="content_page">
+	<h1>
+		{$CONTENT_HEADING}
+	</h1>
+	<div class="content_page_inner">
+		{if $file}
+			{$file}
+		{else}
+			{$CONTENT_BODY}
+		{/if}
+	</div>
+	<div>
+		<br />
+		{* $BUTTON_CONTINUE *}
+		{* TODO: use pagetrack *}
+		<a class="button_blue button_set" href="javascript:history.back(1)"><span class="button-outer"><span class="button-inner">{$button.back}</span></span></a>
+	</div>
+</div>

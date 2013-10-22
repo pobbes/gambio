@@ -1,0 +1,28 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+
+
+<div id="menubox_yoochoose_also_clicked" class="c_yoochoose_also_clicked">
+	<div id="menubox_yoochoose_also_clicked_head" class="c_boxhead">
+		{$box_header}
+	</div>
+    
+    {foreach item=yooitem from=$box_content}
+
+	<div id="menubox_yoochoose_also_clicked_body">
+		{if $yooitem.PRODUCTS_IMAGE}
+			<a href="{$yooitem.PRODUCTS_LINK}"><img class="image_frame" src="{$yooitem.PRODUCTS_IMAGE}" alt="{$yooitem.PRODUCTS_IMAGE_ALT|default:$yooitem.PRODUCTS_NAME}" title="{$yooitem.PRODUCTS_IMAGE_ALT|default:$yooitem.PRODUCTS_NAME}" /></a>
+		{/if}
+		<br />
+		<a href="{$yooitem.PRODUCTS_LINK}">{$yooitem.PRODUCTS_NAME}</a><br />
+		<strong>{$yooitem.PRODUCTS_PRICE}</strong><br />
+		{if $yooitem.PRODUCTS_VPE}{$yooitem.PRODUCTS_VPE}<br />{/if}
+		
+		{if $yooitem.PRODUCTS_TAX_INFO neq '' || $yooitem.PRODUCTS_SHIPPING_LINK neq ''}
+			({$yooitem.PRODUCTS_TAX_INFO}{$yooitem.PRODUCTS_SHIPPING_LINK})
+		{/if}
+					
+	</div>
+    
+    {/foreach}
+    
+</div>

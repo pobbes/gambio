@@ -1,0 +1,21 @@
+<table cellspacing="0" cellpadding="4" border="0" align="center" width="100%">
+    <tbody>
+        {if $gm_logo_mail}
+        <tr>
+            <td style="border-color: rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);">
+            <div align="right">{$gm_logo_mail}</div>
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <td>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">{$MESSAGE}       </font></p>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Gutscheinwert: {$AMMOUNT}</font></p>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Um Ihren Gutschein zu verbuchen, klicken Sie auf den unten stehenden Link. Bitte notieren Sie sich zur Sicherheit Ihren pers&ouml;nlichen Gutschein-Code. Ihr Gutschein-Code lautet: {$GIFT_ID}</font></p>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2"> <a href="{$GIFT_LINK}">{$GIFT_LINK}</a> </font></p>
+            <p><font face="Verdana, Arial, Helvetica, sans-serif" size="2">Falls es wider Erwarten zu Problemen beim Verbuchen kommen sollte, </font><font face="Verdana, Arial, Helvetica, sans-serif" size="2">besuchen Sie unsere Webseite <a href="{$WEBSITE}">{$WEBSITE}</a> und geben den Gutschein-Code bitte manuell ein. </font></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
